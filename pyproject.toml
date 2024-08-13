@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "mindkeeper"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.scripts]
+mindkeeper = "mindkeeper:run"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+prompt-toolkit = "^3.0.47"
+pydantic = "^2.8.2"
+rich = "^13.7.1"
+
+
+[tool.poetry.group.dev.dependencies]
+pdbpp = "^0.10.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
