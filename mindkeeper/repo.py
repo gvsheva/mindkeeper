@@ -1,6 +1,6 @@
 from uuid import UUID
 
-from mindkeeper.model import Contact, Note
+from mindkeeper.model import Note
 
 
 class Repo:
