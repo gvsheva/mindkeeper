@@ -1,7 +1,6 @@
 from datetime import datetime
-from enum import StrEnum, auto
-from typing import Annotated
-from uuid import UUID, uuid4
+from enum import Enum, StrEnum, auto
+from typing import Annotated, Literal
 
 import annotated_types as at
 from pydantic import BaseModel, EmailStr, Field
@@ -9,11 +8,20 @@ from pydantic import BaseModel, EmailStr, Field
 Tags = list[Annotated[str, at.Len(1, 100)]]
 
 
+class _GENERATE_TYPE(Enum):
+    GENERATE = auto()
+
+
+GENERATE = _GENERATE_TYPE.GENERATE
+
+
 class Note(BaseModel):
-    id: UUID = Field(..., default_factory=uuid4)
+    id: int | Literal[_GENERATE_TYPE.GENERATE] = GENERATE
     title: Annotated[str, at.Len(1, 100)]
     text: Annotated[str, at.Len(0, 1000)]
     tags: Tags = Field(..., default_factory=list)
+    created_at: datetime = Field(..., default_factory=datetime.now)
+    updated_at: datetime = Field(..., default_factory=datetime.now)
 
 
 class PhoneType(StrEnum):
@@ -28,7 +36,7 @@ class Phone(BaseModel):
 
 
 class Contact(BaseModel):
-    id: UUID = Field(..., default_factory=uuid4)
+    id: int | Literal[_GENERATE_TYPE.GENERATE] = GENERATE
     name: Annotated[str, at.Len(1, 100)]
     address: Annotated[str, at.Len(1, 250)] | None = None
     email: EmailStr | None = None
