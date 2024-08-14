@@ -14,6 +14,7 @@ class REPL:
     def __init__(self, controller: Controller, prompt='>>> '):
         self.controller = controller
         self.prompt = prompt
+        self.console = Console()
 
     def _main_toolbart(self):
         return "Press Ctrl+D to exit"
@@ -34,17 +35,23 @@ class REPL:
                 response = default
             if response in ("Y", "N"):
                 return response == "Y"
-            print("Invalid response. Please enter 'y' or 'n'.")
+            self.console.print("Invalid response. Please enter 'y' or 'n'.")
 
-    def prompt_multiline(self, p: str = ">>> ") -> str:
-        return prompt(p, multiline=True, bottom_toolbar=self._multiline_toolbar)
+    def prompt_multiline(self, p=">>> ", continuation: str | None = None) -> str:
+        if continuation is None:
+            continuation = " " * len(p)
+        return prompt(
+            p,
+            multiline=True,
+            bottom_toolbar=self._multiline_toolbar,
+            prompt_continuation=continuation,
+        )
 
     def run(self):
-        console = Console()
         session = PromptSession()
         completer = NestedCompleter.from_nested_dict(
             self.controller.completions())
-        console.print(self.controller.help(self))
+        self.console.print(self.controller.help(self))
         while True:
             try:
                 text = session.prompt(
@@ -54,10 +61,10 @@ class REPL:
                 )
                 result = self.controller.execute(self, text)
                 if result is not None:
-                    console.print(result)
+                    self.console.print(result)
             except KeyboardInterrupt:
                 continue
             except EOFError:
                 break
             except Exception as e:
-                print(e)
+                self.console.print(e)

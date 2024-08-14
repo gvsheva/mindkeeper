@@ -12,7 +12,7 @@ Tags = list[Annotated[str, at.Len(1, 100)]]
 class Note(BaseModel):
     id: UUID = Field(..., default_factory=uuid4)
     title: Annotated[str, at.Len(1, 100)]
-    text: Annotated[str, at.Len(1, 1000)]
+    text: Annotated[str, at.Len(0, 1000)]
     tags: Tags = Field(..., default_factory=list)
 
 

@@ -16,7 +16,7 @@ _add_parser.add_argument(
 _add_parser.add_argument(
     "/text", type=str,
     help="Note text (if not provided, will prompt for input)",
-    default="")
+    default=None)
 
 
 _delete_parser = CommandArgumentParser("delete")
@@ -39,8 +39,8 @@ class NotesController(Controller):
         """Add a note."""
         parsed = _add_parser.parse_args(args)
         title, tags, text = parsed.title, parsed.tags, parsed.text
-        if not text:
-            text = repl.prompt_multiline("Enter note text> ")
+        if text is None:
+            text = repl.prompt_multiline("text> ")
         note = Note(title=title, text=text, tags=tags)
         self.repo.put_note(note)
 
