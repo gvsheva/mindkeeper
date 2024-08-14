@@ -118,7 +118,10 @@ class Controller:
             return self._sub_controllers[topic].help(repl)
         if topic is not None and topic in self._commands:
             return self._commands[topic].help()
-        table = Table(title="Commands")
+        table = Table(
+            title="Commands",
+            show_lines=True,
+        )
         table.add_column("Command")
         table.add_column("Description")
         for name, controller in self._sub_controllers.items():
