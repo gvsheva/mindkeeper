@@ -3,6 +3,7 @@ from functools import partial, update_wrapper
 from typing import TYPE_CHECKING, Callable, overload
 
 from rich.table import Table
+from thefuzz import fuzz
 
 if TYPE_CHECKING:
     from mindkeeper.repl import REPL
@@ -93,14 +94,35 @@ class Controller:
     def execute(self, repl: REPL, text):
         line = shlex.split(text)
         if not line:
-            return
+            return self.empty()
         ctrl, *args = line
         if ctrl in self._sub_controllers:
             return self._sub_controllers[ctrl].execute(repl, shlex.join(args))
         if ctrl in self._commands:
             return self._commands[ctrl](repl, *args)
         else:
-            print(f"Command not found: {ctrl}")
+            return self.default(repl, ctrl, *args)
+
+    def empty(self):
+        return None
+
+    def default(self, repl: REPL, command: str, *args):
+        candidates = []
+        for candidate in self._sub_controllers:
+            rat = fuzz.ratio(candidate, command)
+            if rat > 50:
+                candidates.append((rat, candidate))
+        for candidate in self._commands:
+            rat = fuzz.ratio(candidate, command)
+            if rat > 50:
+                candidates.append((rat, candidate))
+        response = f"Command not found: [bold red]'{command}'[/bold red]"
+        if candidates:
+            candidates.sort(reverse=True)
+            candidate = candidates[0][1]
+            response += f"\nDid you mean [bold green]'{candidate}'[/bold green]?"  # nopep8
+        response += "\nType 'help' for a list of commands."
+        return response
 
     def completions(self):
         candidates = {}
