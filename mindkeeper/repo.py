@@ -15,3 +15,6 @@ class Repo:
 
     def delete_note(self, id: UUID):
         ...
+
+    def wipe_notes(self):
+        ...
