@@ -15,8 +15,11 @@ class REPL:
         self.controller = controller
         self.prompt = prompt
 
-    def _bottom_toolbar(self):
+    def _main_toolbart(self):
         return "Press Ctrl+D to exit"
+
+    def _confirm_toolbar(self):
+        return "Press y/n to confirm, or Ctrl+C to cancel."
 
     def _multiline_toolbar(self):
         return "Press Alt+Enter to finish"
@@ -24,7 +27,9 @@ class REPL:
     def confirm(self, message: str, default: Literal["N", "Y"] = "N") -> bool:
         while True:
             response = prompt(
-                f"{message} (y/n) [{default=}]: ").strip().upper()
+                f"{message} (y/n) [{default=}]: ",
+                bottom_toolbar=self._confirm_toolbar,
+            ).strip().upper()
             if response == "":
                 response = default
             if response in ("Y", "N"):
@@ -44,7 +49,7 @@ class REPL:
             try:
                 text = session.prompt(
                     self.prompt,
-                    bottom_toolbar=self._bottom_toolbar,
+                    bottom_toolbar=self._main_toolbart,
                     completer=completer,
                 )
                 result = self.controller.execute(self, text)
