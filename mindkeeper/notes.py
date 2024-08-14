@@ -1,6 +1,7 @@
-from uuid import UUID
-
+from rich.columns import Columns
+from rich.markdown import Markdown
 from rich.markup import escape
+from rich.table import Table
 
 from mindkeeper.controller import Controller, command
 from mindkeeper.model import Note
@@ -18,10 +19,13 @@ _add_parser.add_argument(
     help="Note text (if not provided, will prompt for input)",
     default=None)
 
+_show_parser = CommandArgumentParser("get")
+_show_parser.add_argument(
+    "id", type=int, help="Note ID")
 
 _delete_parser = CommandArgumentParser("delete")
 _delete_parser.add_argument(
-    "id", type=UUID, help="Note ID")
+    "id", type=int, help="Note ID")
 _delete_parser.add_argument(
     "/force", action="store_true", help="Force deletion without confirmation")
 
@@ -51,6 +55,32 @@ class NotesController(Controller):
     @add.help
     def _(self):
         return f"Add a note.\n\n{escape(_add_parser.format_help())}"
+
+    @command
+    def show(self, repl: REPL, *args: str):
+        """Show a note."""
+        parsed = _show_parser.parse_args(args)
+        note = self.repo.get_note(parsed.id)
+        if note is None:
+            return f"Note {parsed.id} not found."
+        table = Table(title=note.title, show_header=False)
+        table.add_row(Markdown(note.text))
+        table.add_section()
+        table.add_row(Columns(
+            [f"[green]#{t}[/green]" for t in note.tags],
+            equal=True))
+        table.add_section()
+        table.add_row(f"Created at: {note.created_at}")
+        table.add_row(f"Last modified: {note.updated_at}")
+        return table
+
+    @show.completions
+    def _(self):
+        return {opt for opt in _show_parser.known_args if opt.startswith("/")}
+
+    @show.help
+    def _(self):
+        return f"Show a note.\n\n{escape(_show_parser.format_help())}"
 
     @command
     def delete(self, repl: REPL, *args):
