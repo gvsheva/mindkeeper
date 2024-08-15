@@ -1,7 +1,12 @@
+import os
 from typing import TYPE_CHECKING, Literal
 
 from prompt_toolkit import PromptSession, prompt
+from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.completion import NestedCompleter
+from prompt_toolkit.history import FileHistory
+from prompt_toolkit.lexers import PygmentsLexer
+from prompt_toolkit.styles import Style
 from rich.console import Console
 
 if TYPE_CHECKING:
@@ -37,7 +42,13 @@ class REPL:
                 return response == "Y"
             self.console.print("Invalid response. Please enter 'y' or 'n'.")
 
-    def prompt_multiline(self, p=">>> ", continuation: str | None = None) -> str:
+    def prompt_multiline(
+            self,
+            p=">>> ",
+            continuation: str | None = None,
+            lexer: PygmentsLexer | None = None,
+            style: Style | None = None,
+    ) -> str:
         if continuation is None:
             continuation = " " * len(p)
         return prompt(
@@ -45,10 +56,15 @@ class REPL:
             multiline=True,
             bottom_toolbar=self._multiline_toolbar,
             prompt_continuation=continuation,
+            lexer=lexer,
+            style=style,
+            include_default_pygments_style=False,
         )
 
     def run(self):
-        session = PromptSession()
+        history_file = os.environ.get(
+            "MINDKEEPER_HISTORY_FILE", ".mindkeeper-history")
+        session = PromptSession(history=FileHistory(history_file))
         completer = NestedCompleter.from_nested_dict(
             self.controller.completions())
         self.console.print(self.controller.help(self))
@@ -58,6 +74,7 @@ class REPL:
                     self.prompt,
                     bottom_toolbar=self._main_toolbart,
                     completer=completer,
+                    auto_suggest=AutoSuggestFromHistory(),
                 )
                 result = self.controller.execute(self, text)
                 if result is not None:
