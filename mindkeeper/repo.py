@@ -4,7 +4,7 @@ from pathlib import Path
 
 from thefuzz import fuzz
 
-from mindkeeper.model import GENERATE, Note
+from mindkeeper.model import GENERATE, Note, Contact
 
 
 class _INDEXES(StrEnum):
@@ -39,7 +39,7 @@ class Repo:
         counter += 1
         self.data[counter_name] = counter
         return counter
-
+# ff
     def put_note(self, note: Note):
         if note.id is GENERATE:
             note.id = self._generate_id("__notes_counter")
@@ -86,3 +86,71 @@ class Repo:
     def wipe_notes(self):
         self.data[_INDEXES.NOTES] = {}
         self.data["__notes_counter"] = 0
+
+
+    def put_contact(self, contact: Contact):
+        if contact.id is GENERATE:
+            contact.id = self._generate_id("__contacts_counter")
+        index = self.data.get(_INDEXES.CONTACTS, {})
+        index[contact.id] = contact
+        self.data[_INDEXES.CONTACTS] = index
+        return contact
+
+    def get_contact(self, id: int) -> Contact:
+        index = self.data.get(_INDEXES.CONTACTS, {})
+        return index.get(id)
+    
+    def delete_contact(self, id: int):
+        index = self.data.get(_INDEXES.CONTACTS, {})
+        del index[id]
+        self.data[_INDEXES.CONTACTS] = index
+
+    def wipe_contacts(self):
+        self.data[_INDEXES.CONTACTS] = {}
+        self.data["__contacts_counter"] = 0
+
+    def find_contacts(
+        self,
+        name: str | None = None,
+        address: str | None = None,
+        email: str | None = None,
+        phone: str | None = None,
+        tags: list[str] | None = None,
+        limit=100,
+        offset=0,
+    ):
+        counter = 0
+        for contact in self.data.get(_INDEXES.CONTACTS, {}).values():
+            if name:
+                r = fuzz.partial_ratio(name, contact.name)
+                if r < self.fuzzy_search_ratio:
+                    continue
+            if address:
+                r = fuzz.partial_ratio(address, contact.address)
+                if r < self.fuzzy_search_ratio:
+                    continue
+            if email:
+                r = fuzz.partial_ratio(email, contact.email)
+                if r < self.fuzzy_search_ratio:
+                    continue
+            if phone:
+                if not contact.phones:
+                    continue
+                found = False
+                for i in contact.phones:
+                    r = fuzz.partial_ratio(phone, i.number)
+                    if r < self.fuzzy_search_ratio:
+                        continue
+                    else:
+                        found = True
+                        break
+                if not found:
+                    continue
+
+            if tags and not set(tags) & set(contact.tags):
+                continue
+            if counter >= offset + limit:
+                break
+            if counter >= offset:
+                yield contact
+            counter += 1
