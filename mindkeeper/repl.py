@@ -45,6 +45,7 @@ class REPL:
     def prompt_multiline(
             self,
             p=">>> ",
+            default: str = "",
             continuation: str | None = None,
             lexer: PygmentsLexer | None = None,
             style: Style | None = None,
@@ -55,6 +56,7 @@ class REPL:
             p,
             multiline=True,
             bottom_toolbar=self._multiline_toolbar,
+            default=default,
             prompt_continuation=continuation,
             lexer=lexer,
             style=style,

@@ -21,7 +21,6 @@ class Repo:
     def put_note(self, note: Note):
         if note.id is GENERATE:
             note.id = self._generate_id("__notes_counter")
-        print(f"Adding note: {note}")
         index = self.data.get(_INDEXES.NOTES, {})
         index[note.id] = note
         self.data[_INDEXES.NOTES] = index
