@@ -9,9 +9,6 @@ from mindkeeper.repo import Repo
 
 
 class DirectoryType:
-    def __init__(self, mode="r"):
-        self.mode = mode
-
     def __call__(self, path: str):
         p = Path(path)
         if not p.exists():
@@ -19,6 +16,9 @@ class DirectoryType:
         if not p.is_dir():
             raise ValueError(f"{p} is not a directory")
         return p
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}"
 
 
 def run():
