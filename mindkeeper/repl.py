@@ -18,9 +18,16 @@ else:
 
 
 class REPL:
-    def __init__(self, controller: Controller, prompt='>>> '):
+    def __init__(
+            self,
+            controller: Controller,
+            /,
+            prompt='>>> ',
+            enable_fuzzy_completion=True,
+    ):
         self.controller = controller
         self.prompt = prompt
+        self.enable_fuzzy_completion = enable_fuzzy_completion
         self.console = Console()
 
     def _main_toolbart(self):
@@ -69,7 +76,9 @@ class REPL:
         history_file = os.environ.get(
             "MINDKEEPER_HISTORY_FILE", ".mindkeeper-history")
         session = PromptSession(history=FileHistory(history_file))
-        completer = FuzzyCompleter(self.controller.completions())
+        completer = self.controller.completions()
+        if self.enable_fuzzy_completion:
+            completer = FuzzyCompleter(completer)
         self.console.print(self.controller.help(self))
         while True:
             try:

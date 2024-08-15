@@ -15,13 +15,13 @@ class _INDEXES(StrEnum):
 class Repo:
     data: shelve.Shelf
 
-    def __init__(self, dbdir: Path | str):
-        if isinstance(dbdir, str):
-            dbdir = Path(dbdir)
+    def __init__(self, dbdir: Path, dbname: str):
+        assert dbdir.is_dir()
         self.dbdir = dbdir
+        self.dbname = dbname
 
     def open(self):
-        self.data = shelve.open(self.dbdir / "mindkeeper-db")
+        self.data = shelve.open(self.dbdir / self.dbname)
 
     def close(self):
         self.data.close()
