@@ -21,6 +21,24 @@ class DirectoryType:
         return f"{self.__class__.__name__}"
 
 
+class IntRangeType:
+    def __init__(self, min: int, max: int):
+        self.min = min
+        self.max = max
+
+    def __call__(self, value: str):
+        if isinstance(value, int):
+            i = value
+        else:
+            try:
+                i = int(value)
+            except ValueError:
+                raise ValueError(f"{value} is not an integer")
+        if not self.min <= i <= self.max:
+            raise ValueError(f"{value} is not in range {self.min}..{self.max}")
+        return i
+
+
 def run():
     ap = ArgumentParser()
     ap.add_argument(
@@ -34,6 +52,11 @@ def run():
         default="mindkeeper-db",
         help="Database base name")
     ap.add_argument(
+        "--db-fuzzy-search-ratio",
+        type=IntRangeType(0, 100),
+        default=80,
+        help="Fuzzy search ratio for database queries")
+    ap.add_argument(
         "--default-prompt",
         type=str,
         default=">>> ",
@@ -46,7 +69,7 @@ def run():
 
     args = ap.parse_args()
 
-    with Repo(args.db_dir, args.db_name) as repo:
+    with Repo(args.db_dir, args.db_name, fuzzy_search_ratio=args.db_fuzzy_search_ratio) as repo:
         app = ApplicationController()
         app.add_subcontroller("notes", NotesController(repo))
         app.add_subcontroller("contacts", ContactsController())

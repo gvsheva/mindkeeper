@@ -15,10 +15,11 @@ class _INDEXES(StrEnum):
 class Repo:
     data: shelve.Shelf
 
-    def __init__(self, dbdir: Path, dbname: str):
+    def __init__(self, dbdir: Path, dbname: str, /, fuzzy_search_ratio=80):
         assert dbdir.is_dir()
         self.dbdir = dbdir
         self.dbname = dbname
+        self.fuzzy_search_ratio = fuzzy_search_ratio
 
     def open(self):
         self.data = shelve.open(self.dbdir / self.dbname)
@@ -61,10 +62,14 @@ class Repo:
     ):
         counter = 0
         for note in self.data.get(_INDEXES.NOTES, {}).values():
-            if title and fuzz.partial_ratio(title, note.title) < 80:
-                continue
-            if text and fuzz.partial_ratio(text, note.text) < 80:
-                continue
+            if title:
+                r = fuzz.partial_ratio(title, note.title)
+                if r < self.fuzzy_search_ratio:
+                    continue
+            if text:
+                r = fuzz.partial_ratio(text, note.text)
+                if r < self.fuzzy_search_ratio:
+                    continue
             if tags and not set(tags) & set(note.tags):
                 continue
             if counter >= offset + limit:
