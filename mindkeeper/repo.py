@@ -21,7 +21,7 @@ class Repo:
         self.dbdir = dbdir
 
     def open(self):
-        self.data = shelve.open(self.dbdir / "mindkeeper")
+        self.data = shelve.open(self.dbdir / "mindkeeper-db")
 
     def close(self):
         self.data.close()
