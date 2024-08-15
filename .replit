@@ -1,0 +1,16 @@
+entrypoint = "mindkeeper/__init__.py"
+modules = ["python-3.11"]
+
+[nix]
+channel = "stable-23_05"
+
+[unitTest]
+language = "python3"
+
+[gitHubImport]
+requiredFiles = [".replit"]
+
+[deployment]
+build = ["poetry", "install", "--without", "dev"]
+run = ["poetry", "run", "mindkeeper"]
+deploymentTarget = "cloudrun"
