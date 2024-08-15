@@ -2,6 +2,8 @@ import shelve
 from enum import StrEnum, auto
 from pathlib import Path
 
+from thefuzz import fuzz
+
 from mindkeeper.model import GENERATE, Note
 
 
@@ -48,8 +50,27 @@ class Repo:
         index = self.data.get(_INDEXES.NOTES, {})
         return index.get(id)
 
-    def find_notes(self, query: str):
-        ...
+    def find_notes(
+            self,
+            title: str | None = None,
+            text: str | None = None,
+            tags: list[str] | None = None,
+            limit=100,
+            offset=0,
+    ):
+        counter = 0
+        for note in self.data.get(_INDEXES.NOTES, {}).values():
+            if title and fuzz.partial_ratio(title, note.title) < 80:
+                continue
+            if text and fuzz.partial_ratio(text, note.text) < 80:
+                continue
+            if tags and not set(tags) & set(note.tags):
+                continue
+            if counter >= offset + limit:
+                break
+            if counter >= offset:
+                yield note
+            counter += 1
 
     def delete_note(self, id: int):
         index = self.data.get(_INDEXES.NOTES, {})

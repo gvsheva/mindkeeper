@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Sequence
 
 import marko
 import marko.block
@@ -18,6 +19,7 @@ from mindkeeper.model import Note
 from mindkeeper.parser import CommandArgumentParser
 from mindkeeper.repl import REPL
 from mindkeeper.repo import Repo
+from mindkeeper.utils import format_datetime
 
 _add_parser = CommandArgumentParser("add")
 _add_parser.add_argument(
@@ -45,12 +47,25 @@ _delete_parser.add_argument(
 _delete_parser.add_argument(
     "/force", action="store_true", help="Force deletion without confirmation")
 
+_list_parser = CommandArgumentParser("list")
+_list_parser.add_argument(
+    "/tags", type=str, help="Filter by tags", nargs="*", default=[])
+_list_parser.add_argument(
+    "/title", type=str, help="Filter by title")
+_list_parser.add_argument(
+    "/text", type=str, help="Filter by text")
+_list_parser.add_argument(
+    "/limit", type=int, help="Limit number of notes", default=100)
+_list_parser.add_argument(
+    "/offset", type=int, help="Offset number of notes", default=0)
+
+
 _wipe_parser = CommandArgumentParser("wipe")
 _wipe_parser.add_argument(
     "/force", action="store_true", help="Force deletion without confirmation")
 
 
-TITLE_MAX_LENGTH = 10
+TITLE_MAX_LENGTH = 30
 
 
 class NotesController(Controller):
@@ -59,21 +74,15 @@ class NotesController(Controller):
 
     def _get_title(
             self,
-            elem: marko.block.Document | marko.element.Element | str,
+            elem: marko.block.BlockElement | marko.inline.InlineElement | marko.element.Element | Sequence[marko.element.Element] | str,
     ):
         match elem:
-            case marko.block.Document() if elem.children:
+            case marko.block.BlockElement() if elem.children:
                 return self._get_title(elem.children[0])
-            case marko.block.Heading() if elem.children:
-                return self._get_title(elem.children[0])
-            case marko.block.Paragraph() if elem.children:
-                return self._get_title(elem.children[0])
-            case marko.block.List() if elem.children:
-                return self._get_title(elem.children[0])
-            case marko.block.ListItem() if elem.children:
-                return self._get_title(elem.children[0])
-            case marko.inline.RawText() if elem.children:
+            case marko.inline.InlineElement() if elem.children:
                 return self._get_title(elem.children)
+            case [e, *_]:
+                return self._get_title(e)
             case str():
                 if len(elem) < TITLE_MAX_LENGTH:
                     return elem
@@ -113,15 +122,15 @@ class NotesController(Controller):
         note = self.repo.get_note(parsed.id)
         if note is None:
             return f"Note {parsed.id} not found."
-        table = Table(title=note.title, show_header=False)
+        table = Table(title=note.title, show_header=False, expand=True)
         table.add_row(Markdown(note.text))
         table.add_section()
         table.add_row(Columns(
             [f"[green]#{t}[/green]" for t in note.tags],
             equal=True))
         table.add_section()
-        table.add_row(f"Created at: {note.created_at}")
-        table.add_row(f"Last modified: {note.updated_at}")
+        table.add_row(f"Created at: {format_datetime(note.created_at)}")
+        table.add_row(f"Last modified: {format_datetime(note.updated_at)}")
         return table
 
     @show.completions
@@ -186,7 +195,37 @@ class NotesController(Controller):
     @command
     def list(self, repl, *args):
         """List notes."""
-        print(f"Listing notes: {args}")
+        parsed = _list_parser.parse_args(args)
+        notes = self.repo.find_notes(
+            title=parsed.title,
+            text=parsed.text,
+            tags=parsed.tags,
+            limit=parsed.limit,
+            offset=parsed.offset,
+        )
+        table = Table(title="Notes", expand=True)
+        table.add_column("ID")
+        table.add_column("Title")
+        table.add_column("Tags")
+        table.add_column("Created at")
+        table.add_column("Last modified")
+        for note in notes:
+            table.add_row(
+                str(note.id),
+                note.title,
+                ", ".join(note.tags),
+                format_datetime(note.created_at),
+                format_datetime(note.updated_at),
+            )
+        return table
+
+    @list.completions
+    def _(self):
+        return {opt for opt in _list_parser.known_args if opt.startswith("/")}
+
+    @list.help
+    def _(self):
+        return f"List notes.\n\n{escape(_list_parser.format_help())}"
 
     @command
     def wipe(self, repl, *args):

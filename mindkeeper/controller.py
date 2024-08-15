@@ -143,6 +143,7 @@ class Controller:
         table = Table(
             title="Commands",
             show_lines=True,
+            expand=True,
         )
         table.add_column("Command")
         table.add_column("Description")
