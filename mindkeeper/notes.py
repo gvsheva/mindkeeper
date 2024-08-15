@@ -5,6 +5,7 @@ import marko
 import marko.block
 import marko.element
 import marko.inline
+from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.lexers import PygmentsLexer
 from prompt_toolkit.styles import style_from_pygments_cls
 from pygments.lexers.markup import MarkdownLexer
@@ -40,6 +41,10 @@ _edit_parser.add_argument(
     "/text", type=str, help="Note text (if not provided, will prompt for input)")
 _edit_parser.add_argument(
     "/tags", type=str, help="Note tags", nargs="*", default=[])
+_edit_parser.add_argument(
+    "/add-tags", type=str, help="Add tags to note", nargs="*", default=[])
+_edit_parser.add_argument(
+    "/remove-tags", type=str, help="Remove tags from note", nargs="*", default=[])
 
 _delete_parser = CommandArgumentParser("delete")
 _delete_parser.add_argument(
@@ -109,7 +114,7 @@ class NotesController(Controller):
 
     @add.completions
     def _(self):
-        return {opt for opt in _add_parser.known_args if opt.startswith("/")}
+        return _add_parser.completions()
 
     @add.help
     def _(self):
@@ -135,7 +140,7 @@ class NotesController(Controller):
 
     @show.completions
     def _(self):
-        return {opt for opt in _show_parser.known_args if opt.startswith("/")}
+        return _show_parser.completions()
 
     @show.help
     def _(self):
@@ -148,12 +153,23 @@ class NotesController(Controller):
         note = self.repo.get_note(parsed.id)
         if note is None:
             return f"Note {parsed.id} not found."
-        tags, text = parsed.tags, parsed.text
         note.updated_at = datetime.now()
-        if tags:
-            note.tags = tags
+        update_tags = False
+
+        if parsed.tags:
+            note.tags = parsed.tags
+            update_tags = True
+        if parsed.add_tags:
+            note.tags = list(set(note.tags) | set(parsed.add_tags))
+            update_tags = True
+        if parsed.remove_tags:
+            note.tags = list(set(note.tags) - set(parsed.remove_tags))
+            update_tags = True
+        if update_tags:
             self.repo.put_note(note)
             return
+
+        text = parsed.text
         if text is None:
             lexer = PygmentsLexer(MarkdownLexer)
             style = style_from_pygments_cls(MonokaiStyle)
@@ -170,7 +186,7 @@ class NotesController(Controller):
 
     @edit.completions
     def _(self):
-        return {opt for opt in _edit_parser.known_args if opt.startswith("/")}
+        return _edit_parser.completions()
 
     @edit.help
     def _(self):
@@ -186,7 +202,7 @@ class NotesController(Controller):
 
     @delete.completions
     def _(self):
-        return {opt for opt in _delete_parser.known_args if opt.startswith("/")}
+        return _delete_parser.completions()
 
     @delete.help
     def _(self):
@@ -221,7 +237,7 @@ class NotesController(Controller):
 
     @list.completions
     def _(self):
-        return {opt for opt in _list_parser.known_args if opt.startswith("/")}
+        return _list_parser.completions()
 
     @list.help
     def _(self):
@@ -237,7 +253,7 @@ class NotesController(Controller):
 
     @wipe.completions
     def _(self):
-        return {opt for opt in _wipe_parser.known_args if opt.startswith("/")}
+        return _wipe_parser.completions()
 
     @wipe.help
     def _(self):
