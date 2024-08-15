@@ -73,6 +73,8 @@ TITLE_MAX_LENGTH = 30
 
 
 class NotesController(Controller):
+    """A set of commands to manage notes."""
+
     def __init__(self, repo: Repo):
         self.repo = repo
 

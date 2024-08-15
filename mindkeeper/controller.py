@@ -6,6 +6,8 @@ from prompt_toolkit.completion import Completer, NestedCompleter, WordCompleter
 from rich.table import Table
 from thefuzz import fuzz
 
+from mindkeeper.utils import CompleterWithDisplay
+
 if TYPE_CHECKING:
     from mindkeeper.repl import REPL
 else:
@@ -16,6 +18,7 @@ class _CommandWrapper:
     def __init__(self, func: Callable):
         self.func = func
         self.help_fn = None
+        self.short_fn = None
         self.completions_fn = None
 
     def __get__(self, obj, *args, **kwargs):
@@ -24,6 +27,9 @@ class _CommandWrapper:
         if self.help_fn is not None:
             wrapper.help_fn = update_wrapper(
                 partial(self.help_fn, obj), self.help_fn)
+        if self.short_fn is not None:
+            wrapper.short_fn = update_wrapper(
+                partial(self.short_fn, obj), self.short_fn)
         if self.completions_fn is not None:
             wrapper.completions_fn = update_wrapper(
                 partial(self.completions_fn, obj), self.completions_fn)
@@ -45,6 +51,22 @@ class _CommandWrapper:
             self.help_fn = fn
             return fn
         if (fn := self.help_fn) is not None:
+            return fn()
+        return self.func.__doc__
+
+    @overload
+    def short(self, fn: Callable) -> Callable:
+        ...
+
+    @overload
+    def short(self) -> str:
+        ...
+
+    def short(self, fn: Callable | None = None):
+        if fn is not None:
+            self.short_fn = fn
+            return fn
+        if (fn := self.short_fn) is not None:
             return fn()
         return self.func.__doc__
 
@@ -127,11 +149,21 @@ class Controller:
 
     def completions(self) -> Completer:
         nested = {}
+        display_dict = {}
         for ctrl in self._sub_controllers:
             nested[ctrl] = self._sub_controllers[ctrl].completions()
+            if (short := self._sub_controllers[ctrl].short()):
+                display_dict[ctrl] = f"{ctrl}: {short}"
         for name, command in self._commands.items():
             nested[name] = command.completions()
-        return NestedCompleter.from_nested_dict(nested)
+            if (short := command.short()):
+                display_dict[name] = f"{name}: {short}"
+        return CompleterWithDisplay(
+            NestedCompleter.from_nested_dict(nested),
+            display_dict)
+
+    def short(self):
+        return self.__doc__ or ""
 
     @command
     def help(self, repl: REPL, *args):

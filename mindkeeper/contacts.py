@@ -2,6 +2,8 @@ from mindkeeper.controller import Controller, command
 
 
 class ContactsController(Controller):
+    """A set of commands to manage contacts."""
+
     @command
     def add(self, repl, *args):
         """Add a contact."""
