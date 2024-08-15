@@ -30,10 +30,11 @@ class CommandArgumentParser(argparse.ArgumentParser):
         )
         self.known_args = set()
 
-    def add_argument(self, name: str, **kwargs):
-        super().add_argument(name, **kwargs)
-        help = kwargs.get("help", "")
-        self.known_args.add(CommandArgument(name, help))
+    def add_argument(self, *args, **kwargs):
+        action = super().add_argument(*args, **kwargs)
+        for opt in action.option_strings:
+            self.known_args.add(CommandArgument(opt, action.help or ""))
+        return action
 
     def error(self, message):
         raise CommandArgumentError(message, self.format_help())

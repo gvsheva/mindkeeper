@@ -1,10 +1,9 @@
 import os
-import re
 from typing import TYPE_CHECKING, Literal
 
 from prompt_toolkit import PromptSession, prompt
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
-from prompt_toolkit.completion import FuzzyCompleter, NestedCompleter
+from prompt_toolkit.completion import FuzzyCompleter
 from prompt_toolkit.history import FileHistory
 from prompt_toolkit.lexers import PygmentsLexer
 from prompt_toolkit.styles import Style
@@ -70,9 +69,7 @@ class REPL:
         history_file = os.environ.get(
             "MINDKEEPER_HISTORY_FILE", ".mindkeeper-history")
         session = PromptSession(history=FileHistory(history_file))
-        completer = FuzzyCompleter(
-            NestedCompleter.from_nested_dict(
-                self.controller.completions()))
+        completer = FuzzyCompleter(self.controller.completions())
         self.console.print(self.controller.help(self))
         while True:
             try:

@@ -45,6 +45,7 @@ class Repo:
         index = self.data.get(_INDEXES.NOTES, {})
         index[note.id] = note
         self.data[_INDEXES.NOTES] = index
+        return note
 
     def get_note(self, id: int) -> Note:
         index = self.data.get(_INDEXES.NOTES, {})

@@ -2,6 +2,7 @@ import shlex
 from functools import partial, update_wrapper
 from typing import TYPE_CHECKING, Callable, overload
 
+from prompt_toolkit.completion import Completer, NestedCompleter, WordCompleter
 from rich.table import Table
 from thefuzz import fuzz
 
@@ -48,11 +49,11 @@ class _CommandWrapper:
         return self.func.__doc__
 
     @overload
-    def completions(self, fn: Callable) -> Callable:
+    def completions(self, fn: Callable[..., Completer]) -> Callable:
         ...
 
     @overload
-    def completions(self) -> dict[str, None] | set[str] | None:
+    def completions(self) -> Completer:
         ...
 
     def completions(self, fn: Callable | None = None):
@@ -94,7 +95,7 @@ class Controller:
     def execute(self, repl: REPL, text):
         line = shlex.split(text)
         if not line:
-            return self.empty()
+            return self.empty(repl)
         ctrl, *args = line
         if ctrl in self._sub_controllers:
             return self._sub_controllers[ctrl].execute(repl, shlex.join(args))
@@ -103,7 +104,7 @@ class Controller:
         else:
             return self.default(repl, ctrl, *args)
 
-    def empty(self):
+    def empty(self, repl: REPL):
         return None
 
     def default(self, repl: REPL, command: str, *args):
@@ -124,13 +125,13 @@ class Controller:
         response += "\nType 'help' for a list of commands."
         return response
 
-    def completions(self):
-        candidates = {}
+    def completions(self) -> Completer:
+        nested = {}
         for ctrl in self._sub_controllers:
-            candidates[ctrl] = self._sub_controllers[ctrl].completions()
+            nested[ctrl] = self._sub_controllers[ctrl].completions()
         for name, command in self._commands.items():
-            candidates[name] = command.completions()
-        return candidates
+            nested[name] = command.completions()
+        return NestedCompleter.from_nested_dict(nested)
 
     @command
     def help(self, repl: REPL, *args):
@@ -155,7 +156,9 @@ class Controller:
 
     @help.completions
     def _(self):
-        return {n: None for n in self._sub_controllers} | {n: None for n in self._commands if n != "help"}
+        words = [n for n in self._sub_controllers] + \
+            [n for n in self._commands if n != "help"]
+        return WordCompleter(words)
 
 
 class ApplicationExit(Exception):

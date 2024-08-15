@@ -5,7 +5,6 @@ import marko
 import marko.block
 import marko.element
 import marko.inline
-from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.lexers import PygmentsLexer
 from prompt_toolkit.styles import style_from_pygments_cls
 from pygments.lexers.markup import MarkdownLexer
@@ -95,6 +94,22 @@ class NotesController(Controller):
             case _:
                 return "<untitled>"
 
+    def _format_note(self, note: Note):
+        table = Table(title=note.title, show_header=False, expand=True)
+        table.add_row(Markdown(note.text))
+        table.add_section()
+        table.add_row(Columns(
+            [f"[green]#{t}[/green]" for t in note.tags],
+            equal=True))
+        table.add_section()
+        table.add_row(f"ID: {note.id}")
+        table.add_row(f"Created at: {format_datetime(note.created_at)}")
+        table.add_row(f"Last modified: {format_datetime(note.updated_at)}")
+        return table
+
+    def empty(self, repl: REPL):
+        return self.list(repl)
+
     @command
     def add(self, repl: REPL, *args: str):
         """Add a note."""
@@ -110,7 +125,8 @@ class NotesController(Controller):
             )
         title = self._get_title(marko.parse(text))
         note = Note(title=title, text=text, tags=tags)
-        self.repo.put_note(note)
+        note = self.repo.put_note(note)
+        return self._format_note(note)
 
     @add.completions
     def _(self):
@@ -127,16 +143,7 @@ class NotesController(Controller):
         note = self.repo.get_note(parsed.id)
         if note is None:
             return f"Note {parsed.id} not found."
-        table = Table(title=note.title, show_header=False, expand=True)
-        table.add_row(Markdown(note.text))
-        table.add_section()
-        table.add_row(Columns(
-            [f"[green]#{t}[/green]" for t in note.tags],
-            equal=True))
-        table.add_section()
-        table.add_row(f"Created at: {format_datetime(note.created_at)}")
-        table.add_row(f"Last modified: {format_datetime(note.updated_at)}")
-        return table
+        return self._format_note(note)
 
     @show.completions
     def _(self):
@@ -166,8 +173,8 @@ class NotesController(Controller):
             note.tags = list(set(note.tags) - set(parsed.remove_tags))
             update_tags = True
         if update_tags:
-            self.repo.put_note(note)
-            return
+            note = self.repo.put_note(note)
+            return self._format_note(note)
 
         text = parsed.text
         if text is None:
@@ -182,7 +189,8 @@ class NotesController(Controller):
         title = self._get_title(marko.parse(text))
         note.title = title
         note.text = text
-        self.repo.put_note(note)
+        note = self.repo.put_note(note)
+        return self._format_note(note)
 
     @edit.completions
     def _(self):
