@@ -18,7 +18,7 @@ GENERATE = _GENERATE_TYPE.GENERATE
 class Note(BaseModel):
     id: int | Literal[_GENERATE_TYPE.GENERATE] = GENERATE
     title: Annotated[str, at.Len(1, 100)]
-    text: Annotated[str, at.Len(0, 1000)]
+    text: str
     tags: Tags = Field(..., default_factory=list)
     created_at: datetime = Field(..., default_factory=datetime.now)
     updated_at: datetime = Field(..., default_factory=datetime.now)

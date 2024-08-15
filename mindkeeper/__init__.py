@@ -6,9 +6,9 @@ from mindkeeper.repo import Repo
 
 
 def run():
-    repo = Repo()
-    app = ApplicationController()
-    app.add_subcontroller("notes", NotesController(repo))
-    app.add_subcontroller("contacts", ContactsController())
-    repl = REPL(app)
-    repl.run()
+    with Repo(".") as repo:
+        app = ApplicationController()
+        app.add_subcontroller("notes", NotesController(repo))
+        app.add_subcontroller("contacts", ContactsController())
+        repl = REPL(app)
+        repl.run()

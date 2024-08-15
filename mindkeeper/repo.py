@@ -1,4 +1,6 @@
+import shelve
 from enum import StrEnum, auto
+from pathlib import Path
 
 from mindkeeper.model import GENERATE, Note
 
@@ -9,8 +11,25 @@ class _INDEXES(StrEnum):
 
 
 class Repo:
-    def __init__(self):
-        self.data = {}
+    data: shelve.Shelf
+
+    def __init__(self, dbdir: Path | str):
+        if isinstance(dbdir, str):
+            dbdir = Path(dbdir)
+        self.dbdir = dbdir
+
+    def open(self):
+        self.data = shelve.open(self.dbdir / "mindkeeper")
+
+    def close(self):
+        self.data.close()
+
+    def __enter__(self):
+        self.open()
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.close()
 
     def _generate_id(self, counter_name: str):
         counter = self.data.get(counter_name, 0)
