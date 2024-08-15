@@ -157,5 +157,12 @@ class Controller:
         return {n: None for n in self._sub_controllers} | {n: None for n in self._commands if n != "help"}
 
 
-class ApplicationController(Controller):
+class ApplicationExit(Exception):
     pass
+
+
+class ApplicationController(Controller):
+    @command
+    def exit(self, repl: REPL, *args):
+        """Exit the application."""
+        raise ApplicationExit()

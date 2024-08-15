@@ -9,6 +9,8 @@ from prompt_toolkit.lexers import PygmentsLexer
 from prompt_toolkit.styles import Style
 from rich.console import Console
 
+from mindkeeper.controller import ApplicationExit
+
 if TYPE_CHECKING:
     from mindkeeper.controller import Controller
 else:
@@ -84,6 +86,8 @@ class REPL:
             except KeyboardInterrupt:
                 continue
             except EOFError:
+                break
+            except ApplicationExit:
                 break
             except Exception as e:
                 self.console.print(e)
