@@ -4,7 +4,7 @@ from pathlib import Path
 
 from thefuzz import fuzz
 
-from mindkeeper.model import GENERATE, Note
+from mindkeeper.model import GENERATE, Note, Contact
 
 
 class _INDEXES(StrEnum):
@@ -46,6 +46,14 @@ class Repo:
         index[note.id] = note
         self.data[_INDEXES.NOTES] = index
         return note
+
+    def put_contact(self, ct: Contact):
+        if ct.id is GENERATE:
+            ct.id = self._generate_id("__contacts_counter")
+        index = self.data.get(_INDEXES.CONTACTS, {})
+        index[ct.id] = ct
+        self.data[_INDEXES.NOTES] = index
+        return ct
 
     def get_note(self, id: int) -> Note:
         index = self.data.get(_INDEXES.NOTES, {})
