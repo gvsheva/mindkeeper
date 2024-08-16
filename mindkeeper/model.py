@@ -24,6 +24,9 @@ class Note(BaseModel):
     created_at: datetime = Field(..., default_factory=datetime.now)
     updated_at: datetime = Field(..., default_factory=datetime.now)
 
+    class Config:
+        validate_assignment = True
+
 
 def _validate_phone_number(value: str) -> str:
     try:
@@ -46,6 +49,9 @@ class Phone(BaseModel):
     number: PhoneNumber
     type: PhoneType = PhoneType.MOBILE
 
+    class Config:
+        validate_assignment = True
+
 
 class Contact(BaseModel):
     id: int | Literal[_GENERATE_TYPE.GENERATE] = GENERATE
@@ -55,3 +61,6 @@ class Contact(BaseModel):
     phones: list[Phone] = Field(..., default_factory=list)
     birthday: datetime | None = None
     tags: Tags = Field(..., default_factory=list)
+
+    class Config:
+        validate_assignment = True
