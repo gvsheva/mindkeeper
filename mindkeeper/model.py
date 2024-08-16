@@ -3,7 +3,8 @@ from enum import Enum, StrEnum, auto
 from typing import Annotated, Literal
 
 import annotated_types as at
-from pydantic import BaseModel, EmailStr, Field
+import phonenumbers
+from pydantic import AfterValidator, BaseModel, EmailStr, Field
 
 Tags = list[Annotated[str, at.Len(1, 100)]]
 
@@ -24,6 +25,17 @@ class Note(BaseModel):
     updated_at: datetime = Field(..., default_factory=datetime.now)
 
 
+def _validate_phone_number(value: str) -> str:
+    try:
+        number = phonenumbers.parse(value, region="UA")
+    except phonenumbers.phonenumberutil.NumberParseException as e:
+        raise ValueError(str(e))
+    return f"+({number.country_code}) {number.national_number}"
+
+
+PhoneNumber = Annotated[str, AfterValidator(_validate_phone_number)]
+
+
 class PhoneType(StrEnum):
     MOBILE = auto()
     WORK = auto()
@@ -31,7 +43,7 @@ class PhoneType(StrEnum):
 
 
 class Phone(BaseModel):
-    number: str = Field(..., pattern=r'^\+?\d{10,15}$')
+    number: PhoneNumber
     type: PhoneType = PhoneType.MOBILE
 
 

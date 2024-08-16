@@ -16,6 +16,7 @@ rich = "^13.7.1"
 annotated-types = "^0.7.0"
 thefuzz = "^0.22.1"
 marko = "^2.1.2"
+phonenumbers = "^8.13.43"
 
 
 [tool.poetry.group.dev.dependencies]

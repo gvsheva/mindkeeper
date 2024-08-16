@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 from pathlib import Path
 
-from mindkeeper.contacts import ContactsController
+from mindkeeper.contacts import ContactsController, PhonesController
 from mindkeeper.controller import ApplicationController
 from mindkeeper.notes import NotesController
 from mindkeeper.repl import REPL
@@ -42,37 +42,37 @@ class IntRangeType:
 def run():
     ap = ArgumentParser()
     ap.add_argument(
-        "--db-dir",
-        type=DirectoryType(),
-        default=".",
-        help="Database directory")
+        "--db-dir", type=DirectoryType(), default=".", help="Database directory"
+    )
     ap.add_argument(
-        "--db-name",
-        type=str,
-        default="mindkeeper-db",
-        help="Database base name")
+        "--db-name", type=str, default="mindkeeper-db", help="Database base name"
+    )
     ap.add_argument(
         "--db-fuzzy-search-ratio",
         type=IntRangeType(0, 100),
         default=80,
-        help="Fuzzy search ratio for database queries")
+        help="Fuzzy search ratio for database queries",
+    )
     ap.add_argument(
-        "--default-prompt",
-        type=str,
-        default=">>> ",
-        help="Default REPL prompt")
+        "--default-prompt", type=str, default=">>> ", help="Default REPL prompt"
+    )
     ap.add_argument(
         "--disable-fuzzy-completion",
         action="store_true",
         default=False,
-        help="Disable fuzzy completion")
+        help="Disable fuzzy completion",
+    )
 
     args = ap.parse_args()
 
-    with Repo(args.db_dir, args.db_name, fuzzy_search_ratio=args.db_fuzzy_search_ratio) as repo:
+    with Repo(
+        args.db_dir, args.db_name, fuzzy_search_ratio=args.db_fuzzy_search_ratio
+    ) as repo:
         app = ApplicationController()
         app.add_subcontroller("notes", NotesController(repo))
-        app.add_subcontroller("contacts", ContactsController(repo))
+        contacts = ContactsController(repo)
+        contacts.add_subcontroller("phones", PhonesController(repo))
+        app.add_subcontroller("contacts", contacts)
         repl = REPL(
             app,
             prompt=args.default_prompt,

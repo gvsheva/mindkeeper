@@ -6,9 +6,11 @@ from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.completion import FuzzyCompleter
 from prompt_toolkit.formatted_text import AnyFormattedText
 from prompt_toolkit.history import FileHistory
+from pydantic import ValidationError
 from rich.console import Console
 
 from mindkeeper.controller import ApplicationExit
+from mindkeeper.parser import CommandArgumentError
 
 if TYPE_CHECKING:
     from mindkeeper.controller import Controller
@@ -85,6 +87,11 @@ class REPL:
                 continue
             except EOFError:
                 break
+            except CommandArgumentError as ex:
+                self.console.print(ex)
+            except ValidationError as ex:
+                for error in ex.errors():
+                    self.console.print(f"{error['loc'][0]}: {error['msg']}")
             except ApplicationExit:
                 break
             except Exception:

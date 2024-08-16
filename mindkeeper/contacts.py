@@ -1,12 +1,16 @@
 from datetime import datetime
+from typing import Literal
 
-from pydantic import ValidationError
+from prompt_toolkit.document import Document
+from prompt_toolkit.validation import ValidationError as PromptValidationError
+from prompt_toolkit.validation import Validator
+from pydantic import EmailStr, TypeAdapter, ValidationError
 from rich.columns import Columns
 from rich.markup import escape
 from rich.table import Table
 
 from mindkeeper.controller import Controller, command
-from mindkeeper.model import Contact, Phone
+from mindkeeper.model import Contact, Phone, PhoneNumber, PhoneType
 from mindkeeper.parser import CommandArgumentParser
 from mindkeeper.repl import REPL
 from mindkeeper.repo import Repo
@@ -70,13 +74,6 @@ _edit_parser.add_argument(
     default=None,
 )
 _edit_parser.add_argument(
-    "/phones",
-    type=str,
-    nargs="+",
-    help="Contact phones (if not provided, will prompt for input)",
-    default=None,
-)
-_edit_parser.add_argument(
     "/birthday",
     type=str,
     help="Contact birthday (if not provided, will prompt for input)",
@@ -117,13 +114,54 @@ _wipe_parser.add_argument(
 )
 
 
+class _PhoneValidator(Validator):
+    def validate(self, document: Document) -> None:
+        text = document.text
+        if text.strip() == "":
+            return
+        try:
+            TypeAdapter(PhoneNumber).validate_python(text)
+        except ValidationError:
+            raise PromptValidationError(message="invalid phone number")
+
+
+class _EmailValidator(Validator):
+    def validate(self, document: Document) -> None:
+        text = document.text
+        if text.strip() == "":
+            return
+        try:
+            TypeAdapter(EmailStr).validate_python(text)
+        except ValidationError:
+            raise PromptValidationError(message="invalid email")
+
+
+class _DateValidator(Validator):
+    def __init__(self, format: str):
+        self.format = format
+
+    def validate(self, document: Document) -> None:
+        text = document.text
+        if text.strip() == "":
+            return
+        try:
+            datetime.strptime(text, self.format)
+        except ValueError:
+            raise PromptValidationError(
+                message=f"invalid date format, should be {self.format}"
+            )
+
+
+BIRTHDAY_FORMAT = "%d.%m.%Y"
+
+
 class ContactsController(Controller):
     """A set of commands to manage contacts."""
 
     def __init__(self, repo: Repo):
         self.repo = repo
 
-    def __format_contact(self, contact: Contact):
+    def _format_contact(self, contact: Contact):
         table = Table(title=contact.name, show_header=False, expand=True)
         if contact.tags:
             table.add_row(
@@ -141,6 +179,41 @@ class ContactsController(Controller):
         )
         return table
 
+    def _ask_name(self, repl: REPL, current: str = "") -> str | Literal[False]:
+        while True:
+            name = repl.prompt("name> ", default=current).strip()
+            if not name:
+                if repl.confirm("Name is required. Do you want to cancel?", "Y"):
+                    return False
+            else:
+                return name
+
+    def _ask_address(self, repl: REPL, current: str = "") -> str | None:
+        return repl.prompt("address> ", default=current).strip() or None
+
+    def _ask_email(self, repl: REPL, current: str = "") -> str | None:
+        return (
+            repl.prompt("email> ", default=current, validator=_EmailValidator()).strip()
+            or None
+        )
+
+    def _ask_birthday(
+        self, repl: REPL, current: datetime | None = None
+    ) -> datetime | None:
+        if current is not None:
+            default = current.strftime(BIRTHDAY_FORMAT)
+        else:
+            default = ""
+        birthday = (
+            repl.prompt(
+                "birthday> ", default=default, validate=_DateValidator(BIRTHDAY_FORMAT)
+            ).strip()
+            or None
+        )
+        if birthday is not None:
+            birthday = datetime.strptime(birthday, BIRTHDAY_FORMAT)
+        return birthday
+
     @command
     def add(self, repl: REPL, *args):
         """Add a contact."""
@@ -148,40 +221,36 @@ class ContactsController(Controller):
 
         name = parsed.name
         if name is None:
-            name = repl.prompt("name> ")
+            match self._ask_name(repl):
+                case False:
+                    return "Cancelled."
+                case name:
+                    pass
 
         address = parsed.address
         if address is None:
-            address = repl.prompt("address> ") or None
+            address = self._ask_address(repl)
 
         email = parsed.email
         if email is None:
-            email = repl.prompt("email> ") or None
+            email = self._ask_email(repl)
 
         birthday = parsed.birthday
         if birthday is None:
-            birthday = repl.prompt("birthday> ") or None
-
-        if birthday is not None:
-            try:
-                birthday = datetime.strptime(birthday, "%d.%m.%Y")
-            except ValueError:
-                return "Invalid date format. Use DD.MM.YYYY"
+            birthday = self._ask_birthday(repl)
 
         phones = parsed.phones
         if phones is None:
             phones = []
             phone_counter = 1
             while True:
-                phone = repl.prompt(f"phone {phone_counter}> ")
-                if phone == "":
+                phone = repl.prompt(
+                    f"phone {phone_counter}> ", validator=_PhoneValidator()
+                )
+                if phone.strip() == "":
                     break
-                try:
-                    phones.append(Phone(number=phone))
-                    phone_counter += 1
-                except ValidationError:
-                    print("Invalid phone, can start with + and contain 10-15 digits.")
-                    continue
+                phones.append(Phone(number=phone))
+                phone_counter += 1
 
         contact = Contact(
             name=name, address=address, email=email, phones=phones, birthday=birthday
@@ -189,7 +258,7 @@ class ContactsController(Controller):
 
         contact = self.repo.put_contact(contact)
 
-        return self.__format_contact(contact)
+        return self._format_contact(contact)
 
     @add.completions
     def _(self):
@@ -206,7 +275,7 @@ class ContactsController(Controller):
         contact = self.repo.get_contact(parsed.id)
         if contact is None:
             return f"Contact {parsed.id} not found."
-        return self.__format_contact(contact)
+        return self._format_contact(contact)
 
     @show.completions
     def _(self):
@@ -236,62 +305,35 @@ class ContactsController(Controller):
             update_tags = True
         if update_tags:
             contact = self.repo.put_contact(contact)
-            return self.__format_contact(contact)
+            return self._format_contact(contact)
 
         name = parsed.name
         if name is None:
-            name = repl.prompt("name> ", default=contact.name)
+            match self._ask_name(repl, contact.name):
+                case False:
+                    return "Cancelled."
+                case name:
+                    pass
 
         address = parsed.address
         if address is None:
-            address = repl.prompt("address> ", default=contact.address or "") or None
+            address = self._ask_address(repl, contact.address or "")
 
         email = parsed.email
         if email is None:
-            email = repl.prompt("email> ", default=contact.email or "") or None
+            email = self._ask_email(repl, contact.email or "")
 
         birthday = parsed.birthday
         if birthday is None:
-            contact_birthday = (
-                contact.birthday.strftime("%d.%m.%Y") if contact.birthday else ""
-            )
-            birthday = repl.prompt("birthday> ", default=contact_birthday) or None
-
-        if birthday is not None:
-            try:
-                birthday = datetime.strptime(birthday, "%d.%m.%Y")
-            except ValueError:
-                return "Invalid date format. Use DD.MM.YYYY"
-
-        edited_phones = parsed.phones or []
-        if not edited_phones:
-            existing_phones = [p.number for p in contact.phones]
-            for i, phone in enumerate(existing_phones, start=1):
-                edited_phone = repl.prompt(f"phone {i}> ", default=phone)
-                edited_phones.append(Phone(number=edited_phone))
-
-        new_phones = []
-        if repl.confirm("Do you want to add a new phones?", default="N"):
-            phone_counter = len(edited_phones) + 1
-            while True:
-                phone = repl.prompt(f"phone {phone_counter}> ")
-                if phone == "":
-                    break
-                try:
-                    new_phones.append(Phone(number=phone))
-                    phone_counter += 1
-                except ValidationError:
-                    print("Invalid phone, can start with + and contain 10-15 digits.")
-                    continue
+            birthday = self._ask_birthday(repl, contact.birthday)
 
         contact.name = name
         contact.address = address
         contact.email = email
         contact.birthday = birthday
-        contact.phones = edited_phones + new_phones
 
         contact = self.repo.put_contact(contact)
-        return self.__format_contact(contact)
+        return self._format_contact(contact)
 
     @edit.completions
     def _(self):
@@ -378,3 +420,136 @@ class ContactsController(Controller):
     @wipe.help
     def _(self):
         return f"Delete all contacts.\n\n{escape(_wipe_parser.format_help())}"
+
+
+_add_phone_parser = CommandArgumentParser("add")
+_add_phone_parser.add_argument("contact_id", type=int, help="Contact ID")
+_add_phone_parser.add_argument("number", type=str, help="Phone number")
+_add_phone_parser.add_argument(
+    "/type",
+    type=PhoneType,
+    help="Phone type (mobile, work, home)",
+    choices=[e.name.lower() for e in PhoneType],
+    default="mobile",
+)
+
+_edit_phone_parser = CommandArgumentParser("edit")
+_edit_phone_parser.add_argument("contact_id", type=int, help="Contact ID")
+_edit_phone_parser.add_argument("idx", type=int, help="Phone index")
+_edit_phone_parser.add_argument("/number", type=str, default=None, help="Phone number")
+_edit_phone_parser.add_argument(
+    "/type",
+    type=PhoneType,
+    help="Phone type (mobile, work, home)",
+    choices=[e.name.lower() for e in PhoneType],
+    default=None,
+)
+
+_delete_phone_parser = CommandArgumentParser("delete")
+_delete_phone_parser.add_argument("contact_id", type=int, help="Contact ID")
+_delete_phone_parser.add_argument("idx", type=int, help="Phone index")
+
+_list_phones_parser = CommandArgumentParser("list")
+_list_phones_parser.add_argument("contact_id", type=int, help="Contact ID")
+
+
+class PhonesController(Controller):
+    """ "A set of commands to manage phones."""
+
+    def __init__(self, repo: Repo):
+        self.repo = repo
+
+    @command
+    def add(self, repl: REPL, *args):
+        """Add a phone to a contact."""
+        parsed = _add_phone_parser.parse_args(args)
+        contact = self.repo.get_contact(parsed.contact_id)
+        if contact is None:
+            return f"Contact {parsed.contact_id} not found."
+        phone = Phone(number=parsed.number, type=parsed.type)
+        contact.phones.append(phone)
+        self.repo.put_contact(contact)
+        return f"Phone added to {contact.name}."
+
+    @add.completions
+    def _(self):
+        return _add_phone_parser.completions()
+
+    @add.help
+    def _(self):
+        return f"Add a phone to a contact.\n\n{escape(_add_phone_parser.format_help())}"
+
+    @command
+    def edit(self, repl: REPL, *args):
+        """Edit a phone of a contact."""
+        parsed = _edit_phone_parser.parse_args(args)
+        contact = self.repo.get_contact(parsed.contact_id)
+        if contact is None:
+            return f"Contact {parsed.contact_id} not found."
+        try:
+            phone = contact.phones[parsed.idx]
+        except IndexError:
+            return f"Phone {parsed.idx} not found."
+        if parsed.number is not None:
+            phone.number = parsed.number
+        if parsed.type is not None:
+            phone.type = parsed.type
+        self.repo.put_contact(contact)
+        return f"Phone {parsed.idx} edited."
+
+    @edit.completions
+    def _(self):
+        return _edit_phone_parser.completions()
+
+    @edit.help
+    def _(self):
+        return (
+            f"Edit a phone of a contact.\n\n{escape(_edit_phone_parser.format_help())}"
+        )
+
+    @command
+    def delete(self, repl: REPL, *args):
+        """Delete a phone of a contact."""
+        parsed = _delete_phone_parser.parse_args(args)
+        contact = self.repo.get_contact(parsed.contact_id)
+        if contact is None:
+            return f"Contact {parsed.contact_id} not found."
+        try:
+            del contact.phones[parsed.idx]
+        except IndexError:
+            return f"Phone {parsed.idx} not found."
+        self.repo.put_contact(contact)
+        return f"Phone {parsed.idx} deleted."
+
+    @delete.completions
+    def _(self):
+        return _delete_phone_parser.completions()
+
+    @delete.help
+    def _(self):
+        return f"Delete a phone of a contact.\n\n{escape(_delete_phone_parser.format_help())}"
+
+    @command
+    def list(self, repl: REPL, *args):
+        """List phones of a contact."""
+        parsed = _list_phones_parser.parse_args(args)
+        contact = self.repo.get_contact(parsed.contact_id)
+        if contact is None:
+            return f"Contact {parsed.contact_id} not found."
+        table = Table(title=f"Phones of {contact.name}", expand=True)
+        table.add_column("Index")
+        table.add_column("Number")
+        table.add_column("Type")
+        for i, phone in enumerate(contact.phones):
+            table.add_row(str(i), phone.number, phone.type.name)
+        return table
+
+    @list.completions
+    def _(self):
+        return _list_phones_parser.completions()
+
+    @list.help
+    def _(self):
+        return (
+            f"List phones of a contact.\n\n{escape(_list_phones_parser.format_help())}"
+        )
