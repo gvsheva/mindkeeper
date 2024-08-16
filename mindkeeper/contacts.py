@@ -163,7 +163,6 @@ def _format_contact(contact: Contact):
         )
         table.add_section()
 
-    table.add_row(f"ID: {contact.id}")
     table.add_row(f"Name: {contact.name}")
     table.add_row(f"Address: {contact.address or 'N/A'}")
     table.add_row(f"Email: {contact.email or 'N/A'}")
@@ -171,6 +170,10 @@ def _format_contact(contact: Contact):
     table.add_row(
         f"Birthday: {format_datetime(contact.birthday) if contact.birthday else 'N/A'}"
     )
+    table.add_section()
+    table.add_row("Tags: " + ", ".join(contact.tags))
+    table.add_section()
+    table.add_row(f"ID: {contact.id}")
     return table
 
 
@@ -398,7 +401,7 @@ class ContactsController(Controller):
                 contact.email or "N/A",
                 phones,
                 format_datetime(contact.birthday) if contact.birthday else "N/A",
-                ", ".join(contact.tags),
+                Columns(contact.tags, equal=True),
             )
         return table
 

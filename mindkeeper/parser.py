@@ -40,7 +40,7 @@ class CommandArgumentParser(argparse.ArgumentParser):
         try:
             return super().parse_args(args)
         except argparse.ArgumentError as e:
-            self.error(str(e))
+            raise CommandArgumentError(str(e), self.format_help())
 
     def error(self, message):
         raise CommandArgumentError(message, self.format_help())

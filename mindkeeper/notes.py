@@ -9,7 +9,6 @@ from prompt_toolkit.lexers import PygmentsLexer
 from prompt_toolkit.styles import style_from_pygments_cls
 from pygments.lexers.markup import MarkdownLexer
 from pygments.styles.monokai import MonokaiStyle
-from rich.columns import Columns
 from rich.markdown import Markdown
 from rich.markup import escape
 from rich.table import Table
@@ -106,7 +105,7 @@ class NotesController(Controller):
         table = Table(title=note.title, show_header=False, expand=True)
         table.add_row(Markdown(note.text))
         table.add_section()
-        table.add_row(Columns([f"[green]#{t}[/green]" for t in note.tags], equal=True))
+        table.add_row("Tags: " + ", ".join(note.tags))
         table.add_section()
         table.add_row(f"ID: {note.id}")
         table.add_row(f"Created at: {format_datetime(note.created_at)}")
@@ -235,8 +234,8 @@ class NotesController(Controller):
         )
         table = Table(title="Notes", expand=True)
         table.add_column("ID")
-        table.add_column("Title")
-        table.add_column("Tags")
+        table.add_column("Title", ratio=100)
+        table.add_column("Tags", ratio=30)
         table.add_column("Created at")
         table.add_column("Last modified")
         for note in notes:
