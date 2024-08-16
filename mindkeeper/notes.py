@@ -113,7 +113,7 @@ class NotesController(Controller):
         table.add_row(f"Last modified: {format_datetime(note.updated_at)}")
         return table
 
-    def _ask_note_text(self, repl: REPL, default: str | None = None):
+    def _ask_note_text(self, repl: REPL, default: str = ""):
         lexer = PygmentsLexer(MarkdownLexer)
         style = style_from_pygments_cls(MonokaiStyle)
         return repl.prompt(

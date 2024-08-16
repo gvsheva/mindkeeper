@@ -58,7 +58,10 @@ class REPL:
         if kwargs.get("multiline", False):
             if kwargs.get("bottom_toolbar") is None:
                 kwargs["bottom_toolbar"] = self._multiline_toolbar
-        return prompt(message, **kwargs)
+        try:
+            return prompt(message, **kwargs)
+        except EOFError:
+            return ""
 
     def run(self):
         history_file = os.environ.get("MINDKEEPER_HISTORY_FILE", ".mindkeeper-history")
@@ -84,5 +87,5 @@ class REPL:
                 break
             except ApplicationExit:
                 break
-            except Exception as e:
-                self.console.print(e)
+            except Exception:
+                self.console.print_exception()
