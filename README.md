@@ -4,6 +4,14 @@ Mindkeeper is a simple tool to help you keep track of your thoughts, ideas and
 contacts. It is a command line tool that allows you to add, list, search and
 delete entries in a simple and efficient way.
 
+# Install
+
+With pip:
+
+```bash
+pip install -U https://raw.githubusercontent.com/gvsheva/mindkeeper/main/dist/mindkeeper-0.1.0a1.tar.gz
+```
+
 # Dev env
 
 First of all, you to have poetry installed. If you don't, you can
