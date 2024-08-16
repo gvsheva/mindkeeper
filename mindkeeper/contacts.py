@@ -242,7 +242,7 @@ class ContactsController(Controller):
         phones = parsed.phones
         if phones is None:
             phones = []
-            phone_counter = 1
+            phone_counter = 0
             while True:
                 phone = repl.prompt(
                     f"phone {phone_counter}> ", validator=_PhoneValidator()
