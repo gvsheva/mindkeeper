@@ -155,29 +155,30 @@ class _DateValidator(Validator):
 BIRTHDAY_FORMAT = "%d.%m.%Y"
 
 
+def _format_contact(contact: Contact):
+    table = Table(title=contact.name, show_header=False, expand=True)
+    if contact.tags:
+        table.add_row(
+            Columns([f"[green]#{t}[/green]" for t in contact.tags], equal=True)
+        )
+        table.add_section()
+
+    table.add_row(f"ID: {contact.id}")
+    table.add_row(f"Name: {contact.name}")
+    table.add_row(f"Address: {contact.address or 'N/A'}")
+    table.add_row(f"Email: {contact.email or 'N/A'}")
+    table.add_row(f"Phones: {', '.join(p.number for p in contact.phones)}")
+    table.add_row(
+        f"Birthday: {format_datetime(contact.birthday) if contact.birthday else 'N/A'}"
+    )
+    return table
+
+
 class ContactsController(Controller):
     """A set of commands to manage contacts."""
 
     def __init__(self, repo: Repo):
         self.repo = repo
-
-    def _format_contact(self, contact: Contact):
-        table = Table(title=contact.name, show_header=False, expand=True)
-        if contact.tags:
-            table.add_row(
-                Columns([f"[green]#{t}[/green]" for t in contact.tags], equal=True)
-            )
-            table.add_section()
-
-        table.add_row(f"ID: {contact.id}")
-        table.add_row(f"Name: {contact.name}")
-        table.add_row(f"Address: {contact.address or 'N/A'}")
-        table.add_row(f"Email: {contact.email or 'N/A'}")
-        table.add_row(f"Phones: {', '.join(p.number for p in contact.phones)}")
-        table.add_row(
-            f"Birthday: {format_datetime(contact.birthday) if contact.birthday else 'N/A'}"
-        )
-        return table
 
     def _ask_name(self, repl: REPL, current: str = "") -> str | Literal[False]:
         while True:
@@ -206,13 +207,16 @@ class ContactsController(Controller):
             default = ""
         birthday = (
             repl.prompt(
-                "birthday> ", default=default, validate=_DateValidator(BIRTHDAY_FORMAT)
+                "birthday> ", default=default, validator=_DateValidator(BIRTHDAY_FORMAT)
             ).strip()
             or None
         )
         if birthday is not None:
             birthday = datetime.strptime(birthday, BIRTHDAY_FORMAT)
         return birthday
+
+    def empty(self, repl: REPL):
+        return self.list(repl)
 
     @command
     def add(self, repl: REPL, *args):
@@ -258,7 +262,7 @@ class ContactsController(Controller):
 
         contact = self.repo.put_contact(contact)
 
-        return self._format_contact(contact)
+        return _format_contact(contact)
 
     @add.completions
     def _(self):
@@ -275,7 +279,7 @@ class ContactsController(Controller):
         contact = self.repo.get_contact(parsed.id)
         if contact is None:
             return f"Contact {parsed.id} not found."
-        return self._format_contact(contact)
+        return _format_contact(contact)
 
     @show.completions
     def _(self):
@@ -305,7 +309,7 @@ class ContactsController(Controller):
             update_tags = True
         if update_tags:
             contact = self.repo.put_contact(contact)
-            return self._format_contact(contact)
+            return _format_contact(contact)
 
         name = parsed.name
         if name is None:
@@ -333,7 +337,7 @@ class ContactsController(Controller):
         contact.birthday = birthday
 
         contact = self.repo.put_contact(contact)
-        return self._format_contact(contact)
+        return _format_contact(contact)
 
     @edit.completions
     def _(self):
@@ -384,12 +388,15 @@ class ContactsController(Controller):
         table.add_column("Birthday")
         table.add_column("Tags")
         for contact in contacts:
+            phones = Table("Index", "Number", "Type", expand=True)
+            for idx, phone in enumerate(contact.phones):
+                phones.add_row(str(idx), phone.number, phone.type.name)
             table.add_row(
                 str(contact.id),
                 contact.name,
                 contact.address or "N/A",
                 contact.email or "N/A",
-                ", ".join(p.number for p in contact.phones),
+                phones,
                 format_datetime(contact.birthday) if contact.birthday else "N/A",
                 ", ".join(contact.tags),
             )
@@ -468,8 +475,8 @@ class PhonesController(Controller):
             return f"Contact {parsed.contact_id} not found."
         phone = Phone(number=parsed.number, type=parsed.type)
         contact.phones.append(phone)
-        self.repo.put_contact(contact)
-        return f"Phone added to {contact.name}."
+        contact = self.repo.put_contact(contact)
+        return _format_contact(contact)
 
     @add.completions
     def _(self):
@@ -494,8 +501,8 @@ class PhonesController(Controller):
             phone.number = parsed.number
         if parsed.type is not None:
             phone.type = parsed.type
-        self.repo.put_contact(contact)
-        return f"Phone {parsed.idx} edited."
+        contact = self.repo.put_contact(contact)
+        return _format_contact(contact)
 
     @edit.completions
     def _(self):
@@ -518,8 +525,8 @@ class PhonesController(Controller):
             del contact.phones[parsed.idx]
         except IndexError:
             return f"Phone {parsed.idx} not found."
-        self.repo.put_contact(contact)
-        return f"Phone {parsed.idx} deleted."
+        contact = self.repo.put_contact(contact)
+        return _format_contact(contact)
 
     @delete.completions
     def _(self):

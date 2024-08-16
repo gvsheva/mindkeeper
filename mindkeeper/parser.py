@@ -36,6 +36,12 @@ class CommandArgumentParser(argparse.ArgumentParser):
             self.known_args.add(CommandArgument(opt, action.help or ""))
         return action
 
+    def parse_args(self, args):
+        try:
+            return super().parse_args(args)
+        except argparse.ArgumentError as e:
+            self.error(str(e))
+
     def error(self, message):
         raise CommandArgumentError(message, self.format_help())
 
