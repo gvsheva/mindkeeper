@@ -21,52 +21,54 @@ from mindkeeper.repl import REPL
 from mindkeeper.repo import Repo
 from mindkeeper.utils import format_datetime
 
+TEXT_PROMPT = "text> "
+TEXT_PROMPT_CONTINUATION = "." * (len(TEXT_PROMPT) - 1) + " "
+
 _add_parser = CommandArgumentParser("add")
+_add_parser.add_argument("/tags", type=str, help="Note tags", nargs="*", default=[])
 _add_parser.add_argument(
-    "/tags", type=str, help="Note tags", nargs="*", default=[])
-_add_parser.add_argument(
-    "/text", type=str,
+    "/text",
+    type=str,
     help="Note text (if not provided, will prompt for input)",
-    default=None)
+    default=None,
+)
 
 _show_parser = CommandArgumentParser("get")
-_show_parser.add_argument(
-    "id", type=int, help="Note ID")
+_show_parser.add_argument("id", type=int, help="Note ID")
 
 _edit_parser = CommandArgumentParser("edit")
+_edit_parser.add_argument("id", type=int, help="Note ID")
 _edit_parser.add_argument(
-    "id", type=int, help="Note ID")
+    "/text", type=str, help="Note text (if not provided, will prompt for input)"
+)
+_edit_parser.add_argument("/tags", type=str, help="Note tags", nargs="*", default=[])
 _edit_parser.add_argument(
-    "/text", type=str, help="Note text (if not provided, will prompt for input)")
+    "/add-tags", type=str, help="Add tags to note", nargs="*", default=[]
+)
 _edit_parser.add_argument(
-    "/tags", type=str, help="Note tags", nargs="*", default=[])
-_edit_parser.add_argument(
-    "/add-tags", type=str, help="Add tags to note", nargs="*", default=[])
-_edit_parser.add_argument(
-    "/remove-tags", type=str, help="Remove tags from note", nargs="*", default=[])
+    "/remove-tags", type=str, help="Remove tags from note", nargs="*", default=[]
+)
 
 _delete_parser = CommandArgumentParser("delete")
+_delete_parser.add_argument("id", type=int, help="Note ID")
 _delete_parser.add_argument(
-    "id", type=int, help="Note ID")
-_delete_parser.add_argument(
-    "/force", action="store_true", help="Force deletion without confirmation")
+    "/force", action="store_true", help="Force deletion without confirmation"
+)
 
 _list_parser = CommandArgumentParser("list")
 _list_parser.add_argument(
-    "/tags", type=str, help="Filter by tags", nargs="*", default=[])
-_list_parser.add_argument(
-    "/title", type=str, help="Filter by title")
-_list_parser.add_argument(
-    "/text", type=str, help="Filter by text")
-_list_parser.add_argument(
-    "/limit", type=int, help="Limit number of notes", default=100)
-_list_parser.add_argument(
-    "/offset", type=int, help="Offset number of notes", default=0)
+    "/tags", type=str, help="Filter by tags", nargs="*", default=[]
+)
+_list_parser.add_argument("/title", type=str, help="Filter by title")
+_list_parser.add_argument("/text", type=str, help="Filter by text")
+_list_parser.add_argument("/limit", type=int, help="Limit number of notes", default=100)
+_list_parser.add_argument("/offset", type=int, help="Offset number of notes", default=0)
 
 
 _wipe_parser = CommandArgumentParser("wipe")
 _wipe_parser.add_argument(
-    "/force", action="store_true", help="Force deletion without confirmation")
+    "/force", action="store_true", help="Force deletion without confirmation"
+)
 
 
 TITLE_MAX_LENGTH = 30
@@ -79,8 +81,12 @@ class NotesController(Controller):
         self.repo = repo
 
     def _get_title(
-            self,
-            elem: marko.block.BlockElement | marko.inline.InlineElement | marko.element.Element | Sequence[marko.element.Element] | str,
+        self,
+        elem: marko.block.BlockElement
+        | marko.inline.InlineElement
+        | marko.element.Element
+        | Sequence[marko.element.Element]
+        | str,
     ):
         match elem:
             case marko.block.BlockElement() if elem.children:
@@ -92,7 +98,7 @@ class NotesController(Controller):
             case str():
                 if len(elem) < TITLE_MAX_LENGTH:
                     return elem
-                return elem[:TITLE_MAX_LENGTH - 3] + "..."
+                return elem[: TITLE_MAX_LENGTH - 3] + "..."
             case _:
                 return "<untitled>"
 
@@ -100,14 +106,25 @@ class NotesController(Controller):
         table = Table(title=note.title, show_header=False, expand=True)
         table.add_row(Markdown(note.text))
         table.add_section()
-        table.add_row(Columns(
-            [f"[green]#{t}[/green]" for t in note.tags],
-            equal=True))
+        table.add_row(Columns([f"[green]#{t}[/green]" for t in note.tags], equal=True))
         table.add_section()
         table.add_row(f"ID: {note.id}")
         table.add_row(f"Created at: {format_datetime(note.created_at)}")
         table.add_row(f"Last modified: {format_datetime(note.updated_at)}")
         return table
+
+    def _ask_note_text(self, repl: REPL, default: str | None = None):
+        lexer = PygmentsLexer(MarkdownLexer)
+        style = style_from_pygments_cls(MonokaiStyle)
+        return repl.prompt(
+            TEXT_PROMPT,
+            multiline=True,
+            default=default,
+            prompt_continuation=TEXT_PROMPT_CONTINUATION,
+            lexer=lexer,
+            style=style,
+            include_default_pygments_style=False,
+        )
 
     def empty(self, repl: REPL):
         return self.list(repl)
@@ -118,13 +135,7 @@ class NotesController(Controller):
         parsed = _add_parser.parse_args(args)
         tags, text = parsed.tags, parsed.text
         if text is None:
-            lexer = PygmentsLexer(MarkdownLexer)
-            style = style_from_pygments_cls(MonokaiStyle)
-            text = repl.prompt_multiline(
-                "text> ",
-                lexer=lexer,
-                style=style,
-            )
+            text = self._ask_note_text(repl)
         title = self._get_title(marko.parse(text))
         note = Note(title=title, text=text, tags=tags)
         note = self.repo.put_note(note)
@@ -180,14 +191,7 @@ class NotesController(Controller):
 
         text = parsed.text
         if text is None:
-            lexer = PygmentsLexer(MarkdownLexer)
-            style = style_from_pygments_cls(MonokaiStyle)
-            text = repl.prompt_multiline(
-                "text> ",
-                default=note.text,
-                lexer=lexer,
-                style=style,
-            )
+            text = self._ask_note_text(repl, note.text)
         title = self._get_title(marko.parse(text))
         note.title = title
         note.text = text
@@ -257,7 +261,9 @@ class NotesController(Controller):
     def wipe(self, repl, *args):
         """Delete all notes."""
         parsed = _wipe_parser.parse_args(args)
-        if not (parsed.force or repl.confirm("Are you sure you want to delete all notes")):
+        if not (
+            parsed.force or repl.confirm("Are you sure you want to delete all notes")
+        ):
             return "Wipe cancelled."
         self.repo.wipe_notes()
 
