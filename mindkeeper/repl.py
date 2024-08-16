@@ -26,7 +26,7 @@ class REPL:
             enable_fuzzy_completion=True,
     ):
         self.controller = controller
-        self.prompt = prompt
+        self._prompt = prompt
         self.enable_fuzzy_completion = enable_fuzzy_completion
         self.console = Console()
 
@@ -72,6 +72,16 @@ class REPL:
             include_default_pygments_style=False,
         )
 
+    def prompt(
+            self,
+            p=">>> ",
+            default: str = "",
+    ) -> str:
+        return prompt(
+            p,
+            default=default,
+        )
+
     def run(self):
         history_file = os.environ.get(
             "MINDKEEPER_HISTORY_FILE", ".mindkeeper-history")
@@ -83,7 +93,7 @@ class REPL:
         while True:
             try:
                 text = session.prompt(
-                    self.prompt,
+                    self._prompt,
                     bottom_toolbar=self._main_toolbart,
                     completer=completer,
                     auto_suggest=AutoSuggestFromHistory(),

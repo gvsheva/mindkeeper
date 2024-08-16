@@ -72,7 +72,7 @@ def run():
     with Repo(args.db_dir, args.db_name, fuzzy_search_ratio=args.db_fuzzy_search_ratio) as repo:
         app = ApplicationController()
         app.add_subcontroller("notes", NotesController(repo))
-        app.add_subcontroller("contacts", ContactsController())
+        app.add_subcontroller("contacts", ContactsController(repo))
         repl = REPL(
             app,
             prompt=args.default_prompt,

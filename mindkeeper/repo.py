@@ -99,7 +99,7 @@ class Repo:
     def get_contact(self, id: int) -> Contact:
         index = self.data.get(_INDEXES.CONTACTS, {})
         return index.get(id)
-    
+
     def delete_contact(self, id: int):
         index = self.data.get(_INDEXES.CONTACTS, {})
         del index[id]
