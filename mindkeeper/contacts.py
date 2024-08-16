@@ -435,7 +435,7 @@ _add_phone_parser.add_argument(
 
 _edit_phone_parser = CommandArgumentParser("edit")
 _edit_phone_parser.add_argument("contact_id", type=int, help="Contact ID")
-_edit_phone_parser.add_argument("idx", type=int, help="Phone index")
+_edit_phone_parser.add_argument("idx", type=int, help="Phone index in the list")
 _edit_phone_parser.add_argument("/number", type=str, default=None, help="Phone number")
 _edit_phone_parser.add_argument(
     "/type",
@@ -447,7 +447,7 @@ _edit_phone_parser.add_argument(
 
 _delete_phone_parser = CommandArgumentParser("delete")
 _delete_phone_parser.add_argument("contact_id", type=int, help="Contact ID")
-_delete_phone_parser.add_argument("idx", type=int, help="Phone index")
+_delete_phone_parser.add_argument("idx", type=int, help="Phone index in the list")
 
 _list_phones_parser = CommandArgumentParser("list")
 _list_phones_parser.add_argument("contact_id", type=int, help="Contact ID")
