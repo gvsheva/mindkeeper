@@ -22,29 +22,27 @@ class _CommandWrapper:
         self.completions_fn = None
 
     def __get__(self, obj, *args, **kwargs):
-        wrapper = _CommandWrapper(update_wrapper(
-            partial(self.func, obj), self.func))
+        wrapper = _CommandWrapper(update_wrapper(partial(self.func, obj), self.func))
         if self.help_fn is not None:
-            wrapper.help_fn = update_wrapper(
-                partial(self.help_fn, obj), self.help_fn)
+            wrapper.help_fn = update_wrapper(partial(self.help_fn, obj), self.help_fn)
         if self.short_fn is not None:
             wrapper.short_fn = update_wrapper(
-                partial(self.short_fn, obj), self.short_fn)
+                partial(self.short_fn, obj), self.short_fn
+            )
         if self.completions_fn is not None:
             wrapper.completions_fn = update_wrapper(
-                partial(self.completions_fn, obj), self.completions_fn)
+                partial(self.completions_fn, obj), self.completions_fn
+            )
         return wrapper
 
     def __call__(self, *args, **kwargs):
         return self.func(*args, **kwargs)
 
     @overload
-    def help(self, fn: Callable) -> Callable:
-        ...
+    def help(self, fn: Callable) -> Callable: ...
 
     @overload
-    def help(self) -> str:
-        ...
+    def help(self) -> str: ...
 
     def help(self, fn: Callable | None = None):
         if fn is not None:
@@ -55,12 +53,10 @@ class _CommandWrapper:
         return self.func.__doc__
 
     @overload
-    def short(self, fn: Callable) -> Callable:
-        ...
+    def short(self, fn: Callable) -> Callable: ...
 
     @overload
-    def short(self) -> str:
-        ...
+    def short(self) -> str: ...
 
     def short(self, fn: Callable | None = None):
         if fn is not None:
@@ -71,12 +67,10 @@ class _CommandWrapper:
         return self.func.__doc__
 
     @overload
-    def completions(self, fn: Callable[..., Completer]) -> Callable:
-        ...
+    def completions(self, fn: Callable[..., Completer]) -> Callable: ...
 
     @overload
-    def completions(self) -> Completer:
-        ...
+    def completions(self) -> Completer: ...
 
     def completions(self, fn: Callable | None = None):
         if fn is not None:
@@ -143,7 +137,9 @@ class Controller:
         if candidates:
             candidates.sort(reverse=True)
             candidate = candidates[0][1]
-            response += f"\nDid you mean [bold green]'{candidate}'[/bold green]?"  # nopep8
+            response += (
+                f"\nDid you mean [bold green]'{candidate}'[/bold green]?"  # nopep8
+            )
         response += "\nType 'help' for a list of commands."
         return response
 
@@ -152,15 +148,15 @@ class Controller:
         display_dict = {}
         for ctrl in self._sub_controllers:
             nested[ctrl] = self._sub_controllers[ctrl].completions()
-            if (short := self._sub_controllers[ctrl].short()):
+            if short := self._sub_controllers[ctrl].short():
                 display_dict[ctrl] = f"{ctrl}: {short}"
         for name, command in self._commands.items():
             nested[name] = command.completions()
-            if (short := command.short()):
+            if short := command.short():
                 display_dict[name] = f"{name}: {short}"
         return CompleterWithDisplay(
-            NestedCompleter.from_nested_dict(nested),
-            display_dict)
+            NestedCompleter.from_nested_dict(nested), display_dict
+        )
 
     def short(self):
         return self.__doc__ or ""
@@ -174,12 +170,12 @@ class Controller:
         if topic is not None and topic in self._commands:
             return self._commands[topic].help()
         table = Table(
-            title="Commands",
+            "Command",
+            "Description",
+            title=self.short() or "Commands",
             show_lines=True,
             expand=True,
         )
-        table.add_column("Command")
-        table.add_column("Description")
         for name, controller in self._sub_controllers.items():
             table.add_row(name, controller.help(repl))
         for name, command in self._commands.items():
@@ -188,8 +184,9 @@ class Controller:
 
     @help.completions
     def _(self):
-        words = [n for n in self._sub_controllers] + \
-            [n for n in self._commands if n != "help"]
+        words = [n for n in self._sub_controllers] + [
+            n for n in self._commands if n != "help"
+        ]
         return WordCompleter(words)
 
 

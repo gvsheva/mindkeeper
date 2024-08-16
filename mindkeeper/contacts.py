@@ -454,7 +454,7 @@ _list_phones_parser.add_argument("contact_id", type=int, help="Contact ID")
 
 
 class PhonesController(Controller):
-    """ "A set of commands to manage phones."""
+    """A set of commands to manage phones."""
 
     def __init__(self, repo: Repo):
         self.repo = repo
