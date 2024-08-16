@@ -270,7 +270,7 @@ class ContactsController(Controller):
 
     @command
     def show(self, repl: REPL, *args: str):
-        """Show a note."""
+        """Show a contact."""
         parsed = _show_parser.parse_args(args)
         contact = self.repo.get_contact(parsed.id)
         if contact is None:
