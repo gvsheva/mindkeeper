@@ -75,7 +75,7 @@ def run():
         app.add_subcontroller("contacts", contacts)
         repl = REPL(
             app,
-            prompt=args.default_prompt,
+            message=args.default_prompt,
             enable_fuzzy_completion=not args.disable_fuzzy_completion,
         )
         repl.run()

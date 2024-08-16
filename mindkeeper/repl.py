@@ -23,11 +23,11 @@ class REPL:
         self,
         controller: Controller,
         /,
-        prompt=">>> ",
+        message=">>> ",
         enable_fuzzy_completion=True,
     ):
         self.controller = controller
-        self._prompt = prompt
+        self.message = message
         self.enable_fuzzy_completion = enable_fuzzy_completion
         self.console = Console()
 
@@ -75,7 +75,7 @@ class REPL:
         while True:
             try:
                 text = session.prompt(
-                    self._prompt,
+                    self.message,
                     bottom_toolbar=self._main_toolbart,
                     completer=completer,
                     auto_suggest=AutoSuggestFromHistory(),
