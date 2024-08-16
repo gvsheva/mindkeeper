@@ -38,7 +38,7 @@ class REPL:
         return "Press y/n to confirm, or Ctrl+C to cancel."
 
     def _multiline_toolbar(self):
-        return "Press Alt+Enter to finish"
+        return "Press Alt+Enter or Esc followed by Enter to finish"
 
     def confirm(self, message: str, default: Literal["N", "Y"] = "N") -> bool:
         while True:
