@@ -1,99 +1,120 @@
 from datetime import datetime
-from rich.markup import escape
+
 from pydantic import ValidationError
-from rich.table import Table
 from rich.columns import Columns
+from rich.markup import escape
+from rich.table import Table
 
 from mindkeeper.controller import Controller, command
-from mindkeeper.repo import Repo
-from mindkeeper.repl import REPL
-from mindkeeper.parser import CommandArgumentParser
 from mindkeeper.model import Contact, Phone
+from mindkeeper.parser import CommandArgumentParser
+from mindkeeper.repl import REPL
+from mindkeeper.repo import Repo
 from mindkeeper.utils import format_datetime
 
 _add_parser = CommandArgumentParser("add")
 _add_parser.add_argument(
-    "/name", type=str,
+    "/name",
+    type=str,
     help="Contact name (if not provided, will prompt for input)",
-    default=None)
+    default=None,
+)
 _add_parser.add_argument(
-    "/address", type=str,
+    "/address",
+    type=str,
     help="Contact address (if not provided, will prompt for input)",
-    default=None)
+    default=None,
+)
 _add_parser.add_argument(
-    "/email", type=str,
+    "/email",
+    type=str,
     help="Contact email (if not provided, will prompt for input)",
-    default=None)
+    default=None,
+)
 _add_parser.add_argument(
-    "/phones", type=str, nargs="+",
+    "/phones",
+    type=str,
+    nargs="+",
     help="Contact phones (if not provided, will prompt for input)",
-    default=None)
+    default=None,
+)
 _add_parser.add_argument(
-    "/birthday", type=str,
+    "/birthday",
+    type=str,
     help="Contact birthday (if not provided, will prompt for input)",
-    default=None)
-_add_parser.add_argument(
-    "/tags", type=str, help="Contact tags", nargs="*", default=[])
+    default=None,
+)
+_add_parser.add_argument("/tags", type=str, help="Contact tags", nargs="*", default=[])
 
 _show_parser = CommandArgumentParser("get")
-_show_parser.add_argument(
-    "id", type=int, help="Contact ID")
+_show_parser.add_argument("id", type=int, help="Contact ID")
 
 _edit_parser = CommandArgumentParser("edit")
+_edit_parser.add_argument("id", type=int, help="Contact ID")
 _edit_parser.add_argument(
-    "id", type=int, help="Contact ID")
-_edit_parser.add_argument(
-    "/name", type=str,
+    "/name",
+    type=str,
     help="Contact name (if not provided, will prompt for input)",
-    default=None)
+    default=None,
+)
 _edit_parser.add_argument(
-    "/address", type=str,
+    "/address",
+    type=str,
     help="Contact address (if not provided, will prompt for input)",
-    default=None)
+    default=None,
+)
 _edit_parser.add_argument(
-    "/email", type=str,
+    "/email",
+    type=str,
     help="Contact email (if not provided, will prompt for input)",
-    default=None)
+    default=None,
+)
 _edit_parser.add_argument(
-    "/phones", type=str, nargs="+",
+    "/phones",
+    type=str,
+    nargs="+",
     help="Contact phones (if not provided, will prompt for input)",
-    default=None)
+    default=None,
+)
 _edit_parser.add_argument(
-    "/birthday", type=str,
+    "/birthday",
+    type=str,
     help="Contact birthday (if not provided, will prompt for input)",
-    default=None)
+    default=None,
+)
+_edit_parser.add_argument("/tags", type=str, help="Contact tags", nargs="*", default=[])
 _edit_parser.add_argument(
-    "/tags", type=str, help="Contact tags", nargs="*", default=[])
+    "/add-tags", type=str, help="Add tags to note", nargs="*", default=[]
+)
 _edit_parser.add_argument(
-    "/add-tags", type=str, help="Add tags to note", nargs="*", default=[])
-_edit_parser.add_argument(
-    "/remove-tags", type=str, help="Remove tags from note", nargs="*", default=[])
+    "/remove-tags", type=str, help="Remove tags from note", nargs="*", default=[]
+)
 
 _delete_parser = CommandArgumentParser("delete")
+_delete_parser.add_argument("id", type=int, help="Contact ID")
 _delete_parser.add_argument(
-    "id", type=int, help="Contact ID")
-_delete_parser.add_argument(
-    "/force", action="store_true", help="Force deletion without confirmation")
+    "/force", action="store_true", help="Force deletion without confirmation"
+)
 
 _list_parser = CommandArgumentParser("list")
 _list_parser.add_argument(
-    "/tags", type=str, help="Filter by tags", nargs="*", default=[])
+    "/tags", type=str, help="Filter by tags", nargs="*", default=[]
+)
+_list_parser.add_argument("/name", type=str, help="Filter by name")
+_list_parser.add_argument("/address", type=str, help="Filter by address")
+_list_parser.add_argument("/email", type=str, help="Filter by email")
+_list_parser.add_argument("/phone", type=str, help="Filter by phone")
 _list_parser.add_argument(
-    "/name", type=str, help="Filter by name")
+    "/limit", type=int, help="Limit number of contacts", default=100
+)
 _list_parser.add_argument(
-    "/address", type=str, help="Filter by address")
-_list_parser.add_argument(
-    "/email", type=str, help="Filter by email")
-_list_parser.add_argument(
-    "/phone", type=str, help="Filter by phone")
-_list_parser.add_argument(
-    "/limit", type=int, help="Limit number of contacts", default=100)
-_list_parser.add_argument(
-    "/offset", type=int, help="Offset number of contacts", default=0)
+    "/offset", type=int, help="Offset number of contacts", default=0
+)
 
 _wipe_parser = CommandArgumentParser("wipe")
 _wipe_parser.add_argument(
-    "/force", action="store_true", help="Force deletion without confirmation")
+    "/force", action="store_true", help="Force deletion without confirmation"
+)
 
 
 class ContactsController(Controller):
@@ -105,9 +126,9 @@ class ContactsController(Controller):
     def __format_contact(self, contact: Contact):
         table = Table(title=contact.name, show_header=False, expand=True)
         if contact.tags:
-            table.add_row(Columns(
-                [f"[green]#{t}[/green]" for t in contact.tags],
-                equal=True))
+            table.add_row(
+                Columns([f"[green]#{t}[/green]" for t in contact.tags], equal=True)
+            )
             table.add_section()
 
         table.add_row(f"ID: {contact.id}")
@@ -115,7 +136,9 @@ class ContactsController(Controller):
         table.add_row(f"Address: {contact.address or 'N/A'}")
         table.add_row(f"Email: {contact.email or 'N/A'}")
         table.add_row(f"Phones: {', '.join(p.number for p in contact.phones)}")
-        table.add_row(f"Birthday: {format_datetime(contact.birthday) if contact.birthday else 'N/A'}")
+        table.add_row(
+            f"Birthday: {format_datetime(contact.birthday) if contact.birthday else 'N/A'}"
+        )
         return table
 
     @command
@@ -160,7 +183,9 @@ class ContactsController(Controller):
                     print("Invalid phone, can start with + and contain 10-15 digits.")
                     continue
 
-        contact = Contact(name=name, address=address, email=email, phones=phones, birthday=birthday)
+        contact = Contact(
+            name=name, address=address, email=email, phones=phones, birthday=birthday
+        )
 
         contact = self.repo.put_contact(contact)
 
@@ -227,7 +252,9 @@ class ContactsController(Controller):
 
         birthday = parsed.birthday
         if birthday is None:
-            contact_birthday = contact.birthday.strftime("%d.%m.%Y") if contact.birthday else ""
+            contact_birthday = (
+                contact.birthday.strftime("%d.%m.%Y") if contact.birthday else ""
+            )
             birthday = repl.prompt("birthday> ", default=contact_birthday) or None
 
         if birthday is not None:
@@ -244,7 +271,7 @@ class ContactsController(Controller):
                 edited_phones.append(Phone(number=edited_phone))
 
         new_phones = []
-        if (repl.confirm("Do you want to add a new phones?", default="N")):
+        if repl.confirm("Do you want to add a new phones?", default="N"):
             phone_counter = len(edited_phones) + 1
             while True:
                 phone = repl.prompt(f"phone {phone_counter}> ")
@@ -338,7 +365,9 @@ class ContactsController(Controller):
     def wipe(self, repl, *args):
         """Delete all notes."""
         parsed = _wipe_parser.parse_args(args)
-        if not (parsed.force or repl.confirm("Are you sure you want to delete all contacts")):
+        if not (
+            parsed.force or repl.confirm("Are you sure you want to delete all contacts")
+        ):
             return "Wipe cancelled."
         self.repo.wipe_contacts()
 
