@@ -113,6 +113,8 @@ _wipe_parser.add_argument(
     "/force", action="store_true", help="Force deletion without confirmation"
 )
 
+_greeting_parser = CommandArgumentParser("greeting")
+
 
 class _PhoneValidator(Validator):
     def validate(self, document: Document) -> None:
@@ -177,6 +179,31 @@ def _format_contact(contact: Contact):
     return table
 
 
+def _format_table(contacts: list[Contact]) -> str:
+    table = Table(title="Contacts", expand=True)
+    table.add_column("ID")
+    table.add_column("Name")
+    table.add_column("Address")
+    table.add_column("Email")
+    table.add_column("Phones")
+    table.add_column("Birthday")
+    table.add_column("Tags")
+    for contact in contacts:
+        phones = Table("Index", "Number", "Type", expand=True)
+        for idx, phone in enumerate(contact.phones):
+            phones.add_row(str(idx), phone.number, phone.type.name)
+        table.add_row(
+            str(contact.id),
+            contact.name,
+            contact.address or "N/A",
+            contact.email or "N/A",
+            phones,
+            format_datetime(contact.birthday) if contact.birthday else "N/A",
+            Columns(contact.tags, equal=True),
+        )
+    return table
+
+
 class ContactsController(Controller):
     """A set of commands to manage contacts."""
 
@@ -197,22 +224,22 @@ class ContactsController(Controller):
 
     def _ask_email(self, repl: REPL, current: str = "") -> str | None:
         return (
-            repl.prompt("email> ", default=current, validator=_EmailValidator()).strip()
-            or None
+                repl.prompt("email> ", default=current, validator=_EmailValidator()).strip()
+                or None
         )
 
     def _ask_birthday(
-        self, repl: REPL, current: datetime | None = None
+            self, repl: REPL, current: datetime | None = None
     ) -> datetime | None:
         if current is not None:
             default = current.strftime(BIRTHDAY_FORMAT)
         else:
             default = ""
         birthday = (
-            repl.prompt(
-                "birthday> ", default=default, validator=_DateValidator(BIRTHDAY_FORMAT)
-            ).strip()
-            or None
+                repl.prompt(
+                    "birthday> ", default=default, validator=_DateValidator(BIRTHDAY_FORMAT)
+                ).strip()
+                or None
         )
         if birthday is not None:
             birthday = datetime.strptime(birthday, BIRTHDAY_FORMAT)
@@ -382,28 +409,8 @@ class ContactsController(Controller):
             limit=parsed.limit,
             offset=parsed.offset,
         )
-        table = Table(title="Contacts", expand=True)
-        table.add_column("ID")
-        table.add_column("Name")
-        table.add_column("Address")
-        table.add_column("Email")
-        table.add_column("Phones")
-        table.add_column("Birthday")
-        table.add_column("Tags")
-        for contact in contacts:
-            phones = Table("Index", "Number", "Type", expand=True)
-            for idx, phone in enumerate(contact.phones):
-                phones.add_row(str(idx), phone.number, phone.type.name)
-            table.add_row(
-                str(contact.id),
-                contact.name,
-                contact.address or "N/A",
-                contact.email or "N/A",
-                phones,
-                format_datetime(contact.birthday) if contact.birthday else "N/A",
-                Columns(contact.tags, equal=True),
-            )
-        return table
+
+        return _format_table(contacts)
 
     @list.completions
     def _(self):
@@ -418,7 +425,7 @@ class ContactsController(Controller):
         """Delete all notes."""
         parsed = _wipe_parser.parse_args(args)
         if not (
-            parsed.force or repl.confirm("Are you sure you want to delete all contacts")
+                parsed.force or repl.confirm("Are you sure you want to delete all contacts")
         ):
             return "Wipe cancelled."
         self.repo.wipe_contacts()
@@ -430,6 +437,30 @@ class ContactsController(Controller):
     @wipe.help
     def _(self):
         return f"Delete all contacts.\n\n{escape(_wipe_parser.format_help())}"
+
+    @command
+    def greeting(self, repl: REPL, *args):
+        """Find the contacts to be greeted on the next week."""
+        # todo add parameter /days
+        # parsed = _greeting_parser.parse_args(args)
+        found = []
+        today = datetime.today()
+        for record in self.repo.find_contacts():
+            original_year = record.birthday.year
+            current_year_birthday = record.birthday.replace(year=original_year + (today.year - original_year))
+            delta = (current_year_birthday - today).days
+            if 0 < delta < 7:
+                found.append(record)
+
+        return _format_table(found)
+
+    @greeting.completions
+    def _(self):
+        return _greeting_parser.completions()
+
+    @greeting.help
+    def _(self):
+        return f"Find the contacts to be greeted on the next week.\n\n{escape(_greeting_parser.format_help())}"
 
 
 _add_phone_parser = CommandArgumentParser("add")
