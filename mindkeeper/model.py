@@ -61,6 +61,3 @@ class Contact(BaseModel):
     phones: list[Phone] = Field(..., default_factory=list)
     birthday: datetime | None = None
     tags: Tags = Field(..., default_factory=list)
-
-    class Config:
-        validate_assignment = True

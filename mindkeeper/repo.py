@@ -1,10 +1,11 @@
 import shelve
+from datetime import datetime, timedelta
 from enum import StrEnum, auto
 from pathlib import Path
 
 from thefuzz import fuzz
 
-from mindkeeper.model import GENERATE, Note, Contact
+from mindkeeper.model import GENERATE, Contact, Note
 
 
 class _INDEXES(StrEnum):
@@ -39,7 +40,8 @@ class Repo:
         counter += 1
         self.data[counter_name] = counter
         return counter
-# ff
+
+    # ff
     def put_note(self, note: Note):
         if note.id is GENERATE:
             note.id = self._generate_id("__notes_counter")
@@ -53,12 +55,12 @@ class Repo:
         return index.get(id)
 
     def find_notes(
-            self,
-            title: str | None = None,
-            text: str | None = None,
-            tags: list[str] | None = None,
-            limit=100,
-            offset=0,
+        self,
+        title: str | None = None,
+        text: str | None = None,
+        tags: list[str] | None = None,
+        limit=100,
+        offset=0,
     ):
         counter = 0
         for note in self.data.get(_INDEXES.NOTES, {}).values():
@@ -86,7 +88,6 @@ class Repo:
     def wipe_notes(self):
         self.data[_INDEXES.NOTES] = {}
         self.data["__notes_counter"] = 0
-
 
     def put_contact(self, contact: Contact):
         if contact.id is GENERATE:
@@ -116,6 +117,7 @@ class Repo:
         email: str | None = None,
         phone: str | None = None,
         tags: list[str] | None = None,
+        was_born_in_next_n_days: int | None = None,
         limit=100,
         offset=0,
     ):
@@ -146,7 +148,16 @@ class Repo:
                         break
                 if not found:
                     continue
-
+            if was_born_in_next_n_days is not None:
+                if contact.birthday is None:
+                    continue
+                dolim = datetime.today()
+                uplim = dolim + timedelta(days=was_born_in_next_n_days)
+                dmd = (dolim.year, dolim.month, dolim.day)
+                umd = (uplim.year, uplim.month, uplim.day)
+                md = (dolim.year, contact.birthday.month, contact.birthday.day)
+                if not (dmd <= md <= umd):
+                    continue
             if tags and not set(tags) & set(contact.tags):
                 continue
             if counter >= offset + limit:

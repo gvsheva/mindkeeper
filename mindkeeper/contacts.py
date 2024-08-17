@@ -1,10 +1,10 @@
-from datetime import datetime
-from typing import Literal
+from datetime import date, datetime, timedelta
+from typing import Iterable, Literal
 
 from prompt_toolkit.document import Document
 from prompt_toolkit.validation import ValidationError as PromptValidationError
 from prompt_toolkit.validation import Validator
-from pydantic import EmailStr, TypeAdapter, ValidationError
+from pydantic import EmailStr, NonNegativeInt, TypeAdapter, ValidationError
 from rich.columns import Columns
 from rich.markup import escape
 from rich.table import Table
@@ -14,7 +14,7 @@ from mindkeeper.model import Contact, Phone, PhoneNumber, PhoneType
 from mindkeeper.parser import CommandArgumentParser
 from mindkeeper.repl import REPL
 from mindkeeper.repo import Repo
-from mindkeeper.utils import format_datetime
+from mindkeeper.utils import DATE_FORMAT, format_date, give_a_name
 
 _add_parser = CommandArgumentParser("add")
 _add_parser.add_argument(
@@ -50,11 +50,13 @@ _add_parser.add_argument(
 )
 _add_parser.add_argument("/tags", type=str, help="Contact tags", nargs="*", default=[])
 
+_contact_id_arg_type = give_a_name(lambda v: int(v), "contact_id")
+
 _show_parser = CommandArgumentParser("get")
-_show_parser.add_argument("id", type=int, help="Contact ID")
+_show_parser.add_argument("id", type=_contact_id_arg_type, help="Contact ID")
 
 _edit_parser = CommandArgumentParser("edit")
-_edit_parser.add_argument("id", type=int, help="Contact ID")
+_edit_parser.add_argument("id", type=_contact_id_arg_type, help="Contact ID")
 _edit_parser.add_argument(
     "/name",
     type=str,
@@ -75,7 +77,7 @@ _edit_parser.add_argument(
 )
 _edit_parser.add_argument(
     "/birthday",
-    type=str,
+    type=give_a_name(lambda v: datetime.strptime(v, DATE_FORMAT), "birthday"),
     help="Contact birthday (if not provided, will prompt for input)",
     default=None,
 )
@@ -88,7 +90,7 @@ _edit_parser.add_argument(
 )
 
 _delete_parser = CommandArgumentParser("delete")
-_delete_parser.add_argument("id", type=int, help="Contact ID")
+_delete_parser.add_argument("id", type=_contact_id_arg_type, help="Contact ID")
 _delete_parser.add_argument(
     "/force", action="store_true", help="Force deletion without confirmation"
 )
@@ -114,6 +116,12 @@ _wipe_parser.add_argument(
 )
 
 _greeting_parser = CommandArgumentParser("greeting")
+_greeting_parser.add_argument(
+    "/days",
+    type=TypeAdapter(NonNegativeInt).validate_python,
+    help="Days to look ahead",
+    default=7,
+)
 
 
 class _PhoneValidator(Validator):
@@ -154,7 +162,16 @@ class _DateValidator(Validator):
             )
 
 
-BIRTHDAY_FORMAT = "%d.%m.%Y"
+BIRTHDAY_FORMAT = DATE_FORMAT
+
+
+def _get_congratulation_date(birthdate: date):
+    year = date.today().year
+    birthday = date(year, birthdate.month, birthdate.day)
+    weekday = birthday.weekday()
+    if 0 <= weekday < 5:
+        return birthday
+    return date(year, birthdate.month, birthday.day) + timedelta(days=(7 - weekday))
 
 
 def _format_contact(contact: Contact):
@@ -170,7 +187,7 @@ def _format_contact(contact: Contact):
     table.add_row(f"Email: {contact.email or 'N/A'}")
     table.add_row(f"Phones: {', '.join(p.number for p in contact.phones)}")
     table.add_row(
-        f"Birthday: {format_datetime(contact.birthday) if contact.birthday else 'N/A'}"
+        f"Birthday: {format_date(contact.birthday) if contact.birthday else 'N/A'}"
     )
     table.add_section()
     table.add_row("Tags: " + ", ".join(contact.tags))
@@ -179,7 +196,7 @@ def _format_contact(contact: Contact):
     return table
 
 
-def _format_table(contacts: list[Contact]) -> str:
+def _format_contacts(contacts: Iterable[Contact]):
     table = Table(title="Contacts", expand=True)
     table.add_column("ID")
     table.add_column("Name")
@@ -198,7 +215,7 @@ def _format_table(contacts: list[Contact]) -> str:
             contact.address or "N/A",
             contact.email or "N/A",
             phones,
-            format_datetime(contact.birthday) if contact.birthday else "N/A",
+            format_date(contact.birthday) if contact.birthday else "N/A",
             Columns(contact.tags, equal=True),
         )
     return table
@@ -224,22 +241,22 @@ class ContactsController(Controller):
 
     def _ask_email(self, repl: REPL, current: str = "") -> str | None:
         return (
-                repl.prompt("email> ", default=current, validator=_EmailValidator()).strip()
-                or None
+            repl.prompt("email> ", default=current, validator=_EmailValidator()).strip()
+            or None
         )
 
     def _ask_birthday(
-            self, repl: REPL, current: datetime | None = None
+        self, repl: REPL, current: datetime | None = None
     ) -> datetime | None:
         if current is not None:
             default = current.strftime(BIRTHDAY_FORMAT)
         else:
             default = ""
         birthday = (
-                repl.prompt(
-                    "birthday> ", default=default, validator=_DateValidator(BIRTHDAY_FORMAT)
-                ).strip()
-                or None
+            repl.prompt(
+                "birthday> ", default=default, validator=_DateValidator(BIRTHDAY_FORMAT)
+            ).strip()
+            or None
         )
         if birthday is not None:
             birthday = datetime.strptime(birthday, BIRTHDAY_FORMAT)
@@ -410,7 +427,7 @@ class ContactsController(Controller):
             offset=parsed.offset,
         )
 
-        return _format_table(contacts)
+        return _format_contacts(contacts)
 
     @list.completions
     def _(self):
@@ -425,7 +442,7 @@ class ContactsController(Controller):
         """Delete all notes."""
         parsed = _wipe_parser.parse_args(args)
         if not (
-                parsed.force or repl.confirm("Are you sure you want to delete all contacts")
+            parsed.force or repl.confirm("Are you sure you want to delete all contacts")
         ):
             return "Wipe cancelled."
         self.repo.wipe_contacts()
@@ -439,32 +456,43 @@ class ContactsController(Controller):
         return f"Delete all contacts.\n\n{escape(_wipe_parser.format_help())}"
 
     @command
-    def greeting(self, repl: REPL, *args):
+    def greetings(self, repl: REPL, *args):
         """Find the contacts to be greeted on the next week."""
-        # todo add parameter /days
-        # parsed = _greeting_parser.parse_args(args)
-        found = []
-        today = datetime.today()
-        for record in self.repo.find_contacts():
-            original_year = record.birthday.year
-            current_year_birthday = record.birthday.replace(year=original_year + (today.year - original_year))
-            delta = (current_year_birthday - today).days
-            if 0 < delta < 7:
-                found.append(record)
+        parsed = _greeting_parser.parse_args(args)
+        table = Table(
+            "ID",
+            "Name",
+            "Birthday",
+            "Should be congratulated on",
+            title="Contacts to greet",
+            expand=True,
+        )
+        for contact in self.repo.find_contacts(was_born_in_next_n_days=parsed.days):
+            birthday = contact.birthday
+            birthday_day_of_week = birthday.strftime("%A")
+            congrats_date = _get_congratulation_date(contact.birthday)
+            congrats_day_of_week = congrats_date.strftime("%A")
+            table.add_row(
+                str(contact.id),
+                contact.name,
+                f"{birthday.strftime(DATE_FORMAT)} ({birthday_day_of_week})",
+                f"{congrats_date.strftime(DATE_FORMAT)} ({congrats_day_of_week})",
+            )
+        return table
 
-        return _format_table(found)
-
-    @greeting.completions
+    @greetings.completions
     def _(self):
         return _greeting_parser.completions()
 
-    @greeting.help
+    @greetings.help
     def _(self):
-        return f"Find the contacts to be greeted on the next week.\n\n{escape(_greeting_parser.format_help())}"
+        return f"Find the contacts to be greeted on specified number (7 by default) of days.\n\n{escape(_greeting_parser.format_help())}"
 
 
 _add_phone_parser = CommandArgumentParser("add")
-_add_phone_parser.add_argument("contact_id", type=int, help="Contact ID")
+_add_phone_parser.add_argument(
+    "contact_id", type=_contact_id_arg_type, help="Contact ID"
+)
 _add_phone_parser.add_argument("number", type=str, help="Phone number")
 _add_phone_parser.add_argument(
     "/type",
@@ -475,7 +503,9 @@ _add_phone_parser.add_argument(
 )
 
 _edit_phone_parser = CommandArgumentParser("edit")
-_edit_phone_parser.add_argument("contact_id", type=int, help="Contact ID")
+_edit_phone_parser.add_argument(
+    "contact_id", type=_contact_id_arg_type, help="Contact ID"
+)
 _edit_phone_parser.add_argument("idx", type=int, help="Phone index in the list")
 _edit_phone_parser.add_argument("/number", type=str, default=None, help="Phone number")
 _edit_phone_parser.add_argument(
@@ -487,7 +517,9 @@ _edit_phone_parser.add_argument(
 )
 
 _delete_phone_parser = CommandArgumentParser("delete")
-_delete_phone_parser.add_argument("contact_id", type=int, help="Contact ID")
+_delete_phone_parser.add_argument(
+    "contact_id", type=_contact_id_arg_type, help="Contact ID"
+)
 _delete_phone_parser.add_argument("idx", type=int, help="Phone index in the list")
 
 _list_phones_parser = CommandArgumentParser("list")
