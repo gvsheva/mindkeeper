@@ -9,7 +9,7 @@ delete entries in a simple and efficient way.
 With pip:
 
 ```bash
-pip install -U https://raw.githubusercontent.com/gvsheva/mindkeeper/main/dist/mindkeeper-0.1.0a1.tar.gz
+pip install -U https://raw.githubusercontent.com/gvsheva/mindkeeper/main/dist/mindkeeper-0.2.0.tar.gz
 ```
 
 # Dev env
