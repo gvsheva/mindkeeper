@@ -7,3 +7,4 @@ __pycache__/
 /mindkeeper-db.dir
 /mindkeeper-db.bak
 /mindkeeper-db.dat
+/.env

@@ -6,6 +6,7 @@ from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.completion import FuzzyCompleter
 from prompt_toolkit.formatted_text import AnyFormattedText
 from prompt_toolkit.history import FileHistory
+from prompt_toolkit.shortcuts import clear
 from pydantic import ValidationError
 from rich.console import Console
 
@@ -24,11 +25,15 @@ class REPL:
         controller: Controller,
         /,
         message=">>> ",
-        enable_fuzzy_completion=True,
+        disable_fuzzy_completion=True,
+        disable_help_on_startup=False,
+        clear_on_startup=False,
     ):
         self.controller = controller
         self.message = message
-        self.enable_fuzzy_completion = enable_fuzzy_completion
+        self.disable_fuzzy_completion = disable_fuzzy_completion
+        self.disable_help_on_startup = disable_help_on_startup
+        self.clear_on_startup = clear_on_startup
         self.console = Console()
 
     def _main_toolbart(self):
@@ -69,9 +74,12 @@ class REPL:
         history_file = os.environ.get("MINDKEEPER_HISTORY_FILE", ".mindkeeper-history")
         session = PromptSession(history=FileHistory(history_file))
         completer = self.controller.completions()
-        if self.enable_fuzzy_completion:
+        if not self.disable_fuzzy_completion:
             completer = FuzzyCompleter(completer)
-        self.console.print(self.controller.help(self))
+        if not self.disable_help_on_startup:
+            self.console.print(self.controller.help(self))
+        if self.clear_on_startup:
+            clear()
         while True:
             try:
                 text = session.prompt(

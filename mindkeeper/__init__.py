@@ -1,5 +1,9 @@
+import os
 from argparse import ArgumentParser
 from pathlib import Path
+
+from dotenv import dotenv_values
+from pydantic_settings import BaseSettings
 
 from mindkeeper.contacts import ContactsController, PhonesController
 from mindkeeper.controller import ApplicationController
@@ -39,28 +43,74 @@ class IntRangeType:
         return i
 
 
+class Settings(BaseSettings):
+    db_dir: Path = Path(".")
+    db_name: str = "mindkeeper-db"
+    db_fuzzy_search_ratio: int = 80
+    default_prompt: str = ">>> "
+    disable_fuzzy_completion: bool = False
+    disable_help_on_startup: bool = False
+    clear_on_startup: bool = False
+
+    class Config:
+        env_prefix = "MINDKEEPER_"
+
+
+def load_settings():
+    values = {
+        **dotenv_values(Path.home() / ".mindkeeper.env"),
+        **dotenv_values(".env"),
+    }
+    for k, v in values.items():
+        if k.startswith("MINDKEEPER_") and v is not None:
+            os.environ[k] = v
+    return Settings()
+
+
 def run():
+    settings = load_settings()
     ap = ArgumentParser()
     ap.add_argument(
-        "--db-dir", type=DirectoryType(), default=".", help="Database directory"
+        "--db-dir",
+        type=DirectoryType(),
+        default=settings.db_dir,
+        help="Database directory",
     )
     ap.add_argument(
-        "--db-name", type=str, default="mindkeeper-db", help="Database base name"
+        "--db-name",
+        type=str,
+        default=settings.db_name,
+        help="Database base name",
     )
     ap.add_argument(
         "--db-fuzzy-search-ratio",
         type=IntRangeType(0, 100),
-        default=80,
+        default=settings.db_fuzzy_search_ratio,
         help="Fuzzy search ratio for database queries",
     )
     ap.add_argument(
-        "--default-prompt", type=str, default=">>> ", help="Default REPL prompt"
+        "--default-prompt",
+        type=str,
+        default=settings.default_prompt,
+        help="Default REPL prompt",
     )
     ap.add_argument(
         "--disable-fuzzy-completion",
         action="store_true",
-        default=False,
+        default=settings.disable_fuzzy_completion,
         help="Disable fuzzy completion",
+    )
+    ap.add_argument(
+        "--disable-help-on-startup",
+        action="store_true",
+        default=settings.disable_help_on_startup,
+        help="Disable help on startup",
+    )
+    ap.add_argument(
+        "--clear-on-startup",
+        action="store_true",
+        default=settings.clear_on_startup,
+        help="Clear screen on startup",
     )
 
     args = ap.parse_args()
@@ -76,6 +126,8 @@ def run():
         repl = REPL(
             app,
             message=args.default_prompt,
-            enable_fuzzy_completion=not args.disable_fuzzy_completion,
+            disable_fuzzy_completion=args.disable_fuzzy_completion,
+            disable_help_on_startup=args.disable_help_on_startup,
+            clear_on_startup=args.clear_on_startup,
         )
         repl.run()
