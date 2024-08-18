@@ -19,6 +19,7 @@ marko = "^2.1.2"
 phonenumbers = "^8.13.43"
 python-dotenv = "^1.0.1"
 pydantic-settings = "^2.4.0"
+rich-argparse = "^1.5.2"
 
 
 [tool.poetry.group.dev.dependencies]

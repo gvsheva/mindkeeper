@@ -4,6 +4,7 @@ from pathlib import Path
 
 from dotenv import dotenv_values
 from pydantic_settings import BaseSettings
+from rich_argparse import RichHelpFormatter
 
 from mindkeeper.contacts import ContactsController, PhonesController
 from mindkeeper.controller import ApplicationController
@@ -69,7 +70,7 @@ def load_settings():
 
 def run():
     settings = load_settings()
-    ap = ArgumentParser()
+    ap = ArgumentParser(formatter_class=RichHelpFormatter)
     ap.add_argument(
         "--db-dir",
         type=DirectoryType(),

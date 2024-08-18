@@ -547,6 +547,20 @@ pygments = ">=2.13.0,<3.0.0"
 jupyter = ["ipywidgets (>=7.5.1,<9)"]
 
 [[package]]
+name = "rich-argparse"
+version = "1.5.2"
+description = "Rich help formatters for argparse and optparse"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "rich_argparse-1.5.2-py3-none-any.whl", hash = "sha256:7027503d5849e27fc7cc85fb58504363606f2ec1c8b3c27d9a8ad28788faf877"},
+    {file = "rich_argparse-1.5.2.tar.gz", hash = "sha256:84d348d5b6dafe99fffe2c7ea1ca0afe14096c921693445b9eee65ee4fcbfd2c"},
+]
+
+[package.dependencies]
+rich = ">=11.0.0"
+
+[[package]]
 name = "thefuzz"
 version = "0.22.1"
 description = "Fuzzy string matching in python"
@@ -602,4 +616,4 @@ test = ["pytest"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "76a34aa0744849fa2c7a315ab29bb5b539686db8c28ce9719396759aa4857918"
+content-hash = "f072af469a158cf3b38bf55afaad345cea859a671b6ff9a34f452c8993ad3161"
