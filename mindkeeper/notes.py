@@ -104,8 +104,9 @@ class NotesController(Controller):
     def _format_note(self, note: Note):
         table = Table(title=note.title, show_header=False, expand=True)
         table.add_row(Markdown(note.text))
-        table.add_section()
-        table.add_row("Tags: " + ", ".join(note.tags))
+        if note.tags:
+            table.add_section()
+            table.add_row("Tags: " + ", ".join(note.tags))
         table.add_section()
         table.add_row(f"ID: {note.id}")
         table.add_row(f"Created at: {format_datetime(note.created_at)}")

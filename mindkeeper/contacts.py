@@ -48,7 +48,7 @@ _add_parser.add_argument(
     help="Contact birthday (if not provided, will prompt for input)",
     default=None,
 )
-_add_parser.add_argument("/tags", type=str, help="Contact tags", nargs="*", default=[])
+_add_parser.add_argument("/tags", type=str, help="Contact tags", nargs="+", default=[])
 
 _contact_id_arg_type = give_a_name(lambda v: int(v), "contact_id")
 
@@ -176,21 +176,21 @@ def _get_congratulation_date(birthdate: date):
 
 def _format_contact(contact: Contact):
     table = Table(title=contact.name, show_header=False, expand=True)
-    if contact.tags:
-        table.add_row(
-            Columns([f"[green]#{t}[/green]" for t in contact.tags], equal=True)
-        )
-        table.add_section()
-
     table.add_row(f"Name: {contact.name}")
     table.add_row(f"Address: {contact.address or 'N/A'}")
     table.add_row(f"Email: {contact.email or 'N/A'}")
-    table.add_row(f"Phones: {', '.join(p.number for p in contact.phones)}")
     table.add_row(
         f"Birthday: {format_date(contact.birthday) if contact.birthday else 'N/A'}"
     )
-    table.add_section()
-    table.add_row("Tags: " + ", ".join(contact.tags))
+    if contact.phones:
+        table.add_section()
+        phones_table = Table("Index", "Number", "Type", title="Phones", expand=True)
+        for idx, phone in enumerate(contact.phones):
+            phones_table.add_row(str(idx), phone.number, phone.type.name)
+        table.add_row(phones_table)
+    if contact.tags:
+        table.add_section()
+        table.add_row("Tags: " + ", ".join(contact.tags))
     table.add_section()
     table.add_row(f"ID: {contact.id}")
     return table
@@ -304,7 +304,12 @@ class ContactsController(Controller):
                 phone_counter += 1
 
         contact = Contact(
-            name=name, address=address, email=email, phones=phones, birthday=birthday
+            name=name,
+            address=address,
+            email=email,
+            phones=phones,
+            birthday=birthday,
+            tags=parsed.tags,
         )
 
         contact = self.repo.put_contact(contact)
