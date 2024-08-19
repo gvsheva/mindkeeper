@@ -1,0 +1,784 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: poetry run mindkeeper
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: /home/g/Projects/goit/mindkeeper
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 190
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 37
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  # frameDelay: auto
+  frameDelay: 200
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 200
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: Mindkeeper
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 1675
+    content: "\e[2J\e[0;0H\e[6n"
+  - delay: 5
+    content: "\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 16
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[36A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1385
+    content: "\e[?25l\e[?7l\e[0mc\e[0;38;5;241montacts wipe\e[0m\r\r\n\e[5C\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mc\e[0;38;5;238;48;5;250montacts\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[11D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 113
+    content: "\e[?25l\e[?7l\e[0mo\e[0m\r\r\n\e[5C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mco\e[0;38;5;238;48;5;250mntacts\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[11D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 61
+    content: "\e[?25l\e[?7l\e[0mn\e[0m\r\r\n\e[6C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mcon\e[0;38;5;238;48;5;250mtacts\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[11D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 88
+    content: "\e[?25l\e[?7l\e[0mtacts\e[0m\e[K\e[0m\r\r\n\e[7C\e[0;38;5;102;48;5;231;7m \e[0;38;5;102;48;5;231;4;7mcon\e[0;48;5;231;7mtacts\e[0;38;5;102;48;5;231;7m \e[A\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 177
+    content: "\e[?25l\e[?7l\e[C\e[0;38;5;241mwipe\e[0m\r\r\n\e[7C\e[0m      \e[0;38;5;16;48;5;250m phones: A set of commands to manage phones.                  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m add: Add a contact.                                          \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m delete: Delete a contact.                                    \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m edit: Edit a contact.                                        \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m greetings: Find the contacts to be greeted on the next week. \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m help: Show help                                              \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m list: List contacts.                                         \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m show: Show a contact.                                        \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m wipe: Delete all notes.                                      \e[0;38;5;16;48;5;238m \e[9A\e[63D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 161
+    content: "\e[?25l\e[?7l\e[0ma\e[0;38;5;241mdd /tags work friends\e[0m\r\r\n\e[13C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4ma\e[0;38;5;238;48;5;250mdd\e[0;38;5;16;48;5;250m   \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[9A\e[13C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 59
+    content: "\e[?25l\e[?7l\e[0mdd\e[0m\e[K\e[0m\r\r\n\e[14C\e[0;38;5;102;48;5;231;7m \e[0;38;5;102;48;5;231;4;7ma\e[0;48;5;231;7mdd\e[0;38;5;102;48;5;231;7m   \e[A\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1292
+    content: "\e[?25l\e[?7l\e[16D\e[0m\e[J\e[0m>>> contacts add\e[16D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 14
+    content: "\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0mname>\e[5D\e[6C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 19
+    content: "\e[?25l\e[?7l\e[6D\e[0mname>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[35A\e[6C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 618
+    content: "\e[?25l\e[?7l\e[0mE\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 563
+    content: "\e[?25l\e[?7l\e[0mm\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 192
+    content: "\e[?25l\e[?7l\e[0mi\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 418
+    content: "\e[?25l\e[?7l\e[0ml\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 81
+    content: "\e[?25l\e[?7l\e[0my\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 470
+    content: "\e[?25l\e[?7l\e[11D\e[0m\e[J\e[0mname> Emily\e[11D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 15
+    content: "\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0maddress>\e[8D\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 19
+    content: "\e[?25l\e[?7l\e[9D\e[0maddress>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[34A\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 2207
+    content: "\e[?25l\e[?7l\e[0m2\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 132
+    content: "\e[?25l\e[?7l\e[0m2\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 99
+    content: "\e[?25l\e[?7l\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 525
+    content: "\e[?25l\e[?7l\e[0mE\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 274
+    content: "\e[?25l\e[?7l\e[0mv\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 173
+    content: "\e[?25l\e[?7l\e[0me\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 223
+    content: "\e[?25l\e[?7l\e[0mg\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 169
+    content: "\e[?25l\e[?7l\e[0mr\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 230
+    content: "\e[?25l\e[?7l\e[0me\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 129
+    content: "\e[?25l\e[?7l\e[0me\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 75
+    content: "\e[?25l\e[?7l\e[0mn\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 200
+    content: "\e[?25l\e[?7l\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 440
+    content: "\e[?25l\e[?7l\e[0mS\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 236
+    content: "\e[?25l\e[?7l\e[0mt\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 173
+    content: "\e[?25l\e[?7l\e[0mr\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 196
+    content: "\e[?25l\e[?7l\e[0me\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 125
+    content: "\e[?25l\e[?7l\e[0me\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 202
+    content: "\e[?25l\e[?7l\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 442
+    content: "\e[?25l\e[?7l\b\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 165
+    content: "\e[?25l\e[?7l\e[0mt\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 457
+    content: "\e[?25l\e[?7l\e[27D\e[0m\e[J\e[0maddress> 22 Evegreen Street\e[27D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 6
+    content: "\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0memail>\e[6D\e[7C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[?7l\e[7D\e[0memail>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[33A\e[7C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1350
+    content: "\e[?25l\e[?7l\e[0me\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;38;5;231;48;5;52minvalid email\e[33A\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 121
+    content: "\e[?25l\e[?7l\e[0mm\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 223
+    content: "\e[?25l\e[?7l\e[0mi\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 311
+    content: "\e[?25l\e[?7l\e[0ml\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 74
+    content: "\e[?25l\e[?7l\e[0my\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 511
+    content: "\e[?25l\e[?7l\e[0m@\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 268
+    content: "\e[?25l\e[?7l\e[0me\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 247
+    content: "\e[?25l\e[?7l\e[0mx\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 196
+    content: "\e[?25l\e[?7l\e[0ma\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 18
+    content: "\e[?25l\e[?7l\e[0mq\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 94
+    content: "\e[?25l\e[?7l\e[0mm\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 185
+    content: "\e[?25l\e[?7l\e[0mp\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 318
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 163
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 144
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1165
+    content: "\e[?25l\e[?7l\e[0mm\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 680
+    content: "\e[?25l\e[?7l\e[0mp\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 70
+    content: "\e[?25l\e[?7l\e[0ml\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 92
+    content: "\e[?25l\e[?7l\e[0me\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 133
+    content: "\e[?25l\e[?7l\e[0m.\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 142
+    content: "\e[?25l\e[?7l\e[0mc\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0m \e[0m\e[K\e[33A\e[21C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 134
+    content: "\e[?25l\e[?7l\e[0mo\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 93
+    content: "\e[?25l\e[?7l\e[0mm\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 853
+    content: "\e[?25l\e[?7l\e[24D\e[0m\e[J\e[0memail> emily@example.com\e[24D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 15
+    content: "\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0mbirthday>\e[9D\e[10C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 19
+    content: "\e[?25l\e[?7l\e[10D\e[0mbirthday>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[32A\e[10C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1276
+    content: "\e[?25l\e[?7l\e[0m2\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;38;5;231;48;5;52minvalid date format, should be %Y-%m-%d\e[32A\e[28D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 88
+    content: "\e[?25l\e[?7l\e[0m0\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 132
+    content: "\e[?25l\e[?7l\e[0m0\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 127
+    content: "\e[?25l\e[?7l\e[0m0\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 306
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1114
+    content: "\e[?25l\e[?7l\e[0m0\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 93
+    content: "\e[?25l\e[?7l\e[0m8\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 120
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1791
+    content: "\e[?25l\e[?7l\e[0m2\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0m \e[0m\e[K\e[32A\e[18C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 286
+    content: "\e[?25l\e[?7l\e[0m4\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 111
+    content: "\e[?25l\e[?7l\e[20D\e[0m\e[J\e[0mbirthday> 2000-08-24\e[20D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 14
+    content: "\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0mphone 0>\e[8D\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 20
+    content: "\e[?25l\e[?7l\e[9D\e[0mphone 0>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[31A\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1578
+    content: "\e[?25l\e[?7l\e[0m+\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;38;5;231;48;5;52minvalid phone number\e[31A\e[10D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 202
+    content: "\e[?25l\e[?7l\e[0m1\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 3198
+    content: "\e[?25l\e[?7l\e[0m2\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 161
+    content: "\e[?25l\e[?7l\e[0m2\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0m \e[0m\e[K\e[31A\e[12C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 134
+    content: "\e[?25l\e[?7l\e[0m2\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1536
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 396
+    content: "\e[?25l\e[?7l\e[0m3\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 126
+    content: "\e[?25l\e[?7l\e[0m3\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 429
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 290
+    content: "\e[?25l\e[?7l\e[0m4\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 131
+    content: "\e[?25l\e[?7l\e[0m4\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 724
+    content: "\e[?25l\e[?7l\e[20D\e[0m\e[J\e[0mphone 0> +1222-33-44\e[20D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 7
+    content: "\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0mphone 1>\e[8D\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 7
+    content: "\e[?25l\e[?7l\e[9D\e[0mphone 1>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[30A\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 2324
+    content: "\e[?25l\e[?7l\e[0m2\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;38;5;231;48;5;52minvalid phone number\e[30A\e[10D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 155
+    content: "\e[?25l\e[?7l\e[0m2\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0m \e[0m\e[K\e[30A\e[10C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 159
+    content: "\e[?25l\e[?7l\e[0m2\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1317
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 489
+    content: "\e[?25l\e[?7l\e[0m3\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 147
+    content: "\e[?25l\e[?7l\e[0m3\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 165
+    content: "\e[?25l\e[?7l\e[0m3\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 409
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 811
+    content: "\e[?25l\e[?7l\e[0m5\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 156
+    content: "\e[?25l\e[?7l\e[0m5\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 289
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 175
+    content: "\e[?25l\e[?7l\e[0m6\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 130
+    content: "\e[?25l\e[?7l\e[0m6\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 923
+    content: "\e[?25l\e[?7l\e[22D\e[0m\e[J\e[0mphone 1> 222-333-55-66\e[22D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 7
+    content: "\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0mphone 2>\e[8D\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 7
+    content: "\e[?25l\e[?7l\e[9D\e[0mphone 2>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[29A\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 5002
+    content: "\e[?25l\e[?7l\e[0m(\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;38;5;231;48;5;52minvalid phone number\e[29A\e[10D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 922
+    content: "\e[?25l\e[?7l\e[0m0\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 722
+    content: "\e[?25l\e[?7l\e[0m6\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0m \e[0m\e[K\e[29A\e[11C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 71
+    content: "\e[?25l\e[?7l\e[0m8\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 808
+    content: "\e[?25l\e[?7l\e[0m)\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 515
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1236
+    content: "\e[?25l\e[?7l\e[0m6\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 144
+    content: "\e[?25l\e[?7l\e[0m6\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 142
+    content: "\e[?25l\e[?7l\e[0m6\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 209
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 266
+    content: "\e[?25l\e[?7l\e[0m7\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 126
+    content: "\e[?25l\e[?7l\e[0m7\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 316
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 430
+    content: "\e[?25l\e[?7l\e[0m3\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 135
+    content: "\e[?25l\e[?7l\e[0m3\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 465
+    content: "\e[?25l\e[?7l\e[24D\e[0m\e[J\e[0mphone 2> (068)-666-77-33\e[24D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 7
+    content: "\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0mphone 3>\e[8D\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 7
+    content: "\e[?25l\e[?7l\e[9D\e[0mphone 3>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[28A\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 172
+    content: "\e[?25l\e[?7l\e[9D\e[0m\e[J\e[0mphone 3>\e[8D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 6
+    content: "\e[3m                                                                                            Emily                                                                                             \e[0m\r\n┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\r\n│ Name: Emily                                                                                                                                                                                │\r\n│ Address: 22 Evegreen Street                                                                                                                                                                │\r\n│ Email: emily@example.com                                                                                                                                                                   │\r\n│ Birthday: 2000-08-24                                                                                                                                                                       │\r\n├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤\r\n│ \e[3m                                                                                          Phones                                                                                          \e[0m │\r\n│ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ │\r\n│ ┃\e[1m \e[0m\e[1mIndex                               \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mNumber                                                                                              \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mType                                    \e[0m\e[1m \e[0m┃ │\r\n│ ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩ │\r\n│ │ 0                                    │ +(1) 2223344                                                                                         │ MOBILE                                   │ │\r\n│ │ 1                                    │ +(380) 2223335566                                                                                    │ MOBILE                                   │ │\r\n│ │ 2                                    │ +(380) 686667733                                                                                     │ MOBILE                                   │ │\r\n│ └──────────────────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────┴──────────────────────────────────────────┘ │\r\n├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤\r\n│ ID: 1                                                                                                                                                                                      │\r\n└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 6
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0m \e[0m\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[9A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 8728
+    content: "\e[?25l\e[?7l\e[0mcontacts add\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 516
+    content: "\e[?25l\e[?7l\e[C\e[0;38;5;241m/tags work friends\e[0m\r\r\n\e[17C\e[0;38;5;16;48;5;250m /birthday: Contact birthday (if not provided, will prompt for input) \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[17C\e[0;38;5;16;48;5;250m /tags: Contact tags                                                  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[17C\e[0;38;5;16;48;5;250m /phones: Contact phones (if not provided, will prompt for input)     \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[17C\e[0;38;5;16;48;5;250m /name: Contact name (if not provided, will prompt for input)         \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[17C\e[0;38;5;16;48;5;250m /address: Contact address (if not provided, will prompt for input)   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[17C\e[0;38;5;16;48;5;250m /email: Contact email (if not provided, will prompt for input)       \e[0;38;5;16;48;5;238m \e[6A\e[71D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 414
+    content: "\e[?25l\e[?7l\e[0m/\e[0m\r\r\n\e[17C\e[0m \e[0;38;5;16;48;5;250m /birthday: Contact birthday (if not provided, wi\e[Cl prompt for input) \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[17C\e[0m \e[0;38;5;16;48;5;250m /tags: Contact tags\e[49C \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[17C\e[0m \e[0;38;5;16;48;5;250m /phones: Contact phones (if not provided, wi\e[Cl prompt for input)\e[4C \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[17C\e[0m \e[0;38;5;16;48;5;250m /name: Contact name (if not provided, wi\e[Cl prompt for input)\e[8C \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[17C\e[0m \e[0;38;5;16;48;5;250m /a\e[Cdre\e[Cs: Contact a\e[Cdre\e[Cs (if not provided, wi\e[Cl prompt for input)\e[2C \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[17C\e[0m \e[0;38;5;16;48;5;250m /email: Contact email (if not provided, wi\e[Cl prompt for input)\e[6C \e[0;38;5;16;48;5;238m \e[6A\e[71D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 485
+    content: "\e[?25l\e[?7l\e[0mt\e[0m\r\r\n\e[18C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;238;48;5;250mags\e[0;38;5;16;48;5;250m    \e[C\e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[18C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/bir\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;238;48;5;250mhday\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[6A\e[18C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 102
+    content: "\e[?25l\e[?7l\e[0ma\e[0m\r\r\n\e[19C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mta\e[0;38;5;238;48;5;250mgs\e[4C\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[19C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/bir\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;16;48;5;250;1mhd\e[0;38;5;16;48;5;250;1;4ma\e[0;38;5;238;48;5;250my\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[2A\e[12D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 75
+    content: "\e[?25l\e[?7l\e[0mgs\e[0m\e[K\e[0m\r\r\n\e[20C\e[0;38;5;102;48;5;231;7m \e[0;48;5;231;7m/\e[0;38;5;102;48;5;231;4;7mta\e[0;48;5;231;7mgs\e[0;38;5;102;48;5;231;7m     \e[A\e[9D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 191
+    content: "\e[?25l\e[?7l\e[C\e[0;38;5;241mwork friends\e[0m\r\r\n\e[20C\e[0m   \e[0;38;5;16;48;5;250m /birthday: Contact birthday (if not provided, will prompt for input) \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[20C\e[0m   \e[0;38;5;16;48;5;250m /tags: Contact tags                                                  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[23C\e[0;38;5;16;48;5;250m /phones: Contact phones (if not provided, will prompt for input)     \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[23C\e[0;38;5;16;48;5;250m /name: Contact name (if not provided, will prompt for input)         \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[23C\e[0;38;5;16;48;5;250m /address: Contact address (if not provided, will prompt for input)   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[23C\e[0;38;5;16;48;5;250m /email: Contact email (if not provided, will prompt for input)       \e[0;38;5;16;48;5;238m \e[6A\e[71D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 398
+    content: "\e[?25l\e[?7l\e[0mw\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[6A\e[23C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 86
+    content: "\e[?25l\e[?7l\e[0mo\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 154
+    content: "\e[?25l\e[?7l\e[0mr\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 96
+    content: "\e[?25l\e[?7l\e[0mk\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 98
+    content: "\e[?25l\e[?7l\e[0m \e[0m\r\r\n\e[28C\e[0;38;5;16;48;5;250m /birthday: Contact birthday (if not provided, will prompt for input) \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[28C\e[0;38;5;16;48;5;250m /tags: Contact tags                                                  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[28C\e[0;38;5;16;48;5;250m /phones: Contact phones (if not provided, will prompt for input)     \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[28C\e[0;38;5;16;48;5;250m /name: Contact name (if not provided, will prompt for input)         \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[28C\e[0;38;5;16;48;5;250m /address: Contact address (if not provided, will prompt for input)   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[28C\e[0;38;5;16;48;5;250m /email: Contact email (if not provided, will prompt for input)       \e[0;38;5;16;48;5;238m \e[6A\e[71D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 766
+    content: "\e[?25l\e[?7l\e[0mf\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[6A\e[28C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 198
+    content: "\e[?25l\e[?7l\e[0mi\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 100
+    content: "\e[?25l\e[?7l\e[0mr\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 781
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 157
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 132
+    content: "\e[?25l\e[?7l\e[2D\e[0m\e[K\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 493
+    content: "\e[?25l\e[?7l\e[0mf\e[0;38;5;241mriends\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 156
+    content: "\e[?25l\e[?7l\e[0mr\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 186
+    content: "\e[?25l\e[?7l\e[0mi\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 337
+    content: "\e[?25l\e[?7l\e[0me\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 213
+    content: "\e[?25l\e[?7l\e[0mn\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 78
+    content: "\e[?25l\e[?7l\e[0md\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 149
+    content: "\e[?25l\e[?7l\e[0ms\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 867
+    content: "\e[?25l\e[?7l\e[35D\e[0m\e[J\e[0m>>> contacts add /tags work friends\e[35D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 13
+    content: "\e[6n"
+  - delay: 5
+    content: "\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0mname>\e[5D\e[6C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 59
+    content: "\e[?25l\e[?7l\e[6D\e[0mname>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[8A\e[6C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 2217
+    content: "\e[?25l\e[?7l\e[0mJ\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 332
+    content: "\e[?25l\e[?7l\e[0mo\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 569
+    content: "\e[?25l\e[?7l\e[0mh\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 77
+    content: "\e[?25l\e[?7l\e[0mn\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 626
+    content: "\e[?25l\e[?7l\e[10D\e[0m\e[J\e[0mname> John\e[10D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 6
+    content: "\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0maddress>\e[8D\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[?7l\e[9D\e[0maddress>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1665
+    content: "\e[?25l\e[?7l\e[0mO\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 166
+    content: "\e[?25l\e[?7l\e[0ma\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 81
+    content: "\e[?25l\e[?7l\e[0mk\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1157
+    content: "\e[?25l\e[?7l\e[0mw\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 185
+    content: "\e[?25l\e[?7l\e[0mo\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 144
+    content: "\e[?25l\e[?7l\e[0mo\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 513
+    content: "\e[?25l\e[?7l\e[0md\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 96
+    content: "\e[?25l\e[?7l\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 579
+    content: "\e[?25l\e[?7l\e[0mR\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 228
+    content: "\e[?25l\e[?7l\e[0mo\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 100
+    content: "\e[?25l\e[?7l\e[0ma\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 220
+    content: "\e[?25l\e[?7l\e[0md\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 118
+    content: "\e[?25l\e[?7l\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 527
+    content: "\e[?25l\e[?7l\e[0m3\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 134
+    content: "\e[?25l\e[?7l\e[0m3\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 144
+    content: "\e[?25l\e[?7l\e[24D\e[0m\e[J\e[0maddress> Oakwood Road 33\e[24D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 13
+    content: "\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0memail>\e[6D\e[7C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 19
+    content: "\e[?25l\e[?7l\e[7D\e[0memail>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[6A\e[7C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1534
+    content: "\e[?25l\e[?7l\e[0mj\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;38;5;231;48;5;52minvalid email\e[6A\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 134
+    content: "\e[?25l\e[?7l\e[0mo\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 329
+    content: "\e[?25l\e[?7l\e[0mh\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 101
+    content: "\e[?25l\e[?7l\e[0mn\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 379
+    content: "\e[?25l\e[?7l\e[0m@\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 636
+    content: "\e[?25l\e[?7l\e[0me\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 194
+    content: "\e[?25l\e[?7l\e[0mx\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 147
+    content: "\e[?25l\e[?7l\e[0ma\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 103
+    content: "\e[?25l\e[?7l\e[0mm\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 304
+    content: "\e[?25l\e[?7l\e[0mp\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 83
+    content: "\e[?25l\e[?7l\e[0ml\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 131
+    content: "\e[?25l\e[?7l\e[0me\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 101
+    content: "\e[?25l\e[?7l\e[0m.\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 127
+    content: "\e[?25l\e[?7l\e[0mc\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0m \e[0m\e[K\e[6A\e[20C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 130
+    content: "\e[?25l\e[?7l\e[0mo\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 78
+    content: "\e[?25l\e[?7l\e[0mm\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 429
+    content: "\e[?25l\e[?7l\e[23D\e[0m\e[J\e[0memail> john@example.com\e[23D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 13
+    content: "\e[6n"
+  - delay: 5
+    content: "\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0mbirthday>\e[9D\e[10C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 18
+    content: "\e[?25l\e[?7l\e[10D\e[0mbirthday>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[5A\e[10C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1670
+    content: "\e[?25l\e[?7l\e[0m2\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;38;5;231;48;5;52minvalid date format, should be %Y-%m-%d\e[5A\e[28D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 86
+    content: "\e[?25l\e[?7l\e[0m0\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 141
+    content: "\e[?25l\e[?7l\e[0m0\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 125
+    content: "\e[?25l\e[?7l\e[0m0\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 241
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1036
+    content: "\e[?25l\e[?7l\e[0m0\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 83
+    content: "\e[?25l\e[?7l\e[0m8\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 100
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1007
+    content: "\e[?25l\e[?7l\e[0m2\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0m \e[0m\e[K\e[5A\e[18C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 81
+    content: "\e[?25l\e[?7l\e[0m6\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 605
+    content: "\e[?25l\e[?7l\e[20D\e[0m\e[J\e[0mbirthday> 2000-08-26\e[20D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 17
+    content: "\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0mphone 0>\e[8D\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 15
+    content: "\e[?25l\e[?7l\e[9D\e[0mphone 0>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[4A\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1638
+    content: "\e[?25l\e[?7l\e[0m5\e[0m\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;38;5;231;48;5;52minvalid phone number\e[4A\e[10D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 139
+    content: "\e[?25l\e[?7l\e[0m5\e[0m\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0m \e[0m\e[K\e[4A\e[10C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 142
+    content: "\e[?25l\e[?7l\e[0m5\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 188
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 390
+    content: "\e[?25l\e[?7l\e[0m3\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 131
+    content: "\e[?25l\e[?7l\e[0m3\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 466
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 280
+    content: "\e[?25l\e[?7l\e[0m1\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 310
+    content: "\e[?25l\e[?7l\e[0m2\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 932
+    content: "\e[?25l\e[?7l\e[18D\e[0m\e[J\e[0mphone 0> 555-33-12\e[18D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 15
+    content: "\e[6n"
+  - delay: 5
+    content: "\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0mphone 1>\e[8D\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 17
+    content: "\e[?25l\e[?7l\e[9D\e[0mphone 1>\e[0m\r\r\n\r\r\n\r\r\n\e[0m \b\e[3A\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1352
+    content: "\e[?25l\e[?7l\e[0m7\e[0m\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;38;5;231;48;5;52minvalid phone number\e[3A\e[10D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 141
+    content: "\e[?25l\e[?7l\e[0m7\e[0m\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0m \e[0m\e[K\e[3A\e[10C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 145
+    content: "\e[?25l\e[?7l\e[0m7\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 131
+    content: "\e[?25l\e[?7l\e[0m7\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 301
+    content: "\e[?25l\e[?7l\e[0m0\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 469
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 151
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1151
+    content: "\e[?25l\e[?7l\e[0m4\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 129
+    content: "\e[?25l\e[?7l\e[0m4\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 454
+    content: "\e[?25l\e[?7l\e[0m5\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 118
+    content: "\e[?25l\e[?7l\e[0m5\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1483
+    content: "\e[?25l\e[?7l\e[16D\e[0m\e[J\e[0mphone 1> 7774455\e[16D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 13
+    content: "\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0mphone 2>\e[8D\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 19
+    content: "\e[?25l\e[?7l\e[9D\e[0mphone 2>\e[0m\r\r\n\r\r\n\e[0m \b\e[2A\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 921
+    content: "\e[?25l\e[?7l\e[9D\e[0m\e[J\e[0mphone 2>\e[8D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 9
+    content: "\e[3m                                                                                             John                                                                                             \e[0m\r\n┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\r\n│ Name: John                                                                                                                                                                                 │\r\n│ Address: Oakwood Road 33                                                                                                                                                                   │\r\n│ Email: john@example.com                                                                                                                                                                    │\r\n│ Birthday: 2000-08-26                                                                                                                                                                       │\r\n├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤\r\n│ \e[3m                                                                                          Phones                                                                                          \e[0m │\r\n│ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ │\r\n│ ┃\e[1m \e[0m\e[1mIndex                                   \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mNumber                                                                                      \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mType                                        \e[0m\e[1m \e[0m┃ │\r\n│ ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩ │\r\n│ │ 0                                        │ +(380) 5553312                                                                               │ MOBILE                                       │ │\r\n│ │ 1                                        │ +(380) 7774455                                                                               │ MOBILE                                       │ │\r\n│ └──────────────────────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────┴──────────────────────────────────────────────┘ │\r\n├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤\r\n│ Tags: work, friends                                                                                                                                                                        │\r\n├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤\r\n│ ID: 2                                                                                                                                                                                      │\r\n└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 5
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[8A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 8965
+    content: "\e[?25l\e[?7l\e[0mcontacts add /tags work friends\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1271
+    content: "\e[?25l\e[?7l\e[8D\e[0m\e[K\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 175
+    content: "\e[?25l\e[?7l\e[6D\e[0m\e[K\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 919
+    content: "\e[?25l\e[?7l\e[0mf\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 301
+    content: "\e[?25l\e[?7l\e[0mi\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 635
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 236
+    content: "\e[?25l\e[?7l\e[2D\e[0m\e[K\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 132
+    content: "\e[?25l\e[?7l\e[0mf\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 142
+    content: "\e[?25l\e[?7l\e[0mr\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 904
+    content: "\e[?25l\e[?7l\e[0mi\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 148
+    content: "\e[?25l\e[?7l\e[0me\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 164
+    content: "\e[?25l\e[?7l\e[0mn\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 78
+    content: "\e[?25l\e[?7l\e[0md\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 142
+    content: "\e[?25l\e[?7l\e[0ms\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 729
+    content: "\e[?25l\e[?7l\e[30D\e[0m\e[J\e[0m>>> contacts add /tags friends\e[30D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 14
+    content: "\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0mname>\e[5D\e[6C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 19
+    content: "\e[?25l\e[?7l\e[6D\e[0mname>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[6C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1060
+    content: "\e[?25l\e[?7l\e[0mM\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 272
+    content: "\e[?25l\e[?7l\e[0mi\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 712
+    content: "\e[?25l\e[?7l\e[0mc\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 315
+    content: "\e[?25l\e[?7l\e[0mh\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 94
+    content: "\e[?25l\e[?7l\e[0me\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 360
+    content: "\e[?25l\e[?7l\e[0ma\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 83
+    content: "\e[?25l\e[?7l\e[0ml\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1153
+    content: "\e[?25l\e[?7l\e[13D\e[0m\e[J\e[0mname> Micheal\e[13D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 13
+    content: "\e[6n"
+  - delay: 5
+    content: "\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0maddress>\e[8D\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 19
+    content: "\e[?25l\e[?7l\e[9D\e[0maddress>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[6A\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1611
+    content: "\e[?25l\e[?7l\e[0mm\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 121
+    content: "\e[?25l\e[?7l\e[0mi\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1444
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 138
+    content: "\e[?25l\e[?7l\e[2D\e[0m\e[K\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 505
+    content: "\e[?25l\e[?7l\e[9D\e[0m\e[J\e[0maddress>\e[8D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 13
+    content: "\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0memail>\e[6D\e[7C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 20
+    content: "\e[?25l\e[?7l\e[7D\e[0memail>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[5A\e[7C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1364
+    content: "\e[?25l\e[?7l\e[7D\e[0m\e[J\e[0memail>\e[6D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 12
+    content: "\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0mbirthday>\e[9D\e[10C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 19
+    content: "\e[?25l\e[?7l\e[10D\e[0mbirthday>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[4A\e[10C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 2635
+    content: "\e[?25l\e[?7l\e[0m2\e[0m\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;38;5;231;48;5;52minvalid date format, should be %Y-%m-%d\e[4A\e[28D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 99
+    content: "\e[?25l\e[?7l\e[0m0\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 138
+    content: "\e[?25l\e[?7l\e[0m0\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 225
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 550
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 177
+    content: "\e[?25l\e[?7l\e[0m0\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 544
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1292
+    content: "\e[?25l\e[?7l\e[0m0\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 110
+    content: "\e[?25l\e[?7l\e[0m8\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 77
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1236
+    content: "\e[?25l\e[?7l\e[0m2\e[0m\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0m \e[0m\e[K\e[4A\e[18C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 49
+    content: "\e[?25l\e[?7l\e[0m7\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 563
+    content: "\e[?25l\e[?7l\e[20D\e[0m\e[J\e[0mbirthday> 2000-08-27\e[20D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 14
+    content: "\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0mphone 0>\e[8D\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 19
+    content: "\e[?25l\e[?7l\e[9D\e[0mphone 0>\e[0m\r\r\n\r\r\n\r\r\n\e[0m \b\e[3A\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 2053
+    content: "\e[?25l\e[?7l\e[0m4\e[0m\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;38;5;231;48;5;52minvalid phone number\e[3A\e[10D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 131
+    content: "\e[?25l\e[?7l\e[0m4\e[0m\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0m \e[0m\e[K\e[3A\e[10C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 134
+    content: "\e[?25l\e[?7l\e[0m4\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 387
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 152
+    content: "\e[?25l\e[?7l\e[0m5\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 133
+    content: "\e[?25l\e[?7l\e[0m5\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 217
+    content: "\e[?25l\e[?7l\e[0m-\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 116
+    content: "\e[?25l\e[?7l\e[0m6\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 181
+    content: "\e[?25l\e[?7l\e[0m6\e[?7h\e[0m\e[?12l\e[?25h\e[?25l\e[?7l\e[0m7\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 124
+    content: "\e[?25l\e[?7l\e[0m6\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 635
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 841
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 2283
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 151
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 649
+    content: "\e[?25l\e[?7l\e[0m9\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 126
+    content: "\e[?25l\e[?7l\e[0m9\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 800
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 424
+    content: "\e[?25l\e[?7l\e[0m1\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 333
+    content: "\e[?25l\e[?7l\e[18D\e[0m\e[J\e[0mphone 0> 444-55-91\e[18D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 7
+    content: "\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0mphone 1>\e[8D\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 7
+    content: "\e[?25l\e[?7l\e[9D\e[0mphone 1>\e[0m\r\r\n\r\r\n\e[0m \b\e[2A\e[9C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 677
+    content: "\e[?25l\e[?7l\e[9D\e[0m\e[J\e[0mphone 1>\e[8D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l\e[3m                                                                                           Micheal                                                                                            \e[0m\r\n┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐\r\n│ Name: Micheal                                                                                                                                                                              │\r\n│ Address: N/A                                                                                                                                                                               │\r\n│ Email: N/A                                                                                                                                                                                 │\r\n│ Birthday: 2000-08-27                                                                                                                                                                       │\r\n├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤\r\n│ \e[3m                                                                                          Phones                                                                                          \e[0m │\r\n│ ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ │\r\n│ ┃\e[1m \e[0m\e[1mIndex                                   \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mNumber                                                                                      \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mType                                        \e[0m\e[1m \e[0m┃ │\r\n│ ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩ │\r\n│ │ 0                                        │ +(380) 4445591                                                                               │ MOBILE                                       │ │\r\n│ └──────────────────────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────┴──────────────────────────────────────────────┘ │\r\n├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤\r\n│ Tags: friends                                                                                                                                                                              │\r\n├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤\r\n│ ID: 3                                                                                                                                                                                      │\r\n└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[8A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 3964
+    content: "\e[?25l\e[?7l\e[0mc\e[0;38;5;241montacts add /tags friends\e[0m\r\r\n\e[5C\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mc\e[0;38;5;238;48;5;250montacts\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[11D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 124
+    content: "\e[?25l\e[?7l\e[0mo\e[0m\r\r\n\e[5C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mco\e[0;38;5;238;48;5;250mntacts\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[11D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 74
+    content: "\e[?25l\e[?7l\e[0mn\e[0m\r\r\n\e[6C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mcon\e[0;38;5;238;48;5;250mtacts\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[11D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 98
+    content: "\e[?25l\e[?7l\e[0mtacts\e[0m\e[K\e[0m\r\r\n\e[7C\e[0;38;5;102;48;5;231;7m \e[0;38;5;102;48;5;231;4;7mcon\e[0;48;5;231;7mtacts\e[0;38;5;102;48;5;231;7m \e[A\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 463
+    content: "\e[?25l\e[?7l\e[12D\e[0m\e[J\e[0m>>> contacts\e[12D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 25
+    content: "\e[3m                                                                                           Contacts                                                                                           \e[0m\r\n┏━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mName   \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mAddress           \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mEmail            \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mPhones                                \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mBirthday  \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                                                                        \e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩\r\n│ 1  │ Emily   │ 22 Evegreen Street │ emily@example.com │ ┏━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓ │ 2000-08-24 │                                                                              │\r\n│    │         │                    │                   │ ┃\e[1m \e[0m\e[1mIndex\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mNumber           \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mType  \e[0m\e[1m \e[0m┃ │            │                                                                              │\r\n│    │         │                    │                   │ ┡━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩ │            │                                                                              │\r\n│    │         │                    │                   │ │ 0     │ +(1) 2223344      │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ │ 1     │ +(380) 2223335566 │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ │ 2     │ +(380) 686667733  │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ └───────┴───────────────────┴────────┘ │            │                                                                              │\r\n│ 2  │ John    │ Oakwood Road 33    │ john@example.com  │ ┏━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓ │ 2000-08-26 │ work friends                                                                 │\r\n│    │         │                    │                   │ ┃\e[1m \e[0m\e[1mIndex \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mNumber          \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mType  \e[0m\e[1m \e[0m┃ │            │                                                                              │\r\n│    │         │                    │                   │ ┡━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩ │            │                                                                              │\r\n│    │         │                    │                   │ │ 0      │ +(380) 5553312   │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ │ 1      │ +(380) 7774455   │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ └────────┴──────────────────┴────────┘ │            │                                                                              │\r\n│ 3  │ Micheal │ N/A                │ N/A               │ ┏━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓ │ 2000-08-27 │ friends                                                                      │\r\n│    │         │                    │                   │ ┃\e[1m \e[0m\e[1mIndex \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mNumber          \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mType  \e[0m\e[1m \e[0m┃ │            │                                                                              │\r\n│    │         │                    │                   │ ┡━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩ │            │                                                                              │\r\n│    │         │                    │                   │ │ 0      │ +(380) 4445591   │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ └────────┴──────────────────┴────────┘ │            │                                                                              │\r\n└────┴─────────┴────────────────────┴───────────────────┴────────────────────────────────────────┴────────────┴──────────────────────────────────────────────────────────────────────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 32
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[8A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 5938
+    content: "\e[?25l\e[?7l\e[4D\e[0m\e[J\e[0;38;5;102m>>>                                                                                                                                                                                          \r\e[189C \r\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"

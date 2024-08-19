@@ -1,0 +1,430 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: poetry run mindkeeper
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: /home/g/Projects/goit/mindkeeper
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 190
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 37
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  # frameDelay: auto
+  frameDelay: 200
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 200
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: Mindkeeper
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 1681
+    content: "\e[2J\e[0;0H\e[6n"
+  - delay: 5
+    content: "\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 18
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[36A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 621
+    content: "\e[?25l\e[?7l\e[0mn\e[0;38;5;241motes add\e[0m\r\r\n\e[5C\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mn\e[0;38;5;238;48;5;250motes\e[0;38;5;16;48;5;250m    \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[5C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250mco\e[0;38;5;16;48;5;250;1;4mn\e[0;38;5;238;48;5;250mtacts\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[2A\e[11D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 90
+    content: "\e[?25l\e[?7l\e[0mo\e[0m\r\r\n\e[5C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mno\e[0;38;5;238;48;5;250mtes\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[2A\e[5C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 91
+    content: "\e[?25l\e[?7l\e[0mtes\e[0m\e[K\e[0m\r\r\n\e[6C\e[0;38;5;102;48;5;231;7m \e[0;38;5;102;48;5;231;4;7mno\e[0;48;5;231;7mtes\e[0;38;5;102;48;5;231;7m \e[A\e[4D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 543
+    content: "\e[?25l\e[?7l\e[9D\e[0m\e[J\e[0m>>> notes\e[9D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 5
+    content: "\e[3m                                                                                            Notes                                                                                             \e[0m\r\n┏━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTitle                                                                                                    \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                         \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mCreated at         \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mLast modified      \e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━┩\r\n│ 1  │ My TODO list                                                                                              │                               │ 2024-08-19 14:32:44 │ 2024-08-19 14:32:44 │\r\n└────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────────────────────┴─────────────────────┴─────────────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[29A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 886
+    content: "\e[?25l\e[?7l\e[0mn\e[0;38;5;241motes\e[0m\r\r\n\e[5C\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mn\e[0;38;5;238;48;5;250motes\e[0;38;5;16;48;5;250m    \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[5C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250mco\e[0;38;5;16;48;5;250;1;4mn\e[0;38;5;238;48;5;250mtacts\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[2A\e[11D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 116
+    content: "\e[?25l\e[?7l\e[0mo\e[0m\r\r\n\e[5C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mno\e[0;38;5;238;48;5;250mtes\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[2A\e[5C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 79
+    content: "\e[?25l\e[?7l\e[0mtes\e[0m\r\r\n\e[6C\e[0;38;5;102;48;5;231;7m \e[0;38;5;102;48;5;231;4;7mno\e[0;48;5;231;7mtes\e[0;38;5;102;48;5;231;7m \e[A\e[4D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 520
+    content: "\e[?25l\e[?7l\e[C\e[0;38;5;241madd\e[0m\r\r\n\e[6C\e[0m    \e[0;38;5;16;48;5;250m add: Add a note.        \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[10C\e[0;38;5;16;48;5;250m delete: Delete a note.  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[10C\e[0;38;5;16;48;5;250m edit: Edit a note.      \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[10C\e[0;38;5;16;48;5;250m help: Show help         \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[10C\e[0;38;5;16;48;5;250m list: List notes.       \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[10C\e[0;38;5;16;48;5;250m show: Show a note.      \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[10C\e[0;38;5;16;48;5;250m wipe: Delete all notes. \e[0;38;5;16;48;5;238m \e[7A\e[26D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 2724
+    content: "\e[?25l\e[?7l\e[0ml\e[0;38;5;241mist\e[0m\r\r\n\e[10C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4ml\e[0;38;5;238;48;5;250mist\e[0;38;5;16;48;5;250m   \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[10C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250mde\e[0;38;5;16;48;5;250;1;4ml\e[0;38;5;238;48;5;250mete\e[C\e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[10C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250mhe\e[0;38;5;16;48;5;250;1;4ml\e[0;38;5;238;48;5;250mp\e[0;38;5;16;48;5;250m   \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[7A\e[10C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 128
+    content: "\e[?25l\e[?7l\e[0mi\e[0m\r\r\n\e[11C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mli\e[0;38;5;238;48;5;250mst\e[0;38;5;16;48;5;250m  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[3A\e[11C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 96
+    content: "\e[?25l\e[?7l\e[0mst\e[0m\r\r\n\e[12C\e[0;38;5;102;48;5;231;7m \e[0;38;5;102;48;5;231;4;7mli\e[0;48;5;231;7mst\e[0;38;5;102;48;5;231;7m  \e[A\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 155
+    content: "\e[?25l\e[?7l\e[C\e[0;38;5;241m/title \"routine\"\e[0m\r\r\n\e[12C\e[0m   \e[0;38;5;16;48;5;250m /tags: Filter by tags           \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[15C\e[0;38;5;16;48;5;250m /text: Filter by text           \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[15C\e[0;38;5;16;48;5;250m /limit: Limit number of notes   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[15C\e[0;38;5;16;48;5;250m /title: Filter by title         \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[15C\e[0;38;5;16;48;5;250m /offset: Offset number of notes \e[0;38;5;16;48;5;238m \e[5A\e[34D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 149
+    content: "\e[?25l\e[?7l\e[0m/tags\e[0m\e[K\e[0m\r\r\n\e[15C\e[0;38;5;102;48;5;231;7m /tags: Filter by tags           \e[A\e[28D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 834
+    content: "\e[?25l\e[?7l\e[3D\e[0mext\e[0m\r\r\n\e[15C\e[0;38;5;16;48;5;250m /tags: Filter by tags           \e[0m\r\r\n\e[15C\e[0;38;5;102;48;5;231;7m /text: Filter by text           \e[2A\e[28D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 159
+    content: "\e[?25l\e[?7l\e[4D\e[0mlimit\e[0m\r\r\n\r\r\n\e[15C\e[0;38;5;16;48;5;250m /text: Filter by text           \e[0m\r\r\n\e[15C\e[0;38;5;102;48;5;231;7m /limit: Limit number of notes   \e[3A\e[27D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 133
+    content: "\e[?25l\e[?7l\e[5D\e[0mt\e[Ctle\e[0m\r\r\n\r\r\n\r\r\n\e[15C\e[0;38;5;16;48;5;250m /limit: Limit number of notes   \e[0m\r\r\n\e[15C\e[0;38;5;102;48;5;231;7m /title: Filter by title         \e[4A\e[27D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 147
+    content: "\e[?25l\e[?7l\e[5D\e[0moffs\e[Ct\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\e[15C\e[0;38;5;16;48;5;250m /title: Filter by title         \e[0m\r\r\n\e[15C\e[0;38;5;102;48;5;231;7m /offset: Offset number of notes \e[5A\e[26D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 150
+    content: "\e[?25l\e[?7l\e[8D\e[0m\e[K\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[15C\e[0;38;5;16;48;5;250m /offset: Offset number of notes \e[5A\e[33D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 550
+    content: "\e[?25l\e[?7l\e[0m/tags\e[0m\r\r\n\e[15C\e[0;38;5;102;48;5;231;7m /tags: Filter by tags           \e[A\e[28D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 136
+    content: "\e[?25l\e[?7l\e[3D\e[0mext\e[0m\r\r\n\e[15C\e[0;38;5;16;48;5;250m /tags: Filter by tags           \e[0m\r\r\n\e[15C\e[0;38;5;102;48;5;231;7m /text: Filter by text           \e[2A\e[28D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1382
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\e[15C\e[0m      \e[0;38;5;16;48;5;250m /tags: Filter by\e[Ctags\e[5C      \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[15C\e[0m      \e[0;38;5;16;48;5;250m /text: Filter by text           \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[15C\e[0m      \e[0;38;5;16;48;5;250m /limit:\e[CLi\e[Cit number of\e[Cnotes   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[15C\e[0m      \e[0;38;5;16;48;5;250m /tit\e[Ce: Filter by\e[Ctitle\e[3C      \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[15C\e[0m      \e[0;38;5;16;48;5;250m /offset: Offset number of\e[Cnotes \e[0;38;5;16;48;5;238m \e[5A\e[34D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 2014
+    content: "\e[?25l\e[?7l\e[0mw\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[5A\e[21C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 137
+    content: "\e[?25l\e[?7l\e[0mo\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 121
+    content: "\e[?25l\e[?7l\e[0mtr\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 71
+    content: "\e[?25l\e[?7l\e[0mk\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 453
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 146
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 550
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 104
+    content: "\e[?25l\e[?7l\e[0mr\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 98
+    content: "\e[?25l\e[?7l\e[0mk\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 609
+    content: "\e[?25l\e[?7l\e[25D\e[0m\e[J\e[0m>>> notes list /text work\e[25D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 5
+    content: "\e[3m                                                                                            Notes                                                                                             \e[0m\r\n┏━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTitle                                                                                                    \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                         \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mCreated at         \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mLast modified      \e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━┩\r\n│ 1  │ My TODO list                                                                                              │                               │ 2024-08-19 14:32:44 │ 2024-08-19 14:32:44 │\r\n└────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────────────────────┴─────────────────────┴─────────────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[22A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1356
+    content: "\e[?25l\e[?7l\e[0mnotes list /text work\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 741
+    content: "\e[?25l\e[?7l\e[5D\e[0m\e[K\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 151
+    content: "\e[?25l\e[?7l\e[5D\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1060
+    content: "\e[?25l\e[?7l\e[0mt\e[0;38;5;241mext work\e[0m\r\r\n\e[17C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;238;48;5;250mags\e[0;38;5;16;48;5;250m   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[17C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;238;48;5;250mext\e[0;38;5;16;48;5;250m   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[17C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;238;48;5;250mitle\e[0;38;5;16;48;5;250m  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[17C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/limi\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;16;48;5;250m  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[17C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/offse\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[5A\e[10D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 113
+    content: "\e[?25l\e[?7l\e[0mi\e[0;38;5;241mtle \"\e[Coutine\"\e[0m\r\r\n\e[17C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mti\e[0;38;5;238;48;5;250mtle\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[5A\e[17C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 45
+    content: "\e[?25l\e[?7l\e[0mt\e[0m\r\r\n\e[18C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mtit\e[0;38;5;238;48;5;250mle\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[9D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 252
+    content: "\e[?25l\e[?7l\e[0mle\e[0m\e[K\e[0m\r\r\n\e[19C\e[0;38;5;102;48;5;231;7m \e[0;48;5;231;7m/\e[0;38;5;102;48;5;231;4;7mtit\e[0;48;5;231;7mle\e[0;38;5;102;48;5;231;7m \e[A\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 244
+    content: "\e[?25l\e[?7l\e[C\e[0;38;5;241m\"routine\"\e[0m\r\r\n\e[19C\e[0m   \e[0;38;5;16;48;5;250m /tags: Filter by tags           \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[22C\e[0;38;5;16;48;5;250m /text: Filter by text           \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[22C\e[0;38;5;16;48;5;250m /limit: Limit number of notes   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[22C\e[0;38;5;16;48;5;250m /title: Filter by title         \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[22C\e[0;38;5;16;48;5;250m /offset: Offset number of notes \e[0;38;5;16;48;5;238m \e[5A\e[34D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 549
+    content: "\e[?25l\e[?7l\e[0mw\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[5A\e[22C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 70
+    content: "\e[?25l\e[?7l\e[0mo\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 137
+    content: "\e[?25l\e[?7l\e[0mr\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 85
+    content: "\e[?25l\e[?7l\e[0mk\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 472
+    content: "\e[?25l\e[?7l\e[26D\e[0m\e[J\e[0m>>> notes list /title work\e[26D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l\e[3m                                                                                            Notes                                                                                             \e[0m\r\n┏━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTitle                                                                                                               \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                             \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mCreated at\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mLast modified\e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩\r\n└────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────────────────────────┴────────────┴───────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[16A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 537
+    content: "\e[?25l\e[?7l\e[0mnotes list /title work\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 444
+    content: "\e[?25l\e[?7l\e[5D\e[0m\e[K\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1949
+    content: "\e[?25l\e[?7l\e[0mt\e[0m\r\r\n\e[23C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;238;48;5;250mags\e[0;38;5;16;48;5;250m   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[23C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;238;48;5;250mext\e[0;38;5;16;48;5;250m   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[23C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;238;48;5;250mitle\e[0;38;5;16;48;5;250m  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[23C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/limi\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;16;48;5;250m  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[23C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/offse\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[5A\e[10D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 85
+    content: "\e[?25l\e[?7l\e[0mo\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[5A\e[23C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 145
+    content: "\e[?25l\e[?7l\e[0md\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 43
+    content: "\e[?25l\e[?7l\e[0mo\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 333
+    content: "\e[?25l\e[?7l\e[26D\e[0m\e[J\e[0m>>> notes list /title todo\e[26D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l\e[3m                                                                                            Notes                                                                                             \e[0m\r\n┏━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTitle                                                                                                               \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                             \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mCreated at\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mLast modified\e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩\r\n└────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────────────────────────┴────────────┴───────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[10A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1349
+    content: "\e[?25l\e[?7l\e[0mnotes list /title todo\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 392
+    content: "\e[?25l\e[?7l\e[4D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 367
+    content: "\e[?25l\e[?7l\e[0m\"todo\e[4D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 271
+    content: "\e[?25l\e[?7l\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 378
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\e[28C\e[0;38;5;16;48;5;250m /tags: Filter by tags           \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[28C\e[0;38;5;16;48;5;250m /text: Filter by text           \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[28C\e[0;38;5;16;48;5;250m /limit: Limit number of notes   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[28C\e[0;38;5;16;48;5;250m /title: Filter by title         \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[28C\e[0;38;5;16;48;5;250m /offset: Offset number of notes \e[0;38;5;16;48;5;238m \e[5A\e[34D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 170
+    content: "\e[?25l\e[?7l\e[0ml\e[0m\r\r\n\e[28C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4ml\e[0;38;5;238;48;5;250mimit\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[28C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/tit\e[0;38;5;16;48;5;250;1;4ml\e[0;38;5;238;48;5;250me\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[5A\e[28C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 99
+    content: "\e[?25l\e[?7l\e[0mi\e[0m\r\r\n\e[29C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mli\e[0;38;5;238;48;5;250mmit\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[C\e[0m\e[K\e[2A\e[29C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 89
+    content: "\e[?25l\e[?7l\e[0ms\e[0m\r\r\n\e[C\e[0m\e[K\e[A\e[30C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 238
+    content: "\e[?25l\e[?7l\e[0mt\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 204
+    content: "\e[?25l\e[?7l\e[0m\"\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 342
+    content: "\e[?25l\e[?7l\e[33D\e[0m\e[J\e[0m>>> notes list /title \"todo list\"\e[33D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l\e[3m                                                                                            Notes                                                                                             \e[0m\r\n┏━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTitle                                                                                                               \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                             \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mCreated at\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mLast modified\e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩\r\n└────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────────────────────────┴────────────┴───────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[8A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 2580
+    content: "\e[?25l\e[?7l\e[0mnotes list /title \"todo list\"\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 352
+    content: "\e[?25l\e[?7l\b\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 145
+    content: "\e[?25l\e[?7l\e[4D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 327
+    content: "\e[?25l\e[?7l\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 312
+    content: "\e[?25l\e[?7l\e[0m list\"\e[0m\e[K\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 510
+    content: "\e[?25l\e[?7l\e[0mT list\"\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 139
+    content: "\e[?25l\e[?7l\e[0mO list\"\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 84
+    content: "\e[?25l\e[?7l\e[0mD list\"\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 16
+    content: "\e[?25l\e[?7l\e[0mF list\"\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 54
+    content: "\e[?25l\e[?7l\e[0mO list\"\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 545
+    content: "\e[?25l\e[?7l\b\e[0m list\"\e[0m\e[K\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 130
+    content: "\e[?25l\e[?7l\b\e[0m list\"\e[0m\e[K\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 405
+    content: "\e[?25l\e[?7l\e[0mO list\"\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 330
+    content: "\e[?25l\e[?7l\e[27D\e[0m\e[J\e[0m>>> notes list /title \"TODO list\"\e[33D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l\e[3m                                                                                            Notes                                                                                             \e[0m\r\n┏━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTitle                                                                                                    \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                         \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mCreated at         \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mLast modified      \e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━┩\r\n│ 1  │ My TODO list                                                                                              │                               │ 2024-08-19 14:32:44 │ 2024-08-19 14:32:44 │\r\n└────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────────────────────┴─────────────────────┴─────────────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 7
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[8A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 6697
+    content: "\e[?25l\e[?7l\e[0mnotes list /title \"TODO list\"\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 446
+    content: "\e[?25l\e[?7l\b\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 386
+    content: "\e[?25l\e[?7l\e[4D\e[0m\"\e[0m\e[K\b\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 367
+    content: "\e[?25l\e[?7l\b\e[0m\"\e[0m\e[K\b\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 226
+    content: "\e[?25l\e[?7l\e[27D\e[0m\e[J\e[0m>>> notes list /title \"TODO\"\e[28D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l\e[3m                                                                                            Notes                                                                                             \e[0m\r\n┏━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTitle                                                                                                    \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                         \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mCreated at         \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mLast modified      \e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━┩\r\n│ 1  │ My TODO list                                                                                              │                               │ 2024-08-19 14:32:44 │ 2024-08-19 14:32:44 │\r\n└────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────────────────────┴─────────────────────┴─────────────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[8A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1062
+    content: "\e[?25l\e[?7l\e[0mnotes list /title \"TODO\"\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 440
+    content: "\e[?25l\e[?7l\b\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 513
+    content: "\e[?25l\e[?7l\e[4D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 664
+    content: "\e[?25l\e[?7l\e[0mmTODO\"\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 88
+    content: "\e[?25l\e[?7l\e[0myTODO\"\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 82
+    content: "\e[?25l\e[?7l\e[0m TODO\"\e[0m\r\r\n\e[26C\e[0;38;5;16;48;5;250m /tags: Filter by tags           \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[26C\e[0;38;5;16;48;5;250m /text: Filter by text           \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[26C\e[0;38;5;16;48;5;250m /limit: Limit number of notes   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[26C\e[0;38;5;16;48;5;250m /title: Filter by title         \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[26C\e[0;38;5;16;48;5;250m /offset: Offset number of notes \e[0;38;5;16;48;5;238m \e[5A\e[34D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 245
+    content: "\e[?25l\e[?7l\e[26D\e[0m\e[J\e[0m>>> notes list /title \"my TODO\"\e[31D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 5
+    content: "\e[3m                                                                                            Notes                                                                                             \e[0m\r\n┏━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTitle                                                                                                    \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                         \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mCreated at         \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mLast modified      \e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━┩\r\n│ 1  │ My TODO list                                                                                              │                               │ 2024-08-19 14:32:44 │ 2024-08-19 14:32:44 │\r\n└────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────────────────────┴─────────────────────┴─────────────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[8A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1299
+    content: "\e[?25l\e[?7l\e[0mnotes list /title \"my TODO\"\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 445
+    content: "\e[?25l\e[?7l\b\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 621
+    content: "\e[?25l\e[?7l\e[0m \"\e[0m\r\r\n\e[31C\e[0;38;5;16;48;5;250m /tags: Filter by tags           \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[31C\e[0;38;5;16;48;5;250m /text: Filter by text           \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[31C\e[0;38;5;16;48;5;250m /limit: Limit number of notes   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[31C\e[0;38;5;16;48;5;250m /title: Filter by title         \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[31C\e[0;38;5;16;48;5;250m /offset: Offset number of notes \e[0;38;5;16;48;5;238m \e[5A\e[34D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 180
+    content: "\e[?25l\e[?7l\e[0ml\"\e[0m\r\r\n\e[31C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4ml\e[0;38;5;238;48;5;250mimit\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[31C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/tit\e[0;38;5;16;48;5;250;1;4ml\e[0;38;5;238;48;5;250me\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[5A\e[31C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 92
+    content: "\e[?25l\e[?7l\e[0mi\"\e[0m\r\r\n\e[32C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mli\e[0;38;5;238;48;5;250mmit\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[C\e[0m\e[K\e[2A\e[32C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 91
+    content: "\e[?25l\e[?7l\e[0ms\"\e[0m\r\r\n\e[C\e[0m\e[K\e[A\e[33C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 232
+    content: "\e[?25l\e[?7l\e[0mt\"\b\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 191
+    content: "\e[?25l\e[?7l\e[35D\e[0m\e[J\e[0m>>> notes list /title \"my TODO list\"\e[36D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l\e[3m                                                                                            Notes                                                                                             \e[0m\r\n┏━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTitle                                                                                                    \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                         \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mCreated at         \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mLast modified      \e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━┩\r\n│ 1  │ My TODO list                                                                                              │                               │ 2024-08-19 14:32:44 │ 2024-08-19 14:32:44 │\r\n└────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────────────────────┴─────────────────────┴─────────────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[8A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 805
+    content: "\e[?25l\e[?7l\e[0mnotes list /title \"my TODO list\"\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 323
+    content: "\e[?25l\e[?7l\b\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 149
+    content: "\e[?25l\e[?7l\e[4D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 279
+    content: "\e[?25l\e[?7l\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 311
+    content: "\e[?25l\e[?7l\e[0m list\"\e[0m\e[K\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 282
+    content: "\e[?25l\e[?7l\e[0mt list\"\e[0m\r\r\n\e[27C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;238;48;5;250mags\e[0;38;5;16;48;5;250m   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[27C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;238;48;5;250mext\e[0;38;5;16;48;5;250m   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[27C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;238;48;5;250mitle\e[0;38;5;16;48;5;250m  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[27C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/limi\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;16;48;5;250m  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[27C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/offse\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[5A\e[10D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 105
+    content: "\e[?25l\e[?7l\e[0mo list\"\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[5A\e[27C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 121
+    content: "\e[?25l\e[?7l\e[0md list\"\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 51
+    content: "\e[?25l\e[?7l\e[0mo list\"\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 316
+    content: "\e[?25l\e[?7l\e[30D\e[0m\e[J\e[0m>>> notes list /title \"my todo list\"\e[36D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l\e[3m                                                                                            Notes                                                                                             \e[0m\r\n┏━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTitle                                                                                                               \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                             \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mCreated at\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mLast modified\e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩\r\n└────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────────────────────────┴────────────┴───────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 24
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[8A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1254
+    content: "\e[?25l\e[?7l\e[0mnotes list /title \"my todo list\"\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 420
+    content: "\e[?25l\e[?7l\b\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 142
+    content: "\e[?25l\e[?7l\e[4D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 190
+    content: "\e[?25l\e[?7l\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 438
+    content: "\e[?25l\e[?7l\e[0m list\"\e[0m\e[K\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 578
+    content: "\e[?25l\e[?7l\e[0mT list\"\e[0m\r\r\n\e[27C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;238;48;5;250mags\e[0;38;5;16;48;5;250m   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[27C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;238;48;5;250mext\e[0;38;5;16;48;5;250m   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[27C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;238;48;5;250mitle\e[0;38;5;16;48;5;250m  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[27C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/limi\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;16;48;5;250m  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[27C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/offse\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[5A\e[10D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 148
+    content: "\e[?25l\e[?7l\e[0mO list\"\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[5A\e[27C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 98
+    content: "\e[?25l\e[?7l\e[0mD list\"\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 61
+    content: "\e[?25l\e[?7l\e[0mO list\"\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 347
+    content: "\e[?25l\e[?7l\e[30D\e[0m\e[J\e[0m>>> notes list /title \"my TODO list\"\e[36D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l\e[3m                                                                                            Notes                                                                                             \e[0m\r\n┏━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTitle                                                                                                    \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                         \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mCreated at         \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mLast modified      \e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━┩\r\n│ 1  │ My TODO list                                                                                              │                               │ 2024-08-19 14:32:44 │ 2024-08-19 14:32:44 │\r\n└────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────────────────────┴─────────────────────┴─────────────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[8A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 547
+    content: "\e[?25l\e[?7l\e[0mnotes list /title \"my TODO list\"\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 348
+    content: "\e[?25l\e[?7l\b\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 828
+    content: "\e[?25l\e[?7l\e[4D\e[0m\"\e[0m\e[K\b\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 164
+    content: "\e[?25l\e[?7l\e[5D\e[0m\"\e[0m\e[K\b\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 205
+    content: "\e[?25l\e[?7l\e[3D\e[0m\"\e[0m\e[K\b\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 870
+    content: "\e[?25l\e[?7l\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 153
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 165
+    content: "\e[?25l\e[?7l\e[2D\e[0m\e[K\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 149
+    content: "\e[?25l\e[?7l\b\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 154
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 161
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 162
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 146
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 155
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 179
+    content: "\e[?25l\e[?7l\e[2D\e[0m\e[K\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 301
+    content: "\e[?25l\e[?7l\e[0m/\e[0;38;5;241mtitle \"my TODO list\"\e[0m\r\r\n\e[16C\e[0;38;5;16;48;5;250m /tags: Filter by tags           \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[16C\e[0;38;5;16;48;5;250m /text: Filter by text           \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[16C\e[0;38;5;16;48;5;250m /limit: Limit number of notes   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[16C\e[0;38;5;16;48;5;250m /title: Filter by title         \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[16C\e[0;38;5;16;48;5;250m /offset: Offset number of notes \e[0;38;5;16;48;5;238m \e[5A\e[34D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 256
+    content: "\e[?25l\e[?7l\e[0mtags\e[0m\e[K\e[0m\r\r\n\e[16C\e[0;38;5;102;48;5;231;7m /tags: Filter by tags           \e[A\e[29D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 4239
+    content: "\e[?25l\e[?7l\e[3D\e[0mext\e[0m\r\r\n\e[16C\e[0;38;5;16;48;5;250m /tags: Filter by tags           \e[0m\r\r\n\e[16C\e[0;38;5;102;48;5;231;7m /text: Filter by text           \e[2A\e[29D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 177
+    content: "\e[?25l\e[?7l\e[4D\e[0mlimit\e[0m\r\r\n\r\r\n\e[16C\e[0;38;5;16;48;5;250m /text: Filter by text           \e[0m\r\r\n\e[16C\e[0;38;5;102;48;5;231;7m /limit: Limit number of notes   \e[3A\e[28D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 604
+    content: "\e[?25l\e[?7l\e[5D\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[5A\e[15C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 305
+    content: "\e[?25l\e[?7l\e[2D\e[0m\e[K\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 166
+    content: "\e[?25l\e[?7l\e[6D\e[0m\e[K\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 159
+    content: "\e[?25l\e[?7l\e[7D\e[0m\e[K\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 215
+    content: "\a\e[?25l\e[?7l\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 402
+    content: "\e[?25l\e[?7l\e[4D\e[0m\e[J\e[0;38;5;102m>>>                                                                                                                                                                                          \r\e[189C \r\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"

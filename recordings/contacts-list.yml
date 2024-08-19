@@ -1,0 +1,298 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: poetry run mindkeeper
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: /home/g/Projects/goit/mindkeeper
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 190
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 37
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  # frameDelay: auto
+  frameDelay: 200
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 200
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: Mindkeeper
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 1614
+    content: "\e[2J\e[0;0H\e[6n\e[?2004h\e[?1l\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 14
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[36A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 526
+    content: "\e[?25l\e[?7l\e[0mc\e[0;38;5;241montacts\e[0m\r\r\n\e[5C\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mc\e[0;38;5;238;48;5;250montacts\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[11D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 104
+    content: "\e[?25l\e[?7l\e[0mo\e[0m\r\r\n\e[5C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mco\e[0;38;5;238;48;5;250mntacts\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[11D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 71
+    content: "\e[?25l\e[?7l\e[0mn\e[0m\r\r\n\e[6C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mcon\e[0;38;5;238;48;5;250mtacts\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[11D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 93
+    content: "\e[?25l\e[?7l\e[0mtacts\e[0m\r\r\n\e[7C\e[0;38;5;102;48;5;231;7m \e[0;38;5;102;48;5;231;4;7mcon\e[0;48;5;231;7mtacts\e[0;38;5;102;48;5;231;7m \e[A\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 554
+    content: "\e[?25l\e[?7l\e[12D\e[0m\e[J\e[0m>>> contacts\e[12D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 13
+    content: "\e[3m                                                                                           Contacts                                                                                           \e[0m\r\n┏━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mName   \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mAddress           \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mEmail            \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mPhones                                \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mBirthday  \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                                                                        \e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩\r\n│ 1  │ Emily   │ 22 Evegreen Street │ emily@example.com │ ┏━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓ │ 2000-08-24 │                                                                              │\r\n│    │         │                    │                   │ ┃\e[1m \e[0m\e[1mIndex\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mNumber           \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mType  \e[0m\e[1m \e[0m┃ │            │                                                                              │\r\n│    │         │                    │                   │ ┡━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩ │            │                                                                              │\r\n│    │         │                    │                   │ │ 0     │ +(1) 2223344      │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ │ 1     │ +(380) 2223335566 │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ │ 2     │ +(380) 686667733  │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ └───────┴───────────────────┴────────┘ │            │                                                                              │\r\n│ 2  │ John    │ Oakwood Road 33    │ john@example.com  │ ┏━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓ │ 2000-08-26 │ work friends                                                                 │\r\n│    │         │                    │                   │ ┃\e[1m \e[0m\e[1mIndex \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mNumber          \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mType  \e[0m\e[1m \e[0m┃ │            │                                                                              │\r\n│    │         │                    │                   │ ┡━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩ │            │                                                                              │\r\n│    │         │                    │                   │ │ 0      │ +(380) 5553312   │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ │ 1      │ +(380) 7774455   │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ └────────┴──────────────────┴────────┘ │            │                                                                              │\r\n│ 3  │ Micheal │ N/A                │ N/A               │ ┏━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓ │ 2000-08-27 │ friends                                                                      │\r\n│    │         │                    │                   │ ┃\e[1m \e[0m\e[1mIndex \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mNumber          \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mType  \e[0m\e[1m \e[0m┃ │            │                                                                              │\r\n│    │         │                    │                   │ ┡━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩ │            │                                                                              │\r\n│    │         │                    │                   │ │ 0      │ +(380) 4445591   │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ └────────┴──────────────────┴────────┘ │            │                                                                              │\r\n└────┴─────────┴────────────────────┴───────────────────┴────────────────────────────────────────┴────────────┴──────────────────────────────────────────────────────────────────────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 14
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \e[0m\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[12A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 489
+    content: "\e[?25l\e[?7l\e[0mc\e[0;38;5;241montacts\e[0m\r\r\n\e[5C\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mc\e[0;38;5;238;48;5;250montacts\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[11D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 118
+    content: "\e[?25l\e[?7l\e[0mo\e[0m\r\r\n\e[5C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mco\e[0;38;5;238;48;5;250mntacts\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[11D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 88
+    content: "\e[?25l\e[?7l\e[0mn\e[0m\r\r\n\e[6C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mcon\e[0;38;5;238;48;5;250mtacts\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[11D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 86
+    content: "\e[?25l\e[?7l\e[0mtacts\e[0m\r\r\n\e[7C\e[0;38;5;102;48;5;231;7m \e[0;38;5;102;48;5;231;4;7mcon\e[0;48;5;231;7mtacts\e[0;38;5;102;48;5;231;7m \e[A\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 207
+    content: "\e[?25l\e[?7l\e[C\e[0;38;5;241madd /tags friends\e[0m\r\r\n\e[7C\e[0m      \e[0;38;5;16;48;5;250m phones: A set of commands to manage phones.                  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m add: Add a contact.                                          \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m delete: Delete a contact.                                    \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m edit: Edit a contact.                                        \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m greetings: Find the contacts to be greeted on the next week. \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m help: Show help                                              \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m list: List contacts.                                         \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m show: Show a contact.                                        \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m wipe: Delete all notes.                                      \e[0;38;5;16;48;5;238m \e[9A\e[63D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 184
+    content: "\e[?25l\e[?7l\e[0ml\e[0;38;5;241mist /phone 111122\e[0m\r\r\n\e[13C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4ml\e[0;38;5;238;48;5;250mist\e[0;38;5;16;48;5;250m  \e[C\e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[13C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250mde\e[0;38;5;16;48;5;250;1;4ml\e[0;38;5;238;48;5;250mete\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[13C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250mhe\e[0;38;5;16;48;5;250;1;4ml\e[0;38;5;238;48;5;250mp\e[0;38;5;16;48;5;250m   \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[9A\e[13C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 114
+    content: "\e[?25l\e[?7l\e[0mi\e[0m\r\r\n\e[14C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mli\e[0;38;5;238;48;5;250mst\e[0;38;5;16;48;5;250m  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[3A\e[14C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 98
+    content: "\e[?25l\e[?7l\e[0mst\e[0m\e[K\e[0m\r\r\n\e[15C\e[0;38;5;102;48;5;231;7m \e[0;38;5;102;48;5;231;4;7mli\e[0;48;5;231;7mst\e[0;38;5;102;48;5;231;7m  \e[A\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 467
+    content: "\e[?25l\e[?7l\e[17D\e[0m\e[J\e[0m>>> contacts list\e[17D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 11
+    content: "\e[3m                                                                                           Contacts                                                                                           \e[0m\r\n┏━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mName   \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mAddress           \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mEmail            \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mPhones                                \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mBirthday  \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                                                                        \e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩\r\n│ 1  │ Emily   │ 22 Evegreen Street │ emily@example.com │ ┏━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓ │ 2000-08-24 │                                                                              │\r\n│    │         │                    │                   │ ┃\e[1m \e[0m\e[1mIndex\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mNumber           \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mType  \e[0m\e[1m \e[0m┃ │            │                                                                              │\r\n│    │         │                    │                   │ ┡━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩ │            │                                                                              │\r\n│    │         │                    │                   │ │ 0     │ +(1) 2223344      │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ │ 1     │ +(380) 2223335566 │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ │ 2     │ +(380) 686667733  │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ └───────┴───────────────────┴────────┘ │            │                                                                              │\r\n│ 2  │ John    │ Oakwood Road 33    │ john@example.com  │ ┏━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓ │ 2000-08-26 │ work friends                                                                 │\r\n│    │         │                    │                   │ ┃\e[1m \e[0m\e[1mIndex \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mNumber          \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mType  \e[0m\e[1m \e[0m┃ │            │                                                                              │\r\n│    │         │                    │                   │ ┡━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩ │            │                                                                              │\r\n│    │         │                    │                   │ │ 0      │ +(380) 5553312   │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ │ 1      │ +(380) 7774455   │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ └────────┴──────────────────┴────────┘ │            │                                                                              │\r\n│ 3  │ Micheal │ N/A                │ N/A               │ ┏━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓ │ 2000-08-27 │ friends                                                                      │\r\n│    │         │                    │                   │ ┃\e[1m \e[0m\e[1mIndex \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mNumber          \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mType  \e[0m\e[1m \e[0m┃ │            │                                                                              │\r\n│    │         │                    │                   │ ┡━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩ │            │                                                                              │\r\n│    │         │                    │                   │ │ 0      │ +(380) 4445591   │ MOBILE │ │            │                                                                              │\r\n│    │         │                    │                   │ └────────┴──────────────────┴────────┘ │            │                                                                              │\r\n└────┴─────────┴────────────────────┴───────────────────┴────────────────────────────────────────┴────────────┴──────────────────────────────────────────────────────────────────────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 17
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[8A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 631
+    content: "\e[?25l\e[?7l\e[0mc\e[0;38;5;241montacts list\e[0m\r\r\n\e[5C\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mc\e[0;38;5;238;48;5;250montacts\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[11D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 117
+    content: "\e[?25l\e[?7l\e[0mo\e[0m\r\r\n\e[5C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mco\e[0;38;5;238;48;5;250mntacts\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[11D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 86
+    content: "\e[?25l\e[?7l\e[0mn\e[0m\r\r\n\e[6C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mcon\e[0;38;5;238;48;5;250mtacts\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[11D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 101
+    content: "\e[?25l\e[?7l\e[0mtacts\e[0m\e[K\e[0m\r\r\n\e[7C\e[0;38;5;102;48;5;231;7m \e[0;38;5;102;48;5;231;4;7mcon\e[0;48;5;231;7mtacts\e[0;38;5;102;48;5;231;7m \e[A\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 311
+    content: "\e[?25l\e[?7l\e[C\e[0;38;5;241mlist\e[0m\r\r\n\e[7C\e[0m      \e[0;38;5;16;48;5;250m phones: A set of commands to manage phones.                  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m add: Add a contact.                                          \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m delete: Delete a contact.                                    \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m edit: Edit a contact.                                        \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m greetings: Find the contacts to be greeted on the next week. \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m help: Show help                                              \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[13C\e[0;38;5;16;48;5;250m list: List contacts.                                         \e[0;38;5;16;48;5;248m \e[7A\e[63D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 493
+    content: "\e[?25l\e[?7l\e[0ml\e[0m\r\r\n\e[13C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4ml\e[0;38;5;238;48;5;250mist\e[0;38;5;16;48;5;250m  \e[C\e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[13C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250mde\e[0;38;5;16;48;5;250;1;4ml\e[0;38;5;238;48;5;250mete\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[13C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250mhe\e[0;38;5;16;48;5;250;1;4ml\e[0;38;5;238;48;5;250mp\e[0;38;5;16;48;5;250m   \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[7A\e[13C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 84
+    content: "\e[?25l\e[?7l\e[0mi\e[0m\r\r\n\e[14C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;250;1;4mli\e[0;38;5;238;48;5;250mst\e[0;38;5;16;48;5;250m  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[3A\e[14C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 99
+    content: "\e[?25l\e[?7l\e[0mst\e[0m\r\r\n\e[15C\e[0;38;5;102;48;5;231;7m \e[0;38;5;102;48;5;231;4;7mli\e[0;48;5;231;7mst\e[0;38;5;102;48;5;231;7m  \e[A\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 129
+    content: "\e[?25l\e[?7l\e[C\e[0;38;5;241m/phone 111122\e[0m\r\r\n\e[15C\e[0m   \e[0;38;5;16;48;5;250m /limit: Limit number of contacts   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[18C\e[0;38;5;16;48;5;250m /offset: Offset number of contacts \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[18C\e[0;38;5;16;48;5;250m /email: Filter by email            \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[18C\e[0;38;5;16;48;5;250m /tags: Filter by tags              \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[18C\e[0;38;5;16;48;5;250m /address: Filter by address        \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[18C\e[0;38;5;16;48;5;250m /name: Filter by name              \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[18C\e[0;38;5;16;48;5;250m /phone: Filter by phone            \e[0;38;5;16;48;5;238m \e[7A\e[37D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 244
+    content: "\e[?25l\e[?7l\e[0m/\e[0m\r\r\n\e[18C\e[0m \e[0;38;5;16;48;5;250m /limit: Limit number of contacts\e[2C \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[18C\e[0m \e[0;38;5;16;48;5;250m /o\e[Cfset: O\e[Cfset number of contacts \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[18C\e[0m \e[0;38;5;16;48;5;250m /email: Filter by email\e[11C \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[18C\e[0m \e[0;38;5;16;48;5;250m /tags: Filter by tags\e[13C \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[18C\e[0m \e[0;38;5;16;48;5;250m /a\e[Cdre\e[Cs: Filter by a\e[Cdre\e[Cs\e[7C \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[18C\e[0m \e[0;38;5;16;48;5;250m /name: Filter by name\e[13C \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[18C\e[0m \e[0;38;5;16;48;5;250m /phone: Filter by phone\e[11C \e[0;38;5;16;48;5;238m \e[7A\e[37D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 317
+    content: "\e[?25l\e[?7l\e[0mn\e[0;38;5;241mame emily\e[0m\e[K\e[0m\r\r\n\e[19C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mn\e[0;38;5;238;48;5;250mame\e[0;38;5;16;48;5;250m \e[C\e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[19C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/pho\e[0;38;5;16;48;5;250;1;4mn\e[0;38;5;238;48;5;250me\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[7A\e[19C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 103
+    content: "\e[?25l\e[?7l\e[0ma\e[0m\r\r\n\e[20C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mna\e[0;38;5;238;48;5;250mme\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[C\e[0m\e[K\e[2A\e[20C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 243
+    content: "\e[?25l\e[?7l\e[0mme\e[0m\e[K\e[0m\r\r\n\e[21C\e[0;38;5;102;48;5;231;7m \e[0;48;5;231;7m/\e[0;38;5;102;48;5;231;4;7mna\e[0;48;5;231;7mme\e[0;38;5;102;48;5;231;7m \e[A\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 410
+    content: "\e[?25l\e[?7l\e[C\e[0;38;5;241memily\e[0m\r\r\n\e[21C\e[0m   \e[0;38;5;16;48;5;250m /limit: Limit number of contacts   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[24C\e[0;38;5;16;48;5;250m /offset: Offset number of contacts \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[24C\e[0;38;5;16;48;5;250m /email: Filter by email            \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[24C\e[0;38;5;16;48;5;250m /tags: Filter by tags              \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[24C\e[0;38;5;16;48;5;250m /address: Filter by address        \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[24C\e[0;38;5;16;48;5;250m /name: Filter by name              \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[24C\e[0;38;5;16;48;5;250m /phone: Filter by phone            \e[0;38;5;16;48;5;238m \e[7A\e[37D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 361
+    content: "\e[?25l\e[?7l\e[0me\e[0m\r\r\n\e[24C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4me\e[0;38;5;238;48;5;250mmail\e[C\e[0;38;5;16;48;5;250m  \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[24C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/nam\e[0;38;5;16;48;5;250;1;4me\e[0;38;5;16;48;5;250m  \e[C \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[24C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/offs\e[0;38;5;16;48;5;250;1;4me\e[0;38;5;238;48;5;250mt\e[0;38;5;16;48;5;250m  \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[24C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/addr\e[0;38;5;16;48;5;250;1;4me\e[0;38;5;238;48;5;250mss\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[24C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/phon\e[0;38;5;16;48;5;250;1;4me\e[0;38;5;16;48;5;250m   \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[7A\e[24C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 76
+    content: "\e[?25l\e[?7l\e[0mm\e[0m\r\r\n\e[25C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mem\e[0;38;5;238;48;5;250mail\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[5A\e[25C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 151
+    content: "\e[?25l\e[?7l\e[0mi\e[0m\r\r\n\e[26C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mem\e[0;38;5;16;48;5;250;1ma\e[0;38;5;16;48;5;250;1;4mi\e[0;38;5;238;48;5;250ml\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[9D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 292
+    content: "\e[?25l\e[?7l\e[0ml\e[0m\r\r\n\e[27C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mem\e[0;38;5;16;48;5;250;1ma\e[0;38;5;16;48;5;250;1;4mil\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[9D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 73
+    content: "\e[?25l\e[?7l\e[0my\e[0m\r\r\n\e[C\e[0m\e[K\e[A\e[28C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 825
+    content: "\e[?25l\e[?7l\e[29D\e[0m\e[J\e[0m>>> contacts list /name emily\e[29D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 10
+    content: "\e[3m                                                                                           Contacts                                                                                           \e[0m\r\n┏━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mName \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mAddress           \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mEmail            \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mPhones                                \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mBirthday  \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                                                                          \e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩\r\n│ 1  │ Emily │ 22 Evegreen Street │ emily@example.com │ ┏━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓ │ 2000-08-24 │                                                                                │\r\n│    │       │                    │                   │ ┃\e[1m \e[0m\e[1mIndex\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mNumber           \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mType  \e[0m\e[1m \e[0m┃ │            │                                                                                │\r\n│    │       │                    │                   │ ┡━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩ │            │                                                                                │\r\n│    │       │                    │                   │ │ 0     │ +(1) 2223344      │ MOBILE │ │            │                                                                                │\r\n│    │       │                    │                   │ │ 1     │ +(380) 2223335566 │ MOBILE │ │            │                                                                                │\r\n│    │       │                    │                   │ │ 2     │ +(380) 686667733  │ MOBILE │ │            │                                                                                │\r\n│    │       │                    │                   │ └───────┴───────────────────┴────────┘ │            │                                                                                │\r\n└────┴───────┴────────────────────┴───────────────────┴────────────────────────────────────────┴────────────┴────────────────────────────────────────────────────────────────────────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 19
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[8A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1631
+    content: "\e[?25l\e[?7l\e[0mcontacts list /name emily\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 2128
+    content: "\e[?25l\e[?7l\e[6D\e[0m\e[K\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 320
+    content: "\e[?25l\e[?7l\e[5D\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 626
+    content: "\e[?25l\e[?7l\e[0mt\e[0m\r\r\n\e[20C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;238;48;5;250mags\e[0;38;5;16;48;5;250m   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[20C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/limi\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;16;48;5;250m  \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[20C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/offse\e[0;38;5;16;48;5;250;1;4mt\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[3A\e[10D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 95
+    content: "\e[?25l\e[?7l\e[0ma\e[0m\r\r\n\e[20C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mta\e[0;38;5;238;48;5;250mgs\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[3A\e[20C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 93
+    content: "\e[?25l\e[?7l\e[0mg\e[0m\r\r\n\e[21C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mtag\e[0;38;5;238;48;5;250ms\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[8D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 137
+    content: "\e[?25l\e[?7l\e[0ms\e[0m\r\r\n\e[22C\e[0;38;5;102;48;5;231;7m \e[0;48;5;231;7m/\e[0;38;5;102;48;5;231;4;7mtag\e[0;48;5;231;7ms\e[0;38;5;102;48;5;231;7m \e[A\e[6D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 474
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\e[22C\e[0m  \e[0;38;5;16;48;5;250m /limit: Limit number of contacts   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[24C\e[0;38;5;16;48;5;250m /offset: Offset number of contacts \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[24C\e[0;38;5;16;48;5;250m /email: Filter by email            \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[24C\e[0;38;5;16;48;5;250m /tags: Filter by tags              \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[24C\e[0;38;5;16;48;5;250m /address: Filter by address        \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[24C\e[0;38;5;16;48;5;250m /name: Filter by name              \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[24C\e[0;38;5;16;48;5;250m /phone: Filter by phone            \e[0;38;5;16;48;5;238m \e[7A\e[37D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 622
+    content: "\e[?25l\e[?7l\e[0mf\e[0m\r\r\n\e[24C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/o\e[0;38;5;16;48;5;250;1;4mf\e[0;38;5;238;48;5;250mfset\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[7A\e[24C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 177
+    content: "\e[?25l\e[?7l\e[0mi\e[0m\r\r\n\e[C\e[0m\e[K\e[A\e[25C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 80
+    content: "\e[?25l\e[?7l\e[0mr\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 745
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 148
+    content: "\e[?25l\e[?7l\b\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 131
+    content: "\e[?25l\e[?7l\e[2D\e[0m\e[K\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 385
+    content: "\e[?25l\e[?7l\e[0mf\e[0m\r\r\n\e[25C\e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/o\e[0;38;5;16;48;5;250;1;4mf\e[0;38;5;238;48;5;250mfset\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[A\e[10D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 307
+    content: "\e[?25l\e[?7l\e[0mr\e[0m\r\r\n\e[C\e[0m\e[K\e[A\e[25C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 158
+    content: "\e[?25l\e[?7l\e[0mi\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 145
+    content: "\e[?25l\e[?7l\e[0me\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 185
+    content: "\e[?25l\e[?7l\e[0mn\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 73
+    content: "\e[?25l\e[?7l\e[0md\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 142
+    content: "\e[?25l\e[?7l\e[0ms\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 2230
+    content: "\e[?25l\e[?7l\e[31D\e[0m\e[J\e[0m>>> contacts list /tags friends\e[31D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 16
+    content: "\e[3m                                                                                           Contacts                                                                                           \e[0m\r\n┏━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mName   \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mAddress        \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mEmail           \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mPhones                             \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mBirthday  \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                                                                               \e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩\r\n│ 2  │ John    │ Oakwood Road 33 │ john@example.com │ ┏━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━┓ │ 2000-08-26 │ work friends                                                                        │\r\n│    │         │                 │                  │ ┃\e[1m \e[0m\e[1mIndex\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mNumber        \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mType  \e[0m\e[1m \e[0m┃ │            │                                                                                     │\r\n│    │         │                 │                  │ ┡━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━┩ │            │                                                                                     │\r\n│    │         │                 │                  │ │ 0     │ +(380) 5553312 │ MOBILE │ │            │                                                                                     │\r\n│    │         │                 │                  │ │ 1     │ +(380) 7774455 │ MOBILE │ │            │                                                                                     │\r\n│    │         │                 │                  │ └───────┴────────────────┴────────┘ │            │                                                                                     │\r\n│ 3  │ Micheal │ N/A             │ N/A              │ ┏━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━┓ │ 2000-08-27 │ friends                                                                             │\r\n│    │         │                 │                  │ ┃\e[1m \e[0m\e[1mIndex\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mNumber        \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mType  \e[0m\e[1m \e[0m┃ │            │                                                                                     │\r\n│    │         │                 │                  │ ┡━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━┩ │            │                                                                                     │\r\n│    │         │                 │                  │ │ 0     │ +(380) 4445591 │ MOBILE │ │            │                                                                                     │\r\n│    │         │                 │                  │ └───────┴────────────────┴────────┘ │            │                                                                                     │\r\n└────┴─────────┴─────────────────┴──────────────────┴─────────────────────────────────────┴────────────┴─────────────────────────────────────────────────────────────────────────────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 12
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[8A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 2132
+    content: "\e[?25l\e[?7l\e[0mcontacts list /tags friends\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 533
+    content: "\e[?25l\e[?7l\e[8D\e[0m\e[K\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 344
+    content: "\e[?25l\e[?7l\e[0mw\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 104
+    content: "\e[?25l\e[?7l\e[0mo\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 111
+    content: "\e[?25l\e[?7l\e[0mr\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 94
+    content: "\e[?25l\e[?7l\e[0mk\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 460
+    content: "\e[?25l\e[?7l\e[28D\e[0m\e[J\e[0m>>> contacts list /tags work\e[28D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 11
+    content: "\e[3m                                                                                           Contacts                                                                                           \e[0m\r\n┏━━━━┳━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mName\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mAddress        \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mEmail           \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mPhones                             \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mBirthday  \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                                                                                  \e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩\r\n│ 2  │ John │ Oakwood Road 33 │ john@example.com │ ┏━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━┓ │ 2000-08-26 │ work friends                                                                           │\r\n│    │      │                 │                  │ ┃\e[1m \e[0m\e[1mIndex\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mNumber        \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mType  \e[0m\e[1m \e[0m┃ │            │                                                                                        │\r\n│    │      │                 │                  │ ┡━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━┩ │            │                                                                                        │\r\n│    │      │                 │                  │ │ 0     │ +(380) 5553312 │ MOBILE │ │            │                                                                                        │\r\n│    │      │                 │                  │ │ 1     │ +(380) 7774455 │ MOBILE │ │            │                                                                                        │\r\n│    │      │                 │                  │ └───────┴────────────────┴────────┘ │            │                                                                                        │\r\n└────┴──────┴─────────────────┴──────────────────┴─────────────────────────────────────┴────────────┴────────────────────────────────────────────────────────────────────────────────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 16
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[8A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 857
+    content: "\e[?25l\e[?7l\e[0mcontacts list /tags work\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 371
+    content: "\e[?25l\e[?7l\e[5D\e[0m\e[K\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 159
+    content: "\e[?25l\e[?7l\e[5D\e[0m\e[K\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 1568
+    content: "\e[?25l\e[?7l\e[2D\e[0m\e[K\e[C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 365
+    content: "\e[?25l\e[?7l\e[0m/\e[0;38;5;241mtags work\e[0m\r\r\n\e[19C\e[0;38;5;16;48;5;250m /limit: Limit number of contacts   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[19C\e[0;38;5;16;48;5;250m /offset: Offset number of contacts \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[19C\e[0;38;5;16;48;5;250m /email: Filter by email            \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[19C\e[0;38;5;16;48;5;250m /tags: Filter by tags              \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[19C\e[0;38;5;16;48;5;250m /address: Filter by address        \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[19C\e[0;38;5;16;48;5;250m /name: Filter by name              \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[19C\e[0;38;5;16;48;5;250m /phone: Filter by phone            \e[0;38;5;16;48;5;238m \e[7A\e[37D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 2724
+    content: "\e[?25l\e[?7l\e[0me\e[0;38;5;241mmail emily\e[0m\r\r\n\e[19C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4me\e[0;38;5;238;48;5;250mmail\e[C\e[0;38;5;16;48;5;250m  \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[19C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/nam\e[0;38;5;16;48;5;250;1;4me\e[0;38;5;16;48;5;250m  \e[C \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[19C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/offs\e[0;38;5;16;48;5;250;1;4me\e[0;38;5;238;48;5;250mt\e[0;38;5;16;48;5;250m  \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[19C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/addr\e[0;38;5;16;48;5;250;1;4me\e[0;38;5;238;48;5;250mss\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[19C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/phon\e[0;38;5;16;48;5;250;1;4me\e[0;38;5;16;48;5;250m   \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[7A\e[19C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 86
+    content: "\e[?25l\e[?7l\e[0mm\e[0m\r\r\n\e[20C\e[0m \e[0;38;5;16;48;5;250m \e[0;38;5;238;48;5;250m/\e[0;38;5;16;48;5;250;1;4mem\e[0;38;5;238;48;5;250mail\e[0;38;5;16;48;5;250m \e[0;38;5;16;48;5;238m \e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[5A\e[20C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 133
+    content: "\e[?25l\e[?7l\e[0mail\e[0m\e[K\e[0m\r\r\n\e[21C\e[0;38;5;102;48;5;231;7m \e[0;48;5;231;7m/\e[0;38;5;102;48;5;231;4;7mem\e[0;48;5;231;7mail\e[0;38;5;102;48;5;231;7m \e[A\e[5D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 518
+    content: "\e[?25l\e[?7l\e[C\e[0;38;5;241memily\e[0m\r\r\n\e[21C\e[0m    \e[0;38;5;16;48;5;250m /limit: Limit number of contacts   \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[25C\e[0;38;5;16;48;5;250m /offset: Offset number of contacts \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[25C\e[0;38;5;16;48;5;250m /email: Filter by email            \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[25C\e[0;38;5;16;48;5;250m /tags: Filter by tags              \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[25C\e[0;38;5;16;48;5;250m /address: Filter by address        \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[25C\e[0;38;5;16;48;5;250m /name: Filter by name              \e[0;38;5;16;48;5;238m \e[0m\r\r\n\e[25C\e[0;38;5;16;48;5;250m /phone: Filter by phone            \e[0;38;5;16;48;5;238m \e[7A\e[37D\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 550
+    content: "\e[?25l\e[?7l\e[0mj\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[0m\r\r\n\e[C\e[0m\e[K\e[7A\e[25C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 95
+    content: "\e[?25l\e[?7l\e[0mo\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 287
+    content: "\e[?25l\e[?7l\e[0mh\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 93
+    content: "\e[?25l\e[?7l\e[0mn\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 490
+    content: "\e[?25l\e[?7l\e[29D\e[0m\e[J\e[0m>>> contacts list /email john\e[29D\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
+  - delay: 10
+    content: "\e[3m                                                                                           Contacts                                                                                           \e[0m\r\n┏━━━━┳━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\r\n┃\e[1m \e[0m\e[1mID\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mName\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mAddress        \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mEmail           \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mPhones                             \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mBirthday  \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mTags                                                                                  \e[0m\e[1m \e[0m┃\r\n┡━━━━╇━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩\r\n│ 2  │ John │ Oakwood Road 33 │ john@example.com │ ┏━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━┓ │ 2000-08-26 │ work friends                                                                           │\r\n│    │      │                 │                  │ ┃\e[1m \e[0m\e[1mIndex\e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mNumber        \e[0m\e[1m \e[0m┃\e[1m \e[0m\e[1mType  \e[0m\e[1m \e[0m┃ │            │                                                                                        │\r\n│    │      │                 │                  │ ┡━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━┩ │            │                                                                                        │\r\n│    │      │                 │                  │ │ 0     │ +(380) 5553312 │ MOBILE │ │            │                                                                                        │\r\n│    │      │                 │                  │ │ 1     │ +(380) 7774455 │ MOBILE │ │            │                                                                                        │\r\n│    │      │                 │                  │ └───────┴────────────────┴────────┘ │            │                                                                                        │\r\n└────┴──────┴─────────────────┴──────────────────┴─────────────────────────────────────┴────────────┴────────────────────────────────────────────────────────────────────────────────────────┘\r\n\e[6n\e[?2004h\e[?25l\e[0m\e[?7l\e[0m\e[J\e[0m>>>\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0m \b\e[7A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 56
+    content: "\e[?25l\e[?7l\e[0m\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\r\r\n\e[0;7mPress Ctrl+D to exit                                                                                                                                                                         \r\e[189C \r\e[8A\e[4C\e[?7h\e[0m\e[?12l\e[?25h"
+  - delay: 4572
+    content: "\e[?25l\e[?7l\e[4D\e[0m\e[J\e[0;38;5;102m>>>                                                                                                                                                                                          \r\e[189C \r\e[0m\r\r\n\e[J\e[?7h\e[0m\e[?12l\e[?25h\e[?2004l"
